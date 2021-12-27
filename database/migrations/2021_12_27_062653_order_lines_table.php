@@ -22,6 +22,8 @@ class OrderLinesTable extends Migration
             $table->dateTime('UpdatedAt');
             $table->index('BookId');
             $table->index('OrderId');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

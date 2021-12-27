@@ -21,17 +21,17 @@ Route::get('/',function(){
 
 
 Route::prefix('/book')->group(function () {
+    // danh sách sản phẩm
     Route::get('/',[BooksController::class,'getAllBooks'])->name('index_books');
+    //thêm sản phẩm
+    Route::get('/add',[BooksController::class,'getAddBook'])->name('add_book');
+    Route::post('/add',[BooksController::class,'postAddBook'])->name('add_book');
 });
 
-//add
-Route::get('/add',[ProductsController::class,'addProduct1'])->name('add_product');
-Route::post('/add',[ProductsController::class,'addProduct'])->name('add_product');
 
 //detail
 
 Route::get('/detail/{id?}',[ProductsController::class,'detaiProduct'])->name('detail_book');
-
 
 
 Route::get('login',function(){

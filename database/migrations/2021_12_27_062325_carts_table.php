@@ -19,6 +19,8 @@ class CartsTable extends Migration
             $table->string('BookId');
             $table->integer('Quantity');
             $table->index('AccountId');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -18,6 +18,8 @@ class FavouritesTable extends Migration
             $table->string('AccountId');
             $table->string('BookId');
             $table->index('AccountId');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

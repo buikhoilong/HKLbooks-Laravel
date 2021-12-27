@@ -23,6 +23,8 @@ class RatesTable extends Migration
             $table->integer('Status');
             $table->dateTime('CreatedAt');
             $table->timestamp('UpdatedAt');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

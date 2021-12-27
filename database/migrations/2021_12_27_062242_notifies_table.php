@@ -19,6 +19,8 @@ class NotifiesTable extends Migration
             $table->text('Description');
             $table->string('AccountId')->nullable()->comment("Accounts that receive the notify");
             $table->dateTime('CreatedAt');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

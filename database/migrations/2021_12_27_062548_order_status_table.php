@@ -17,6 +17,8 @@ class OrderStatusTable extends Migration
             $table->integer('Id')->primary();
             $table->string('Name');
             $table->text('Description')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

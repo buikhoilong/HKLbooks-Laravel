@@ -24,6 +24,8 @@ class OrdersTable extends Migration
             $table->dateTime('UpdatedAt');
             $table->index('AccountId');
             $table->index('StatusId');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

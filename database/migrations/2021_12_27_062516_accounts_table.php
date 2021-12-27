@@ -26,6 +26,8 @@ class AccountsTable extends Migration
             $table->index('Id');
             $table->index(['Email', 'Password']);
             $table->index(['Phone', 'Password']);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
