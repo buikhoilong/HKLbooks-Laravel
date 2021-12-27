@@ -11,4 +11,11 @@ class BooksController extends Controller
         $books = Book::all();
         return view('Admin.book.index_book',compact('books'));
     }
+    
+    function getAllBooksAPI(){
+        $books = Book::all();
+        return response()->json($books,200);
+    }
+
+    
 }

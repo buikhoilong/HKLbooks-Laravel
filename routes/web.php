@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\BooksController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +15,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
 Route::get('/',function(){
     return view('Admin.index');
 });
 
+
+Route::prefix('/book')->group(function () {
+    Route::get('/',[BooksController::class,'getAllBooks'])->name('index_books');
+});
+
+//add
+Route::get('/add',[ProductsController::class,'addProduct1'])->name('add_product');
+Route::post('/add',[ProductsController::class,'addProduct'])->name('add_product');
+
+//detail
+
+Route::get('/detail/{id?}',[ProductsController::class,'detaiProduct'])->name('detail_book');
 
 
 
@@ -33,18 +45,3 @@ Route::get('foget',function(){
 Route::get('register',function(){
     return view('Admin.page.register');
 });
-
-
-
-
-Route::prefix('books')->group(function () {
-    Route::get('/', function () {
-        return view('Admin.book.index_book');
-    });
-    
-    Route::post('/add', function () {
-        return view('Admin.book.add_book');
-    });
-});
-
-
