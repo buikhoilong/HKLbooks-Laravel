@@ -17,6 +17,7 @@
     <input type="text" name="nhaxuatbantxt" /><br>
     <label >Thể Loại</label>
     <select name="theloaitxt" id="theloaitxt">
+        <option value="">Chọn Loại</option>
         @for ($index = 0 ; $index < $categories->count(); $index++)
             <option value="{{ $categories[$index]->Id }}">{{ $categories[$index]->Name }}</option>
         @endfor
@@ -25,5 +26,5 @@
     <label >Hình ảnh</label>
     <input type="file" id ="imagetxt" name="imagetxt" /> <br>
     <input type="submit">
-    @endsection
 </form>
+@endsection

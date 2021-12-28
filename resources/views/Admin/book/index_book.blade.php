@@ -9,8 +9,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong class="card-title">Bảng sản phẩm</strong>
-                        <a href="{{ route('add_book') }}">Thêm sản phẩm</a>
+                        <strong class="card-title"> Bảng sản phẩm</strong>
+                        <strong ><a style="float: right;color:black" href="{{ route('add_book') }}">Thêm sản phẩm</a></strong>
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -28,15 +28,15 @@
                                 @for ($i=0; $i < $books->count(); $i++)
                                     <tr>
                                         <td>
-                                            <img style="width:100px;height:100px" src="{{ asset('admin/images/books/'.$books[$i]->ImgPath)}}" alt="{{ $books[$i]->ImgPath}}">
+                                            <img style="width:100px;height:100px" src="{{ asset('storage/admin/images/books/'.$books[$i]->ImgPath)}}" alt="{{ $books[$i]->ImgPath}}">
                                         </td>
                                         <td>{{ $books[$i]->Name }}</td>
                                         <td>{{ $books[$i]->Price }}</td>
                                         <td>{{ $books[$i]->Stock }}</td>
                                         <td>
-                                            <button><a href="{{ route('detail_book',['id'=> $books[$i]->id]) }}">Chi tiết</a></button>
-                                            <button><a href="{{ route('detail_book',['id'=> $books[$i]->id]) }}">Chỉnh Sửa</a></button>
-                                            <button><a href="{{ route('detail_book',['id'=> $books[$i]->id]) }}">Xóa</a></button>
+                                            <button><a href="{{ route('detail_book',['Id'=> $books[$i]->Id]) }}">Chi tiết</a></button>
+                                            <button><a href="{{ route('edit_book',['Id'=> $books[$i]->Id]) }}">Chỉnh Sửa</a></button>
+                                            <button><a href="{{ route('delete_book',['Id'=> $books[$i]->Id]) }}">Xóa</a></button>
                                         </td>
                                     </tr>
                                 @endfor

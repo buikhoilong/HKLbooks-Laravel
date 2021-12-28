@@ -26,13 +26,14 @@ Route::prefix('/book')->group(function () {
     //thêm sản phẩm
     Route::get('/add',[BooksController::class,'getAddBook'])->name('add_book');
     Route::post('/add',[BooksController::class,'postAddBook'])->name('add_book');
+    // chi tiết sản phẩm
+    Route::get('/detail/{Id?}',[BooksController::class,'detailBook'])->name('detail_book');
+    //Chỉnh sửa sản phẩm
+    Route::get('/edit/{Id?}',[BooksController::class,'getUpdateBook'])->name('edit_book');
+    Route::post('/update/{Id?}',[BooksController::class,'patchUpdateBook'])->name('update_book');
+    //Xóa sản phẩm
+    Route::get('/delete/{Id?}',[BooksController::class,'deleteBook'])->name('delete_book');
 });
-
-
-//detail
-
-Route::get('/detail/{id?}',[ProductsController::class,'detaiProduct'])->name('detail_book');
-
 
 Route::get('login',function(){
     return view('Admin.page.login');
