@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Book;
@@ -69,28 +68,24 @@ class BooksController extends Controller
         return view('Admin.book.edit_book',compact('books'),compact('categories'));
     }
 
-    public function patchUpdateBook(Request $request, $id){
-        $books = Book::find($id);
-        $books->Name = $request->tentxt;
-        $books->Price = $request->giatxt;
-        $books->Stock = $request->soluongtxt;
-        $books->Detail = $request->motatxt;
-        $books->Author = $request->tacgiatxt;
-        $books->Publisher = $request->nhaxuatbantxt;
-        // $books->CategoryId = $request->theloaitxt;
-        // if($request->hasFile('imagetxt')){
-        //     $nameImg = $request->file('imagetxt')->getClientOriginalName(); // lấy tên của ảnh từ hệ thống
-        //     $books->ImgPath = $nameImg; // gán giá trị cho database 
-        //     $request->imagetxt->storeAs('admin/images/books', $nameImg,'public'); // lưu hình ảnh vào trong đường dẫn,storeAs() tham số thứ 3 mặc định là public 
-        // }
-
-        // original
-        // attributes
-        
-        // dd($books['Id']);
-        // dd($books['attributes']);
-        $books->save();
-        // dd($books->save()); 
+    public function patchUpdateBook(Request $request){
+        if($request->hasFile('imagetxt')){
+            $nameImg = $request->file('imagetxt')->getClientOriginalName(); // lấy tên của ảnh từ hệ thống
+            $request->imagetxt->storeAs('admin/images/books', $nameImg,'public'); // lưu hình ảnh vào trong đường dẫn,storeAs() tham số thứ 3 mặc định là public 
+        }
+        Book::where('Id',$request->Id)->update(
+            [
+                'Name'=>$request->tentxt,
+                'Price'=>$request->giatxt,
+                'Stock'=>$request->soluongtxt,
+                'Detail'=>$request->motatxt,
+                'Author'=>$request->tacgiatxt,
+                'Publisher'=>$request->nhaxuatbantxt,
+                'CategoryId' => $request->theloaitxt,
+                "ImgPath" => $nameImg,
+            ]
+        );
+ 
         return redirect()->route('index_books');
     }
 
@@ -99,8 +94,6 @@ class BooksController extends Controller
         $books->delete();
         return redirect()->route('index_books');
     }
-
-
 
     public function getAllBooksAPI(){
         $books = Book::all();

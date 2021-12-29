@@ -17,25 +17,18 @@
     <input type="text" name="tacgiatxt" value="{{ $books->Author }}" /><br>
     <label >Nhà xuất bản</label>
     <input type="text" name="nhaxuatbantxt" value="{{ $books->Publisher }}" /><br>
-    {{-- <label >Thể Loại</label>
+    <label >Thể Loại</label>
     <select name="theloaitxt" id="theloaitxt">
         @for ($i = 0 ; $i < $categories->count(); $i++)
             <option value="{{ $categories[$i]->Id }}" @if ($categories[$i]->Id==$books->CategoryId) selected @endif>
                 {{ $categories[$i]->Name }}
             </option>
         @endfor
-    </select> --}}
-    {{-- <select name="theloaitxt" id="theloaitxt">
-        @foreach ($categories as $cate)
-        <option value="{{ $cate->Id }}" @if ($cate->Id==$books->CategoryId) selected @endif>
-        {{ $cate->Name }}
-    </option>
-    @endforeach
-    </select><br> --}}
+    </select>
     <br>
-    {{-- <label >Hình ảnh</label>
+    <label >Hình ảnh</label>
     <img style="width: 100px;max-height:100px;object-fit:contain" src="{{ asset('storage/admin/images/books/'.$books->ImgPath)}}"><br>
-    <input type="file" name="imagetxt" /> <br> --}}
+    <input type="file" name="imagetxt" /> <br>
     <input type="submit">
 </form>
 

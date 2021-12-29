@@ -20,5 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-
 Route::get('/book',[BooksController::class,'getAllBooksAPI']);
+
+
+// Route::prefix('/book')->group(function () {
+//     Route::get('/edit/{Id?}',[BooksController::class,'getUpdateBook'])->name('edit_book');
+//     Route::post('/update',[BooksController::class,'patchUpdateBook'])->name('update_book');
+// });

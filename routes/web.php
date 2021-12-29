@@ -43,10 +43,11 @@ Route::prefix('/book')->group(function () {
     Route::get('/detail/{Id?}',[BooksController::class,'detailBook'])->name('detail_book');
     //Chỉnh sửa sản phẩm
     Route::get('/edit/{Id?}',[BooksController::class,'getUpdateBook'])->name('edit_book');
-    Route::post('/update/{Id?}',[BooksController::class,'patchUpdateBook'])->name('update_book');
+    Route::post('/update',[BooksController::class,'patchUpdateBook'])->name('update_book');
     //Xóa sản phẩm
     Route::get('/delete/{Id?}',[BooksController::class,'deleteBook'])->name('delete_book');
 });
+
 
 
 Route::prefix('/account')->group(function () {
