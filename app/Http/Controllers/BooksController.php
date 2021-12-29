@@ -13,6 +13,7 @@ class BooksController extends Controller
         return view('Admin.book.index_book',compact('books'));
     }
     
+
     public function getAddBook(){
         $categories = Categories::all();
         return view('Admin.book.add_book',compact('categories'));
@@ -98,6 +99,8 @@ class BooksController extends Controller
         $books->delete();
         return redirect()->route('index_books');
     }
+
+
 
     public function getAllBooksAPI(){
         $books = Book::all();

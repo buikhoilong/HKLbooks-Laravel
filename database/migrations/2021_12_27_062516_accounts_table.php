@@ -23,6 +23,7 @@ class AccountsTable extends Migration
             $table->string('Email')->unique();
             $table->string('Password')->index();
             $table->boolean('Role');
+            $table->string('Avatar');
             $table->index('Id');
             $table->index(['Email', 'Password']);
             $table->index(['Phone', 'Password']);
