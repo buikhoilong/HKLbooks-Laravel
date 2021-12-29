@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title">Accounts</strong>
-                        {{-- <strong ><a style="float: right;color:black" href="{{ route('add_book') }}">Thêm sản phẩm</a></strong> --}}
+                        <strong ><a style="float: right;color:black" href="{{ route('add_account') }}">Thêm tài khoản</a></strong>
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -32,12 +32,10 @@
                                         <td>{{ $accounts[$i]->Address }}</td>
                                         <td>{{ $accounts[$i]->Phone }}</td>
                                         <td>{{ $accounts[$i]->Email }}</td>
-
                                         <td>
-                                            {{-- <button><a href="{{ route('detail_book',['Id'=> $books[$i]->Id]) }}">Chi tiết</a></button> --}}
-                                            {{-- <button><a href="{{ route('edit_book',['Id'=> $books[$i]->Id]) }}">Chỉnh Sửa</a></button> --}}
-                                            {{-- <button><a href="{{ route('delete_book',['Id'=> $books[$i]->Id]) }}">Xóa</a></button> --}}
-                                            <a href="">ádsada</a>
+                                            <button><a href="{{ route('detail_account',['Id'=> $accounts[$i]->Id]) }}">Chi tiết</a></button>
+                                            <button><a href="{{ route('edit_account',['Id'=> $accounts[$i]->Id]) }}">Chỉnh Sửa</a></button>
+                                            <button><a href="{{ route('delete_account',['Id'=> $accounts[$i]->Id]) }}">Xóa</a></button>
                                         </td>
                                     </tr>
                                 @endfor
