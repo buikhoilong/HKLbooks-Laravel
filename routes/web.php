@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,8 +49,6 @@ Route::prefix('/book')->group(function () {
     Route::get('/delete/{Id?}',[BooksController::class,'deleteBook'])->name('delete_book');
 });
 
-
-
 Route::prefix('/account')->group(function () {
     // danh sách sản phẩm
     Route::get('/',[AccountsController::class,'getAllAccounts'])->name('index_account');
@@ -63,4 +62,20 @@ Route::prefix('/account')->group(function () {
     Route::post('/update/{Id?}',[AccountsController::class,'postUpdateAccount'])->name('update_account');
     // //Xóa sản phẩm
     Route::get('/delete/{Id?}',[AccountsController::class,'deleteAccount'])->name('delete_account');
+});
+
+
+Route::prefix('/category')->group(function () {
+    // danh sách sản phẩm
+    Route::get('/',[CategoriesController::class,'getAllCategory'])->name('index_category');
+    //thêm sản phẩm
+    Route::get('/add',[CategoriesController::class,'getAddCategory'])->name('add_category');
+    Route::post('/add',[CategoriesController::class,'postAddCategory'])->name('add_category');
+    // chi tiết sản phẩm
+    Route::get('/detail/{Id?}',[CategoriesController::class,'detailCategory'])->name('detail_category');
+    // //Chỉnh sửa sản phẩm
+    Route::get('/edit/{Id?}',[CategoriesController::class,'getUpdateCategory'])->name('edit_category');
+    Route::post('/update/{Id?}',[CategoriesController::class,'postUpdateCategory'])->name('update_category');
+    // //Xóa sản phẩm
+    Route::get('/delete/{Id?}',[CategoriesController::class,'deleteCategory'])->name('delete_category');
 });
