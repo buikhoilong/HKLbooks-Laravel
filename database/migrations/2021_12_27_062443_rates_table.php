@@ -21,8 +21,6 @@ class RatesTable extends Migration
             $table->text('Comment')->nullable();
             $table->text('Reply')->nullable();
             $table->integer('Status');
-            $table->dateTime('CreatedAt');
-            $table->timestamp('UpdatedAt');
             $table->timestamps();
             $table->softDeletes();
         });

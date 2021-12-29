@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +21,17 @@ Route::get('/',function(){
     return view('Admin.index');
 });
 
+Route::get('login',function(){
+    return view('Admin.page.login');
+});
+
+Route::get('foget',function(){
+    return view('Admin.page.foget');
+});
+
+Route::get('register',function(){
+    return view('Admin.page.register');
+});
 
 Route::prefix('/book')->group(function () {
     // danh sách sản phẩm
@@ -35,14 +48,18 @@ Route::prefix('/book')->group(function () {
     Route::get('/delete/{Id?}',[BooksController::class,'deleteBook'])->name('delete_book');
 });
 
-Route::get('login',function(){
-    return view('Admin.page.login');
-});
 
-Route::get('foget',function(){
-    return view('Admin.page.foget');
-});
-
-Route::get('register',function(){
-    return view('Admin.page.register');
+Route::prefix('/account')->group(function () {
+    // danh sách sản phẩm
+    Route::get('/',[AccountsController::class,'getAllAccounts'])->name('index_account');
+    //thêm sản phẩm
+    Route::get('/add',[AccountsController::class,'getAddAccount'])->name('add_account');
+    Route::post('/add',[AccountsController::class,'postAddAccount'])->name('add_account');
+    // chi tiết sản phẩm
+    // Route::get('/detail/{Id?}',[AccountsController::class,'detailAccount'])->name('detail_account');
+    // //Chỉnh sửa sản phẩm
+    // Route::get('/edit/{Id?}',[AccountsController::class,'getUpdateAccount'])->name('edit_account');
+    // Route::post('/update/{Id?}',[AccountsController::class,'patchUpdateAccount'])->name('update_account');
+    // //Xóa sản phẩm
+    // Route::get('/delete/{Id?}',[AccountsController::class,'deleteAccount'])->name('delete_account');
 });

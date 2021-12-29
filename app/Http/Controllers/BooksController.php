@@ -8,17 +8,17 @@ use Illuminate\Http\Request;
 
 class BooksController extends Controller
 {
-    function getAllBooks(){
+    public function getAllBooks(){
         $books = Book::all();
         return view('Admin.book.index_book',compact('books'));
     }
     
-    function getAddBook(){
+    public function getAddBook(){
         $categories = Categories::all();
         return view('Admin.book.add_book',compact('categories'));
     }
 
-    function postAddBook(Request $request){
+    public function postAddBook(Request $request){
         $books = new Book;
         $datetime = Date('Ymd');
         $count = $books->count()+1;
@@ -56,13 +56,13 @@ class BooksController extends Controller
         return redirect()->route('index_books');
     }
 
-    function detailBook($id){
+    public function detailBook($id){
         $books = Book::find($id);
         $categories = Categories::all();
         return view('Admin.book.detail_book',compact('books'),compact('categories'));
     }
 
-    function getUpdateBook($id){
+    public function getUpdateBook($id){
         $books = Book::find($id);
         $categories = Categories::all();
         return view('Admin.book.edit_book',compact('books'),compact('categories'));
@@ -82,8 +82,10 @@ class BooksController extends Controller
         //     $books->ImgPath = $nameImg; // gán giá trị cho database 
         //     $request->imagetxt->storeAs('admin/images/books', $nameImg,'public'); // lưu hình ảnh vào trong đường dẫn,storeAs() tham số thứ 3 mặc định là public 
         // }
+
         // original
         // attributes
+        
         // dd($books['Id']);
         // dd($books['attributes']);
         $books->save();
@@ -91,13 +93,13 @@ class BooksController extends Controller
         return redirect()->route('index_books');
     }
 
-    function deleteBook($id){
+    public function deleteBook($id){
         $books = Book::where('Id',$id);
         $books->delete();
         return redirect()->route('index_books');
     }
 
-    function getAllBooksAPI(){
+    public function getAllBooksAPI(){
         $books = Book::all();
         return response()->json($books,200);
     }

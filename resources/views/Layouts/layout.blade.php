@@ -77,7 +77,7 @@
                     </li>
                     <li class="menu-title">UI elements</li><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Accounts</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Books</a>
                         <ul class="sub-menu children dropdown-menu">                            
                             <li><i class="fa fa-fire"></i><a href="/book"> Danh Sách</a></li>
                             <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Thêm </a></li>
@@ -87,18 +87,18 @@
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Books</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Accounts</a>
                         <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-fire"></i><a href="/account"> Danh Sách</a></li>
                             <li><i class="fa fa-table"></i><a href="tables-basic.html">Thêm</a></li>
                             <li><i class="fa fa-table"></i><a href="tables-data.html">Xóa</a></li>
                             <li><i class="fa fa-table"></i><a href="tables-data.html">Sửa</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Categories</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Advanced Form</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="/catagory">Danh Sách</a></li>
                         </ul>
                     </li>
 
