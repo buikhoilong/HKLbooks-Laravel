@@ -69,9 +69,12 @@ class BooksController extends Controller
     }
 
     public function patchUpdateBook(Request $request){
+        $books= Book::find($request->Id);
+        $Path = $books->ImgPath;
         if($request->hasFile('imagetxt')){
             $nameImg = $request->file('imagetxt')->getClientOriginalName(); // lấy tên của ảnh từ hệ thống
             $request->imagetxt->storeAs('admin/images/books', $nameImg,'public'); // lưu hình ảnh vào trong đường dẫn,storeAs() tham số thứ 3 mặc định là public 
+            $Path = $nameImg;
         }
         Book::where('Id',$request->Id)->update(
             [
@@ -82,12 +85,14 @@ class BooksController extends Controller
                 'Author'=>$request->tacgiatxt,
                 'Publisher'=>$request->nhaxuatbantxt,
                 'CategoryId' => $request->theloaitxt,
-                "ImgPath" => $nameImg,
+                "ImgPath" => $Path,
             ]
         );
- 
         return redirect()->route('index_books');
     }
+
+
+
 
     public function deleteBook($id){
         $books = Book::where('Id',$id);

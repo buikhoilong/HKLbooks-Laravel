@@ -57,10 +57,10 @@ Route::prefix('/account')->group(function () {
     Route::get('/add',[AccountsController::class,'getAddAccount'])->name('add_account');
     Route::post('/add',[AccountsController::class,'postAddAccount'])->name('add_account');
     // chi tiết sản phẩm
-    // Route::get('/detail/{Id?}',[AccountsController::class,'detailAccount'])->name('detail_account');
+    Route::get('/detail/{Id?}',[AccountsController::class,'detailAccount'])->name('detail_account');
     // //Chỉnh sửa sản phẩm
-    // Route::get('/edit/{Id?}',[AccountsController::class,'getUpdateAccount'])->name('edit_account');
-    // Route::post('/update/{Id?}',[AccountsController::class,'patchUpdateAccount'])->name('update_account');
+    Route::get('/edit/{Id?}',[AccountsController::class,'getUpdateAccount'])->name('edit_account');
+    Route::post('/update/{Id?}',[AccountsController::class,'postUpdateAccount'])->name('update_account');
     // //Xóa sản phẩm
-    // Route::get('/delete/{Id?}',[AccountsController::class,'deleteAccount'])->name('delete_account');
+    Route::get('/delete/{Id?}',[AccountsController::class,'deleteAccount'])->name('delete_account');
 });
