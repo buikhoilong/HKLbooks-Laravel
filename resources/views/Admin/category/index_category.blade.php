@@ -16,8 +16,9 @@
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Description</th>
+                                    <th>Mã Loại</th>
+                                    <th>Tên Loại</th>
+                                    <th>Mô Tả</th>
                                     <th>Chức năng</th>
                                 </tr>
                             </thead>
@@ -25,6 +26,7 @@
                             <tbody>
                                 @for ($i=0; $i < $category->count(); $i++)
                                     <tr>
+                                        <td>{{ $category[$i]->Id }}</td>
                                         <td>{{ $category[$i]->Name }}</td>
                                         <td>{{ $category[$i]->Description }}</td>
                                         <td>

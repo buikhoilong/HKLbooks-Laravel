@@ -42,20 +42,10 @@ class CategoriesController extends Controller
         return view('Admin.category.edit_category',compact('category'));
     }
 
-
-
     
     public function postUpdateCategory(Request $request){
-        $bien = $request->tentxt;
-        $tam =substr($bien,0,1);
-        for($i = 0 ; $i < strlen($bien);$i++ ){
-            if(ord($bien[$i])==32){
-                $tam = $tam.substr($bien,$i+1,1);
-            }
-        }
         Category::where('Id',$request->Id)->update(
             [
-                'Id' => strtoupper($tam),
                 'Name'=>$request->tentxt,
                 'Description'=>$request->motatxt,
             ]
