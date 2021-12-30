@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Categories;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -14,7 +15,7 @@ class BooksController extends Controller
     
 
     public function getAddBook(){
-        $categories = Categories::all();
+        $categories = Category::all();
         return view('Admin.book.add_book',compact('categories'));
     }
 
@@ -58,18 +59,18 @@ class BooksController extends Controller
 
     public function detailBook($id){
         $books = Book::find($id);
-        $categories = Categories::all();
+        $categories = Category::all();
         return view('Admin.book.detail_book',compact('books'),compact('categories'));
     }
 
     public function getUpdateBook($id){
         $books = Book::find($id);
-        $categories = Categories::all();
+        $categories = Category::all();
         return view('Admin.book.edit_book',compact('books'),compact('categories'));
     }
 
     public function patchUpdateBook(Request $request){
-        $books= Book::find($request->Id);
+        $books = Book::find($request->Id);
         $Path = $books->ImgPath;
         if($request->hasFile('imagetxt')){
             $nameImg = $request->file('imagetxt')->getClientOriginalName(); // lấy tên của ảnh từ hệ thống
@@ -85,14 +86,11 @@ class BooksController extends Controller
                 'Author'=>$request->tacgiatxt,
                 'Publisher'=>$request->nhaxuatbantxt,
                 'CategoryId' => $request->theloaitxt,
-                "ImgPath" => $Path,
+                'ImgPath' => $Path,
             ]
         );
         return redirect()->route('index_books');
     }
-
-
-
 
     public function deleteBook($id){
         $books = Book::where('Id',$id);

@@ -3,7 +3,6 @@
 @section("content")
 
 <form  method="POST" action="{{ route('update_book',['Id'=> $books->Id])}}" enctype="multipart/form-data">
-    {{-- @method("PATCH"); --}}
     @csrf
     <label >Tên sách</label>
     <input type="text" name="tentxt" value="{{ $books->Name }}" /><br>

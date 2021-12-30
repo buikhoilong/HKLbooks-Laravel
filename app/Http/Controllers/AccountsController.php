@@ -47,7 +47,6 @@ class AccountsController extends Controller
         $nameImg = $request->file('imagetxt')->getClientOriginalName(); // lấy tên của ảnh từ hệ thống
         $accounts->Avatar = $nameImg; // gán giá trị cho database 
         $request->imagetxt->storeAs('admin/images/avatar', $nameImg,'public'); // lưu hình ảnh vào trong đường dẫn,storeAs() tham số thứ 3 mặc định là public 
-        // return($accounts);
         $accounts->save();
         return redirect()->route('index_account');
     }
@@ -62,8 +61,8 @@ class AccountsController extends Controller
         return view('Admin.account.edit_account',compact('accounts'));
     }
     
-    public function postUpdateAccount(Request $request, $id){
-        $accounts = Account::find($id);
+    public function postUpdateAccount(Request $request){
+        $accounts = Account::find($request->Id);
         $PathImg = $accounts->Avatar;
         if($request->hasFile('imagetxt')){
             $nameImg = $request->file('imagetxt')->getClientOriginalName(); // lấy tên của ảnh từ hệ thống
