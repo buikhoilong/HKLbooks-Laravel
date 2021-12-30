@@ -29,6 +29,8 @@ class BooksTable extends Migration
             $table->integer('Status');
             $table->index('Id');
             $table->index('ImgPath');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

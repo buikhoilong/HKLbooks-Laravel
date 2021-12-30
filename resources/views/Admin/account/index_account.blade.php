@@ -1,7 +1,6 @@
-@extends("Layouts.layout")
-@section('title','Index Books')
-@section("content")
-
+@extends('Layouts.layout')
+@section('title','Index Account')
+@section('content')
 
 <div class="content">
     <div class="animated fadeIn">
@@ -9,34 +8,36 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong class="card-title"> Bảng sản phẩm</strong>
-                        <strong ><a style="float: right;color:black" href="{{ route('add_book') }}">Thêm sản phẩm</a></strong>
+                        <strong class="card-title">Accounts</strong>
+                        {{-- <strong ><a style="float: right;color:black" href="{{ route('add_book') }}">Thêm sản phẩm</a></strong> --}}
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Img</th>
                                     <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Stock</th>
+                                    <th>Birthday</th>
+                                    <th>Address</th>
+                                    <th>Phne</th>
+                                    <th>Email</th>
                                     <th>Chức năng</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @for ($i=0; $i < $books->count(); $i++)
+                                @for ($i=0; $i < $accounts->count(); $i++)
                                     <tr>
+                                        <td>{{ $accounts[$i]->Name }}</td>
+                                        <td>{{ $accounts[$i]->Birthday }}</td>
+                                        <td>{{ $accounts[$i]->Address }}</td>
+                                        <td>{{ $accounts[$i]->Phone }}</td>
+                                        <td>{{ $accounts[$i]->Email }}</td>
+
                                         <td>
-                                            <img style="width:100px;height:100px" src="{{ asset('storage/admin/images/books/'.$books[$i]->ImgPath)}}" alt="{{ $books[$i]->ImgPath}}">
-                                        </td>
-                                        <td>{{ $books[$i]->Name }}</td>
-                                        <td>{{ $books[$i]->Price }}</td>
-                                        <td>{{ $books[$i]->Stock }}</td>
-                                        <td>
-                                            <button><a href="{{ route('detail_book',['Id'=> $books[$i]->Id]) }}">Chi tiết</a></button>
-                                            <button><a href="{{ route('edit_book',['Id'=> $books[$i]->Id]) }}">Chỉnh Sửa</a></button>
-                                            <button><a href="{{ route('delete_book',['Id'=> $books[$i]->Id]) }}">Xóa</a></button>
+                                            {{-- <button><a href="{{ route('detail_book',['Id'=> $books[$i]->Id]) }}">Chi tiết</a></button> --}}
+                                            {{-- <button><a href="{{ route('edit_book',['Id'=> $books[$i]->Id]) }}">Chỉnh Sửa</a></button> --}}
+                                            {{-- <button><a href="{{ route('delete_book',['Id'=> $books[$i]->Id]) }}">Xóa</a></button> --}}
+                                            <a href="">ádsada</a>
                                         </td>
                                     </tr>
                                 @endfor

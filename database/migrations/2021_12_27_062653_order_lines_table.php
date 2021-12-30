@@ -18,10 +18,10 @@ class OrderLinesTable extends Migration
             $table->string('OrderId');
             $table->string('BookId');
             $table->integer('Quantity');
-            $table->dateTime('CreatedAt');
-            $table->dateTime('UpdatedAt');
             $table->index('BookId');
             $table->index('OrderId');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -20,10 +20,10 @@ class OrdersTable extends Migration
             $table->integer('Discount');
             $table->integer('TotalMoney');
             $table->integer('StatusId');
-            $table->dateTime('CreatedAt');
-            $table->dateTime('UpdatedAt');
             $table->index('AccountId');
             $table->index('StatusId');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
