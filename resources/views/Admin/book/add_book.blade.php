@@ -19,7 +19,9 @@
     <select name="theloaitxt" id="theloaitxt">
         <option value="">Chọn Loại</option>
         @for ($index = 0 ; $index < $categories->count(); $index++)
-            <option value="{{ $categories[$index]->Id }}">{{ $categories[$index]->Name }}</option>
+            @if ($categories[$index]->Status == 1)
+                <option value="{{ $categories[$index]->Id }}">{{ $categories[$index]->Name }}</option>
+            @endif
         @endfor
     </select>
     <br>

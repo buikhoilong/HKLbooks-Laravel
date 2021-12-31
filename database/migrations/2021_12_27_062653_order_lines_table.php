@@ -18,6 +18,7 @@ class OrderLinesTable extends Migration
             $table->string('OrderId');
             $table->string('BookId');
             $table->integer('Quantity');
+            $table->integer('Status');
             $table->index('BookId');
             $table->index('OrderId');
             $table->timestamps();

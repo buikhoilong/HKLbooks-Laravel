@@ -25,16 +25,17 @@
 
                             <tbody>
                                 @for ($i=0; $i < $category->count(); $i++)
+                                    @if ($category[$i]->Status == 1)
                                     <tr>
                                         <td>{{ $category[$i]->Id }}</td>
                                         <td>{{ $category[$i]->Name }}</td>
                                         <td>{{ $category[$i]->Description }}</td>
                                         <td>
-                                            <button><a href="{{ route('detail_category',['Id'=> $category[$i]->Id]) }}">Chi tiết</a></button>
                                             <button><a href="{{ route('edit_category',['Id'=> $category[$i]->Id]) }}">Chỉnh Sửa</a></button>
                                             <button><a href="{{ route('delete_category',['Id'=> $category[$i]->Id]) }}">Xóa</a></button>
                                         </td>
                                     </tr>
+                                    @endif
                                 @endfor
                             </tbody>
                         </table>

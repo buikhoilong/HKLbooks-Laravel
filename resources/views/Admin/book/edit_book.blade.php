@@ -19,9 +19,11 @@
     <label >Thể Loại</label>
     <select name="theloaitxt" id="theloaitxt">
         @for ($i = 0 ; $i < $categories->count(); $i++)
+            @if ($categories[$i]->Status == 1)
             <option value="{{ $categories[$i]->Id }}" @if ($categories[$i]->Id==$books->CategoryId) selected @endif>
                 {{ $categories[$i]->Name }}
             </option>
+            @endif
         @endfor
     </select>
     <br>
