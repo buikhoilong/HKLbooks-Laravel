@@ -71,9 +71,12 @@ Route::prefix('/category')->group(function () {
     //thêm sản phẩm
     Route::get('/add',[CategoriesController::class,'getAddCategory'])->name('add_category');
     Route::post('/add',[CategoriesController::class,'postAddCategory'])->name('add_category');
-    // //Chỉnh sửa sản phẩm
+    //Chỉnh sửa sản phẩm
     Route::get('/edit/{Id?}',[CategoriesController::class,'getUpdateCategory'])->name('edit_category');
-    Route::post('/update/{Id?}',[CategoriesController::class,'postUpdateCategory'])->name('update_category');
-    // //Xóa sản phẩm
+    Route::post('/update',[CategoriesController::class,'postUpdateCategory'])->name('update_category');
+    //Xóa sản phẩm
     Route::get('/delete/{Id?}',[CategoriesController::class,'deleteCategory'])->name('delete_category');
+    // cập nhật trạng thái
+    Route::get('/update_delete/{Id?}',[CategoriesController::class,'getUpdateDeleteCategory'])->name('edit_delete_category');
+    Route::get('/post_update_delete/{Id?}',[CategoriesController::class,'postUpdateDeleteCategory'])->name('update_delete_category');
 });

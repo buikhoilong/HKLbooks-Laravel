@@ -17,13 +17,11 @@ class ForeignKeyTable extends Migration
          Schema::table('books', function (Blueprint $table) {
             $table->foreign('CategoryId')->references('Id')->on('categories');
         });
-
         // tạo khóa ngoại cho favourites
         Schema::table('favourites', function (Blueprint $table) {
             $table->foreign('AccountId')->references('Id')->on('accounts');
             $table->foreign('BookId')->references('Id')->on('books');
         });
-
         //  tạo khóa ngoại cho carts
         Schema::table('carts', function (Blueprint $table) {
             $table->foreign('AccountId')->references('Id')->on('accounts');

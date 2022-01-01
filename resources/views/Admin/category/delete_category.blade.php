@@ -1,5 +1,5 @@
 @extends("Layouts.layout")
-@section('title','Index Category')
+@section('title','Delete Category')
 @section("content")
     <!-- Scripts -->
     <script src="{{ asset('admin/assets/js/lib/data-table/datatables.min.js') }}"></script>
@@ -17,8 +17,6 @@
     $(document).ready(function() {
       $('#bootstrap-data-table-export').DataTable();
   } );
-
-
 </script>
 
 <div class="content">
@@ -27,11 +25,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong class="card-title">Bảng Thể Loại</strong>
-                        <strong ><a style="float: right" href="{{ route('add_category') }}">Thêm Thể Loại</a></strong>
-                    </div>
-                    <div>
-                        <strong><a style="color: black;padding: 20px" href="{{ route('edit_delete_category')}}">Thể loại đã xóa</a></strong>
+                        <strong class="card-title">Bảng Thể Loại Đã Xóa</strong>
+                        <strong><a style="float: right" href=" {{ route('index_category')}}">Danh Sách Thể Loại</a></strong>
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -45,14 +40,13 @@
                             </thead>
                             <tbody>
                                 @for ($i=0; $i < $category->count(); $i++)
-                                    @if ($category[$i]->Status == 1)
+                                    @if ($category[$i]->Status == 0)
                                     <tr>
                                         <td>{{ $category[$i]->Id }}</td>
                                         <td>{{ $category[$i]->Name }}</td>
                                         <td>{{ $category[$i]->Description }}</td>
                                         <td>
-                                            <button><a href="{{ route('edit_category',['Id'=> $category[$i]->Id]) }}">Chỉnh Sửa</a></button>
-                                            <button><a href="{{ route('delete_category',['Id'=> $category[$i]->Id]) }}">Xóa</a></button>
+                                            <button><a href="{{ route('update_delete_category',['Id'=> $category[$i]->Id]) }}">Chỉnh sửa</a></button>
                                         </td>
                                     </tr>
                                     @endif

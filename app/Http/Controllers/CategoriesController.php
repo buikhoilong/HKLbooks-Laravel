@@ -52,10 +52,24 @@ class CategoriesController extends Controller
 
 
     public function deleteCategory($id){
-        $category = Category::where('Id',$id)->update([
+        Category::where('Id',$id)->update([
             'Status' => 0,
         ]);
         return redirect()->route('index_category');
     }
 
+
+
+
+    public function getUpdateDeleteCategory(){
+        $category = Category::all();
+        return view('Admin.category.delete_category',compact('category'));
+    }
+
+    public function postUpdateDeleteCategory($id){
+        Category::where('Id',$id)->update([
+            'Status' => 1,
+        ]);
+        return redirect()->route('edit_delete_category');
+    }
 }
