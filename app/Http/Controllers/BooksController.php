@@ -5,12 +5,15 @@ use App\Models\Book;
 use App\Models\Categories;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class BooksController extends Controller
 {
     public function getAllBooks(){
         $books = Book::all();
-        return view('Admin.book.index_book',compact('books'));
+        $user = Auth::user();
+        return view('Admin.book.index_book',compact('books','user'));
     }
     
 
