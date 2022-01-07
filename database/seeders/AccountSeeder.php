@@ -16,14 +16,14 @@ class AccountSeeder extends Seeder
     public function run()
     {
         $taiKhoan = new Account();
-        $taiKhoan->Id = "Adminn";
-        $taiKhoan->Name = "Admin";
+        $taiKhoan->Id = "User20220208009";
+        $taiKhoan->Name = "Đỗ Quang Huy";
         $taiKhoan->Birthday = "2001/05/26"; 
         $taiKhoan->Address = "BD"; 
-        $taiKhoan->Phone= "+8438538446255";       
+        $taiKhoan->Phone= "+84399999999";       
         $taiKhoan->Status= 1;       
-        $taiKhoan->Email = "Adminn@gmail.com";
-        $taiKhoan->password = Hash::make("12345678");
+        $taiKhoan->Email = "doquanghuy2@gmail.com";
+        $taiKhoan->password = Hash::make("123456789");
         $taiKhoan->Role= 1;       
         $taiKhoan->Avatar= 'avatar.jpg';       
         $taiKhoan->save();
