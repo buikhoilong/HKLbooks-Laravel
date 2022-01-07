@@ -21,15 +21,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[LoginController::class,'getLogin'])->name('login');
 
-Route::get('/home',[HomeController::class,'index'])->name('home')->middleware('adminrole');  
-
-
-// Route::get('admin/login',[LoginController::class,'getLogin'])->name('login');
 Route::post('admin/post',[LoginController::class,'postLogin'])->name('postLogin');
-    
-    Route::prefix('/admin')->middleware('adminrole')->group(function () {
 
-    Route::get('admin/logout',[LoginController::class,'logout'])->name('logout');
+    
+Route::prefix('/admin')->middleware('adminrole')->group(function () {
+
+    Route::get('/home',[HomeController::class,'index'])->name('home');  
+    Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
         Route::prefix('/book')->group(function () {
             // danh sách sản phẩm

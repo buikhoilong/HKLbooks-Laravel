@@ -17,12 +17,11 @@ class AdminRole
      */
     public function handle(Request $request, Closure $next)
     {
-        // $tam = Session::get('user_login');
+
         if($request->session()->exists('user_login')){
-        // if($request->session()->has('user_login')){
             return $next($request);
         }else{
-            return route('login');
+            return redirect('/');
         }
     }
 }

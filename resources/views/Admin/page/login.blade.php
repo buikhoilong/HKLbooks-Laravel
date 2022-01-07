@@ -35,7 +35,7 @@
         <div class="container">
             <div class="login-content">
                 <div class="login-logo">
-                    <a href="index.html">
+                    <a href="{{ route('login') }}">
                         <img class="align-content"  src="{{ asset('admin/images/LogoHKL2.png') }}" alt="">
                     </a>
                 </div>
