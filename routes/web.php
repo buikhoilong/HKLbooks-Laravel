@@ -83,7 +83,11 @@ Route::prefix('/admin')->middleware('adminrole')->group(function () {
             
             // danh sách đơn hàng chờ xử lý
             Route::get('/orders_processing',[OrdersController::class,'getAllOrdersProcessing'])->name('orders_processing');
-            
+
+            Route::get('/edit_status_orders/{Id?}',[OrdersController::class,'editStatusOrders'])->name('edit_status_orderssss');
+
+            Route::get('/orders_lines/{Id?}',[OrdersController::class,'OrdersLines'])->name('orders_lines');
+
             // danh sách đơn hàng đang giao
             Route::get('/delivery_orders',[OrdersController::class,'getAllDeliveryOrders'])->name('delivery_orders');
             
