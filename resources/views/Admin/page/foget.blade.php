@@ -36,6 +36,11 @@
                     </a>
                 </div>
                 <div class="login-form">
+                    <div style="padding: 0 0 20px 0">
+                        <strong>
+                            <a  href="{{ route('login') }}">Quay Lại</a>
+                        </strong>
+                    </div>
                     <form>
                         <div class="form-group">
                             <label>Email address</label>
@@ -47,7 +52,6 @@
             </div>
         </div>
     </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
