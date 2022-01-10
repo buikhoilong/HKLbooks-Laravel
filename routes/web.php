@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\RatesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -96,7 +97,18 @@ Route::prefix('/admin')->middleware('adminrole')->group(function () {
             
             // danh sách đơn hàng đã hủy
             Route::get('/orders_cancel',[OrdersController::class,'getAllOrdersCancel'])->name('orders_cancel');
+        });
+
+
+        Route::prefix('/rates')->group(function () {
+            // danh sách đơn hàng
+            Route::get('/',[RatesController::class,'getAllRates'])->name('index_rates');
             
+            // danh sách đơn hàng chờ xử lý
+            Route::get('/reply_rates',[RatesController::class,'getAllReplyRates'])->name('reply_rates');
+
+            // danh sách đơn hàng đang giao
+            Route::get('/no_reply_rates',[RatesController::class,'getAllNoReplyRates'])->name('no_reply_rates');
         });
         
     });

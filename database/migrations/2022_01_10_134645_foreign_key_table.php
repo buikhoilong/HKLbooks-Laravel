@@ -42,6 +42,11 @@ class ForeignKeyTable extends Migration
             $table->foreign('OrderId')->references('Id')->on('orders');
             $table->foreign('BookId')->references('Id')->on('books');
         });
+        // tạo khóa ngoại cho promotes
+        Schema::table('promotes', function (Blueprint $table) {
+            $table->foreign('BookId')->references('Id')->on('books');
+        });
+
     }
 
     /**
