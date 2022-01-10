@@ -2,7 +2,6 @@
 @section('title','Index Rates')
 
 @section('content')
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style> 
 body {
   margin: 0;
@@ -142,11 +141,11 @@ body {
                                    {{ $rates[$i]->Comment }} <br>
                                  </td>
                                      <td>
-                                       <button onclick="myFunction()">Trả lời</button>
+                                       <button onclick="myFunction()"><i style="font-size: 25px; color:tomato" class="far fa-comment-dots"></i></button>
                                        <form method="POST" action="{{ route('post_reply_rates',['Id'=> $rates[$i]->Id]) }}" enctype="multipart/form-data" style="visibility: hidden" id="form-reply" name="form-reply" >
                                         @csrf 
                                         <textarea name="noidungtxt"> </textarea><br>
-                                         <input style="padding: 0 25px 0 20px" type="submit" value="Gửi" >
+                                          <button style="padding: 0 25px 0 20px" type="submit"><i style="color: blue" class="far fa-paper-plane"></i></button>
                                        </form>
                                      </td>
                               </tr>

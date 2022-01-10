@@ -144,7 +144,7 @@ body {
                                          {{ $rates[$i]->Reply }}
                                        </td>
                                    <td> 
-                                     <button> <a href="{{ route('delete_rates',['Id'=> $rates[$i]->Id]) }}">Xóa</a></button>  
+                                     <button> <a href="{{ route('delete_rates',['Id'=> $rates[$i]->Id]) }}"><i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i></a></button>  
                                    </td>
                               </tr>
                                 @endif

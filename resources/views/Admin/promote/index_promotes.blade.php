@@ -1,5 +1,5 @@
 @extends('Layouts.layout')
-@section('title','Index Orders')
+@section('title','Index Promotes')
 
 @section('content')
 
@@ -36,11 +36,9 @@ body {
 
 
 <div class="topnav">
-    <a class="active" href="{{ route('index_orders') }}">Danh sách</a>
-    <a href="{{ route('orders_processing') }}">Đơn hàng chờ xử lý</a>
-    <a href="{{ route('delivery_orders') }}">Đơn hàng đang giao</a>
-    <a href="{{ route('orders_delivered') }}">Đơn hàng đã giao</a>
-    <a href="{{ route('orders_cancel') }}">Đơn hàng đã hủy</a>
+    <a class="active" href="{{ route('index_promote') }}">Danh sách</a>
+    <a href="{{ route('new_promote') }}">Sách mới</a>
+    <a href="{{ route('popular_promote') }}">Sách phổ biến</a>
   </div>
 
   <!-- Scripts -->
@@ -75,39 +73,19 @@ body {
                       <table id="bootstrap-data-table" class="table table-striped table-bordered">
                           <thead>
                               <tr>
-                                  <th>Mã đơn hàng</th>
-                                  <th>Tên khách hàng</th>
-                                  <th>Tổng tiền</th>
+                                  <th>Tên sách</th>
                                   <th>Trạng thái</th>
-                                  <th>Chức năng</th>
                               </tr>
                           </thead>
                           <tbody>
-                              @for ($i=0; $i < $oders->count(); $i++)
+                              @for ($i=0; $i < $promotes->count(); $i++)
                                   <tr>
-                                      <td> {{ $oders[$i]->Id }}</td>
-                                      @for ($y=0; $y < $accounts->count(); $y++)
-                                        @if ($accounts[$y]->Id == $oders[$i]->AccountId)
-                                          <td>{{ $accounts[$y]->Name }}</td>
-                                        @endif
+                                      @for ($y=0; $y < $books->count(); $y++)
+                                          @if ($books[$y]->Id == $promotes[$i]->BookId)
+                                              <td>{{ $books[$y]->Name }}</td>
+                                          @endif
                                       @endfor
-                                      <td>{{ $oders[$i]->TotalOrder }}</td>
-                                      @switch($oders[$i]->StatusId)
-                                        @case(0)
-                                          <td> Đang xử lý </td>
-                                          @break
-                                        @case(1)
-                                          <td> Đang giao</td>
-                                          @break
-                                        @case(2)
-                                          <td> Đã giao</td>
-                                          @break
-                                        @default
-                                        <td>Đã hủy </td>
-                                      @endswitch
-                                      <td>
-                                          <button><a href="{{ route('orders_lines',['Id' => $oders[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i></a></button>
-                                      </td>
+                                      <td>{{ $promotes[$i]->Id }}</td>
                                   </tr>
                                 @endfor
                           </tbody>
