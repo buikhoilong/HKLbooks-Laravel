@@ -1,23 +1,31 @@
 @extends("Layouts.layout")
 @section('title','Detail Books')
 @section("content")
-    <div>
-        <a href="/book">Quay lại</a>
-        <a href="">Chỉnh Sửa</a>
-        <a href="">Xóa</a>
+
+    <div style="padding: 20px 20px 20px 70px">
+        <strong>
+            <a href="{{ route('index_books') }}">Quay lại</a> <br>
+        </strong>
+        {{-- <strong>
+            <a href="">Chỉnh Sửa</a><br>
+        </strong>
+        <strong>
+            <a href="">Xóa</a><br>
+        </strong> --}}
     </div>
     <div class="container">
-        <img style="width:100px;height:100px" src="{{ asset('storage/admin/images/books/'.$books->ImgPath)}}" alt="{{ $books->ImgPath}}">
-        <h2>{{ $books->Name }}</h2>
-        <p>{{ $books->Price }}</p>
-        <p>{{ $books->Stock }}</p>
-        <p>{{ $books->Author }}</p>
-        <p>{{ $books->Publisher }}</p>
+        <img  style="width:150px;height:200px; margin:20px" src="{{ asset('storage/admin/images/books/'.$books->ImgPath)}}" alt="{{ $books->ImgPath}}">
+        <h2 >Tên sách: {{ $books->Name }}</h2>
+        <br>
+        <p>Giá: {{ $books->Price }}</p>
+        <p>Số lượng: {{ $books->Stock }}</p>
+        <p>Tác giả: {{ $books->Author }}</p>
+        <p>Nhà xuất bản: {{ $books->Publisher }}</p>
         @for ($i =0; $i < $categories->count();$i++)
             @if ($categories[$i]->Id === $books->CategoryId)
-                <p>{{ $categories[$i]->Name }}</p>
+                <p>Thể loại: {{ $categories[$i]->Name }}</p>
             @endif
         @endfor
-        <p>{{ $books->Detail }}</p>
+        <p>Mô tả: {{ $books->Detail }}</p>
     </div>
 @endsection

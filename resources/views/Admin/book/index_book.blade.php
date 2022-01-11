@@ -28,12 +28,12 @@
                                 @for ($i=0; $i < $books->count(); $i++)
                                     <tr>
                                         <td>
-                                            <img style="width:100px;height:100px" src="{{ asset('storage/admin/images/books/'.$books[$i]->ImgPath)}}" alt="{{ $books[$i]->ImgPath}}">
+                                            <img style="width:150px;height:200px;background-size: contain" src="{{ asset('storage/admin/images/books/'.$books[$i]->ImgPath)}}" alt="{{ $books[$i]->ImgPath}}">
                                         </td>
-                                        <td>{{ $books[$i]->Name }}</td>
+                                        <td style="font-size: 20px">{{ $books[$i]->Name }}</td>
                                         <td>{{ $books[$i]->Price }}</td>
                                         <td>{{ $books[$i]->Stock }}</td>
-                                        <td>
+                                        <td style="width: 130px">
                                             <button><a href="{{ route('detail_book',['Id'=> $books[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i></a></button>
                                             <button><a href="{{ route('edit_book',['Id'=> $books[$i]->Id]) }}"><i style="color:rgb(233, 154, 8)" class="fas fa-edit"></i></a></button>
                                             <button><a href="{{ route('delete_book',['Id'=> $books[$i]->Id]) }}"> <i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i></a></button>

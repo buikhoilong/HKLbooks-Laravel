@@ -40,12 +40,32 @@ class OrdersController extends Controller
         return view('Admin.order.orders_cancel',compact('oders','accounts'));
     }
 
-    public function editStatusOrders($id){
+    public function editStatusProcessing($id){
         Order::where('Id',$id)->update([
             'StatusId' => 1
         ]);
         return redirect()->route('index_orders');
     }
+
+    public function editStatusDelivery($id){
+        Order::where('Id',$id)->update([
+            'StatusId' => 2,
+        ]);
+        OrderLine::where('OrderId',$id)->update([
+            'Status' => 1,  
+        ]);
+        return redirect()->route('index_orders');
+    }
+
+    public function editStatusCancel($id){
+        Order::where('Id',$id)->update([
+            'StatusId' => 3
+        ]);
+        return redirect()->route('index_orders');
+    }
+
+
+
 
     public function OrdersLines($id){
         $order = Order::find($id);

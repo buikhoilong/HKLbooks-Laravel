@@ -72,7 +72,8 @@
                                       <td>{{ $oders[$i]->TotalMoney }}</td>
                                       <td>
                                         <button><a href="{{ route('orders_lines',['Id' => $oders[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i></a></button>
-                                        <button><a href="{{ route('edit_status_orderssss',['Id' => $oders[$i]->Id] )}}"><i style="color:green" class="fas fa-check"></i></a></button>
+                                        <button><a href="{{ route('edit_status_processing',['Id' => $oders[$i]->Id] )}}"><i style="color:green" class="fas fa-check"></i></a></button>
+                                        <button><a href="{{ route('edit_status_cancel',['Id' => $oders[$i]->Id] )}}"><i style="color:rgb(223, 9, 9);" class="fas fa-trash"></i></a></button>
                                       </td>
                                   </tr>
                                 @endif
