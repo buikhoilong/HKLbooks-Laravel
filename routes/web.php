@@ -3,9 +3,11 @@
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ForgottenController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\RatesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[LoginController::class,'getLogin'])->name('login');
-
+Route::get('/forgotten',[ForgottenController::class,'getForgotten'])->name('forgotten');
 Route::post('admin/post',[LoginController::class,'postLogin'])->name('postLogin');
 
     
@@ -96,9 +98,25 @@ Route::prefix('/admin')->middleware('adminrole')->group(function () {
             
             // danh sách đơn hàng đã hủy
             Route::get('/orders_cancel',[OrdersController::class,'getAllOrdersCancel'])->name('orders_cancel');
-            
         });
+
+
+        Route::prefix('/rates')->group(function () {
+            // danh sách bình luận chưa trả lời
+            Route::get('/',[RatesController::class,'getAllRates'])->name('index_rates');
+            
+            // danh sách bình luận đã trả lời
+            Route::get('/reply_rates',[RatesController::class,'getAllReplyRates'])->name('reply_rates');
+            Route::post('/post_reply_rates/{Id?}',[RatesController::class,'postAllReplyRates'])->name('post_reply_rates');
+            // xóa bình luận
+            Route::get('/delete_rates/{Id?}',[RatesController::class,'deleteRates'])->name('delete_rates');
+
+            // danh sách bình luận không có comment
+            Route::get('/no_reply_rates',[RatesController::class,'getAllNoReplyRates'])->name('no_reply_rates');
+        });
+
         
+
     });
 
 

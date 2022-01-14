@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Đăng Nhập</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -51,23 +51,11 @@
                             <input name="Password" type="Password" class="form-control" placeholder="Password">
                         </div>
                         <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Remember Me
-                            </label>
                             <label class="pull-right">
-                                <a href="foget">Forgotten Password?</a>
+                                <a href="{{ route('forgotten') }}">Forgotten Password?</a>
                             </label>
                         </div>
                         <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Đăng Nhập</button>
-                        <div class="social-login-content">
-                            <div class="social-button">
-                                <button type="button" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Sign in with facebook</button>
-                                <button type="button" class="btn social twitter btn-flat btn-addon mt-2"><i class="ti-twitter"></i>Sign in with twitter</button>
-                            </div>
-                        </div>
-                        <div class="register-link m-t-15 text-center">
-                            <p>Don't have account ? <a href="register"> Sign Up Here</a></p>
-                        </div>
                     </form>
                 </div>
             </div>
