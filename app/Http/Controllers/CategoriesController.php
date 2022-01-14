@@ -59,8 +59,6 @@ class CategoriesController extends Controller
     }
 
 
-
-
     public function getUpdateDeleteCategory(){
         $category = Category::all();
         return view('Admin.category.delete_category',compact('category'));

@@ -5,7 +5,7 @@ use App\Http\Controllers\BooksController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
-
+use App\Http\Controllers\OrdersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -75,6 +75,28 @@ Route::prefix('/admin')->middleware('adminrole')->group(function () {
             // cập nhật trạng thái
             Route::get('/update_delete/{Id?}',[CategoriesController::class,'getUpdateDeleteCategory'])->name('edit_delete_category');
             Route::get('/post_update_delete/{Id?}',[CategoriesController::class,'postUpdateDeleteCategory'])->name('update_delete_category');
+        });
+
+        Route::prefix('/orders')->group(function () {
+            // danh sách đơn hàng
+            Route::get('/',[OrdersController::class,'getAllOrders'])->name('index_orders');
+            
+            // danh sách đơn hàng chờ xử lý
+            Route::get('/orders_processing',[OrdersController::class,'getAllOrdersProcessing'])->name('orders_processing');
+
+            Route::get('/edit_status_orders/{Id?}',[OrdersController::class,'editStatusOrders'])->name('edit_status_orderssss');
+
+            Route::get('/orders_lines/{Id?}',[OrdersController::class,'OrdersLines'])->name('orders_lines');
+
+            // danh sách đơn hàng đang giao
+            Route::get('/delivery_orders',[OrdersController::class,'getAllDeliveryOrders'])->name('delivery_orders');
+            
+            // danh sách đơn hàng đã giao
+            Route::get('/orders_delivered',[OrdersController::class,'getAllOrdersDelivered'])->name('orders_delivered');
+            
+            // danh sách đơn hàng đã hủy
+            Route::get('/orders_cancel',[OrdersController::class,'getAllOrdersCancel'])->name('orders_cancel');
+            
         });
         
     });
