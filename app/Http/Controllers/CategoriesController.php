@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
-
+use Session;
 class CategoriesController extends Controller
 {
     public function getAllCategory(){
@@ -12,10 +12,6 @@ class CategoriesController extends Controller
         return view('Admin.category.index_category',compact('category'));
     }
 
-    public function detailCategory($id){
-        $category = Category::find($id);
-        return view('Admin.category.detail_category',compact('category'));
-    }
 
     public function getAddCategory(){
         return view('Admin.category.add_category');
@@ -33,6 +29,7 @@ class CategoriesController extends Controller
         $category->Id = strtoupper($tam);
         $category->Name = $request->tentxt;
         $category->Description = $request->motatxt;
+        $category->Status = 1;
         $category->save();
         return redirect()->route('index_category');
     }
@@ -55,11 +52,22 @@ class CategoriesController extends Controller
 
 
     public function deleteCategory($id){
-        $category = Category::where('Id',$id);
-        $category->delete();
+        Category::where('Id',$id)->update([
+            'Status' => 0,
+        ]);
         return redirect()->route('index_category');
     }
 
 
+    public function getUpdateDeleteCategory(){
+        $category = Category::all();
+        return view('Admin.category.delete_category',compact('category'));
+    }
 
+    public function postUpdateDeleteCategory($id){
+        Category::where('Id',$id)->update([
+            'Status' => 1,
+        ]);
+        return redirect()->route('edit_delete_category');
+    }
 }

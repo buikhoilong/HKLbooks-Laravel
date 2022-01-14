@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CategoriesTable extends Migration
+class PromoteTypes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('promote_types', function (Blueprint $table) {
             $table->string('Id')->primary();
             $table->string('Name');
-            $table->string('Description')->nullable();
+            $table->string('Description');
             $table->integer('Status');
+            $table->index(['Id', 'Name']);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +31,6 @@ class CategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('promote_types');
     }
 }
