@@ -17,6 +17,7 @@ class CategoriesTable extends Migration
             $table->string('Id')->primary();
             $table->string('Name');
             $table->string('Description')->nullable();
+            $table->integer('Status');
             $table->timestamps();
             $table->softDeletes();
         });
