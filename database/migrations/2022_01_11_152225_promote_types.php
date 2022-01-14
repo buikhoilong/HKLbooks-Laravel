@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Promote extends Migration
+class PromoteTypes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class Promote extends Migration
      */
     public function up()
     {
-        Schema::create('promotes', function (Blueprint $table) {
-            $table->string('PromoteId')->index();
-            $table->string('BookId')->index();
-            $table->index(['PromoteId', 'BookId']);
+        Schema::create('promote_types', function (Blueprint $table) {
+            $table->string('Id')->primary();
+            $table->string('Name');
+            $table->string('Description');
+            $table->integer('Status');
+            $table->index(['Id', 'Name']);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +31,6 @@ class Promote extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('promotes');
+        Schema::dropIfExists('promote_types');
     }
 }

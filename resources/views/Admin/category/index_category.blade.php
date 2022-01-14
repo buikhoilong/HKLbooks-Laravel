@@ -28,7 +28,7 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title">Bảng Thể Loại</strong>
-                        <strong ><a style="float: right" href="{{ route('add_category') }}">Thêm Thể Loại</a></strong>
+                        <strong ><a style="float: right" href="{{ route('add_category') }}"><i style="font-size: 35px; color:green" class="fas fa-plus-circle"></i></a></strong>
                     </div>
                     <div>
                         <strong><a style="color: black;padding: 20px" href="{{ route('edit_delete_category')}}">Thể loại đã xóa</a></strong>
@@ -50,9 +50,9 @@
                                         <td>{{ $category[$i]->Id }}</td>
                                         <td>{{ $category[$i]->Name }}</td>
                                         <td>{{ $category[$i]->Description }}</td>
-                                        <td>
-                                            <button><a href="{{ route('edit_category',['Id'=> $category[$i]->Id]) }}">Chỉnh Sửa</a></button>
-                                            <button><a href="{{ route('delete_category',['Id'=> $category[$i]->Id]) }}">Xóa</a></button>
+                                        <td style="width:100px">
+                                            <button><a href="{{ route('edit_category',['Id'=> $category[$i]->Id]) }}"><i style="color:rgb(233, 154, 8)" class="fas fa-edit"></i></a></button>
+                                            <button><a href="{{ route('delete_category',['Id'=> $category[$i]->Id]) }}"><i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i></a></button>
                                         </td>
                                     </tr>
                                     @endif

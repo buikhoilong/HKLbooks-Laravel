@@ -55,8 +55,11 @@
                                         </td>
                                         <td> {{$books[$y]->Name }}</td>
                                         <td>{{ $books[$y]->Price }}</td>
-                                        <td>{{ $order_lines[$i]->Quantity }}</td>
-                                        {{$total+= $books[$y]->Price * $order_lines[$i]->Quantity}}
+                                        <td>{{ $order_lines[$i]->Quantity }}
+                                            <div style="visibility: hidden">
+                                                {{$total+= $books[$y]->Price * $order_lines[$i]->Quantity}}
+                                            </div>
+                                        </td>
                                   </tr>
                                   @endif
                                   @endfor

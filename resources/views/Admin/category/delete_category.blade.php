@@ -46,7 +46,7 @@
                                         <td>{{ $category[$i]->Name }}</td>
                                         <td>{{ $category[$i]->Description }}</td>
                                         <td>
-                                            <button><a href="{{ route('update_delete_category',['Id'=> $category[$i]->Id]) }}">Chỉnh sửa</a></button>
+                                            <button><a href="{{ route('update_delete_category',['Id'=> $category[$i]->Id]) }}"><i style="color:rgb(233, 154, 8)" class="fas fa-edit"></i></a></button>
                                         </td>
                                     </tr>
                                     @endif

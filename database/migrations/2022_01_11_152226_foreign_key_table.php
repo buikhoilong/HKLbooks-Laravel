@@ -45,8 +45,8 @@ class ForeignKeyTable extends Migration
         // tạo khóa ngoại cho promotes
         Schema::table('promotes', function (Blueprint $table) {
             $table->foreign('BookId')->references('Id')->on('books');
+            $table->foreign('PromoteId')->references('Id')->on('promote_types');
         });
-
     }
 
     /**

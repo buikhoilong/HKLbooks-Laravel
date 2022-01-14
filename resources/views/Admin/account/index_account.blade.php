@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title">Accounts</strong>
-                        <strong ><a style="float: right;color:black" href="{{ route('add_account') }}">Thêm tài khoản</a></strong>
+                        <strong ><a style="float: right;color:black" href="{{ route('add_account') }}"><i style="font-size: 35px; color:green" class="fas fa-plus-circle"></i></a></strong>
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -33,9 +33,9 @@
                                         <td>{{ $accounts[$i]->Phone }}</td>
                                         <td>{{ $accounts[$i]->Email }}</td>
                                         <td>
-                                            <button><a href="{{ route('detail_account',['Id'=> $accounts[$i]->Id]) }}">Chi tiết</a></button>
-                                            <button><a href="{{ route('edit_account',['Id'=> $accounts[$i]->Id]) }}">Chỉnh Sửa</a></button>
-                                            <button><a href="{{ route('delete_account',['Id'=> $accounts[$i]->Id]) }}">Xóa</a></button>
+                                            <button><a href="{{ route('detail_account',['Id'=> $accounts[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i></a></button>
+                                            <button><a href="{{ route('edit_account',['Id'=> $accounts[$i]->Id]) }}"><i style="color:rgb(233, 154, 8)" class="fas fa-edit"></i></a></button>
+                                            <button><a href="{{ route('delete_account',['Id'=> $accounts[$i]->Id]) }}"><i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i></a></button>
                                         </td>
                                     </tr>
                                 @endfor

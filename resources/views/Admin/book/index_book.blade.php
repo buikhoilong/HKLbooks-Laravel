@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title"> Bảng sản phẩm</strong>
-                        <strong ><a style="float: right;color:black" href="{{ route('add_book') }}">Thêm sản phẩm</a></strong>
+                        <strong ><a style="float: right;color:black" href="{{ route('add_book') }}"><i style="font-size: 35px; color:green" class="fas fa-plus-circle"></i></a></strong>
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -28,15 +28,15 @@
                                 @for ($i=0; $i < $books->count(); $i++)
                                     <tr>
                                         <td>
-                                            <img style="width:100px;height:100px" src="{{ asset('storage/admin/images/books/'.$books[$i]->ImgPath)}}" alt="{{ $books[$i]->ImgPath}}">
+                                            <img style="width:150px;height:200px;background-size: contain" src="{{ asset('storage/admin/images/books/'.$books[$i]->ImgPath)}}" alt="{{ $books[$i]->ImgPath}}">
                                         </td>
-                                        <td>{{ $books[$i]->Name }}</td>
+                                        <td style="font-size: 20px">{{ $books[$i]->Name }}</td>
                                         <td>{{ $books[$i]->Price }}</td>
                                         <td>{{ $books[$i]->Stock }}</td>
-                                        <td>
-                                            <button><a href="{{ route('detail_book',['Id'=> $books[$i]->Id]) }}">Chi tiết</a></button>
-                                            <button><a href="{{ route('edit_book',['Id'=> $books[$i]->Id]) }}">Chỉnh Sửa</a></button>
-                                            <button><a href="{{ route('delete_book',['Id'=> $books[$i]->Id]) }}">Xóa</a></button>
+                                        <td style="width: 130px">
+                                            <button><a href="{{ route('detail_book',['Id'=> $books[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i></a></button>
+                                            <button><a href="{{ route('edit_book',['Id'=> $books[$i]->Id]) }}"><i style="color:rgb(233, 154, 8)" class="fas fa-edit"></i></a></button>
+                                            <button><a href="{{ route('delete_book',['Id'=> $books[$i]->Id]) }}"> <i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i></a></button>
                                         </td>
                                     </tr>
                                 @endfor

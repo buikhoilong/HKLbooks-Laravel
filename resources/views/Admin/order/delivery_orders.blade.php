@@ -94,7 +94,9 @@ body {
                                 @endfor
                                 <td>{{ $oders[$i]->TotalMoney }}</td>
                                 <td>
-                                  <button><a href="{{ route('orders_lines',['Id' => $oders[$i]->Id]) }}">Chi tiết</a></button>
+                                  <button><a href="{{ route('orders_lines',['Id' => $oders[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i></a></button>
+                                  <button><a href="{{ route('edit_status_delivery',['Id' => $oders[$i]->Id] )}}"><i style="color:green" class="fas fa-check"></i></a></button>
+                                
                                 </td>
                               @endif
                                

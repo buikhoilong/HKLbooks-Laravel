@@ -7,6 +7,7 @@ use App\Http\Controllers\ForgottenController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\PromotesController;
 use App\Http\Controllers\RatesController;
 use Illuminate\Support\Facades\Route;
 
@@ -86,10 +87,14 @@ Route::prefix('/admin')->middleware('adminrole')->group(function () {
             // danh sách đơn hàng chờ xử lý
             Route::get('/orders_processing',[OrdersController::class,'getAllOrdersProcessing'])->name('orders_processing');
 
-            Route::get('/edit_status_orders/{Id?}',[OrdersController::class,'editStatusOrders'])->name('edit_status_orderssss');
+            Route::get('/edit_status_processing/{Id?}',[OrdersController::class,'editStatusProcessing'])->name('edit_status_processing');
+
+            Route::get('/edit_status_delivery/{Id?}',[OrdersController::class,'editStatusDelivery'])->name('edit_status_delivery');
+
+            Route::get('/edit_status_cancel/{Id?}',[OrdersController::class,'editStatusCancel'])->name('edit_status_cancel');
+
 
             Route::get('/orders_lines/{Id?}',[OrdersController::class,'OrdersLines'])->name('orders_lines');
-
             // danh sách đơn hàng đang giao
             Route::get('/delivery_orders',[OrdersController::class,'getAllDeliveryOrders'])->name('delivery_orders');
             
@@ -115,7 +120,14 @@ Route::prefix('/admin')->middleware('adminrole')->group(function () {
             Route::get('/no_reply_rates',[RatesController::class,'getAllNoReplyRates'])->name('no_reply_rates');
         });
 
-        
+        Route::prefix('/promotes')->group(function () {
+            // danh sách promotes
+            Route::get('/',[PromotesController::class,'getAllPromotes'])->name('index_promote');
+            // danh sách new promotes 
+            Route::get('/new_promote',[PromotesController::class,'getAllNewPromotes'])->name('new_promote');
+            // danh sách popular promotes
+            Route::get('/popular_promote',[PromotesController::class,'getAllPopularPromotes'])->name('popular_promote');
+        });
 
     });
 
