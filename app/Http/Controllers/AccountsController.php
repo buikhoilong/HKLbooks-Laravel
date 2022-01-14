@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 
 class AccountsController extends Controller
 {
@@ -41,7 +43,7 @@ class AccountsController extends Controller
         $accounts->Address = $request->diachitxt;
         $accounts->Phone = $request->sdttxt;
         $accounts->Email = $request->emailtxt;
-        $accounts->Password = $request->matkhautxt;
+        $accounts->Password =  Hash::make($request->matkhautxt);
         $accounts->Status = 1;
         $accounts->Role = $request->roletxt;
         $nameImg = $request->file('imagetxt')->getClientOriginalName(); // lấy tên của ảnh từ hệ thống
@@ -84,17 +86,15 @@ class AccountsController extends Controller
         return redirect()->route('index_account');
     }
 
-
-
-
-    
     public function deleteAccount($id){
         $accounts = Account::where('Id',$id);
         $accounts->delete();
         return redirect()->route('index_account');
     }
 
-
+    public function profile(){
+        return view('Admin.page.profile');
+    }
 
 
 

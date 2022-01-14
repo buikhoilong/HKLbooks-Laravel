@@ -73,13 +73,13 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="/"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+                        <a href="{{ route('home') }}" ><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                     </li>
                     <li class="menu-title">UI elements</li><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Books</a>
                         <ul class="sub-menu children dropdown-menu">                            
-                            <li><i class="fa fa-fire"></i><a href="/book"> Danh Sách</a></li>
+                            <li><i class="fa fa-fire"></i><a href="{{ route('index_books') }}"> Danh Sách</a></li>
                             <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Thêm </a></li>
                             <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Xóa</a></li>
                             <li><i class="fa fa-bars"></i><a href="ui-tabs.html">Sửa</a></li>
@@ -89,7 +89,7 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Accounts</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-fire"></i><a href="/account"> Danh Sách</a></li>
+                            <li><i class="fa fa-fire"></i><a href="{{ route('index_account') }}"> Danh Sách</a></li>
                             <li><i class="fa fa-table"></i><a href="tables-basic.html">Thêm</a></li>
                             <li><i class="fa fa-table"></i><a href="tables-data.html">Xóa</a></li>
                             <li><i class="fa fa-table"></i><a href="tables-data.html">Sửa</a></li>
@@ -98,7 +98,7 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Categories</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-fire"></i><a href="/category">Danh Sách</a></li>
+                            <li><i class="fa fa-fire"></i><a href="{{ route('index_category') }}">Danh Sách</a></li>
                         </ul>
                     </li>
 
@@ -150,7 +150,7 @@
         <header id="header" class="header">
             <div class="top-left">
                 <div class="navbar-header">
-                    <a class="navbar-brand" style=" height:50px"  href="./"><img  src="{{ asset('admin/images/LogoHKL2.png') }}"  alt="Logo"></a>
+                    <a class="navbar-brand" style=" height:50px"  href="{{ route('home') }}"><img  src="{{ asset('admin/images/LogoHKL2.png') }}"  alt="Logo"></a>
                     {{-- <a class="navbar-brand hidden" href="./"><img src="{{ asset('admin/LogoHKL.png') }}"  alt="Logo"></a> --}}
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
@@ -233,18 +233,18 @@
 
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="{{ asset('storage/admin/images/avatar/avatar.jpg') }}"alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="{{ asset('storage/admin/images/avatar/'. Session::get('user_login')->Avatar) }}"alt="User Avatar">
                         </a>
+                            <div class="user-menu dropdown-menu">
+                                <a class="nav-link" href="{{ route('profile') }}"><i class="fa fa- user"></i>My Profile</a>
 
-                        <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+                                <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
 
-                            <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+                                <a class="nav-link" href="#"><i class="fa fa -cog"></i>Setting</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
-
-                            <a class="nav-link" href="login"><i class="fa fa-power -off"></i>Logout</a>
-                        </div>
+                                <a class="nav-link" href="{{ route('logout') }}"><i class="fa fa-power -off"></i>Logout</a>
+                            </div>
+                       
                     </div>
 
                 </div>

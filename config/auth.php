@@ -21,7 +21,7 @@ return [
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
-    |--------------------------------------------------------------------------
+    |-------------------------------------------------------------------------ư-
     |
     | Next, you may define every authentication guard for your application.
     | Of course, a great default configuration has been defined for you
@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'account',
         ],
     ],
 
@@ -60,15 +60,10 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'account' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Account::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*

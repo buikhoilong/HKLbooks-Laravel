@@ -35,19 +35,20 @@
         <div class="container">
             <div class="login-content">
                 <div class="login-logo">
-                    <a href="index.html">
+                    <a href="{{ route('login') }}">
                         <img class="align-content"  src="{{ asset('admin/images/LogoHKL2.png') }}" alt="">
                     </a>
                 </div>
                 <div class="login-form">
-                    <form>
+                    <form method="POST" action="{{ route('postLogin') }}" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group">
                             <label>Email address</label>
-                            <input type="email" class="form-control" placeholder="Email">
+                            <input name="Email" type="Email" class="form-control" placeholder="Email">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input name="Password" type="Password" class="form-control" placeholder="Password">
                         </div>
                         <div class="checkbox">
                             <label>
@@ -57,7 +58,7 @@
                                 <a href="foget">Forgotten Password?</a>
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                        <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Đăng Nhập</button>
                         <div class="social-login-content">
                             <div class="social-button">
                                 <button type="button" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Sign in with facebook</button>
