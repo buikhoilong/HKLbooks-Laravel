@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\BooksController;
+use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,5 +22,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/book',[BooksController::class,'getAllBooksAPI']);
+Route::prefix('/book')->group(function () {
+    Route::get('/', [BooksController::class, 'getAllBooksAPI']);
+});
 
+// Route::get('/account/{email}&{password}',[AccountsController::class,'getAccountByEmail']);
+
+Route::prefix('/account')->group(function () {
+    Route::get('/{email}&{password}', [AccountsController::class, 'getAccountByEmail']);
+    Route::post('/login', [AccountsController::class, 'loginApp']);
+    Route::post('/register',[AccountsController::class,'register']);
+});
