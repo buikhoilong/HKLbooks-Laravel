@@ -38,10 +38,11 @@
                       <table id="bootstrap-data-table" class="table table-striped table-bordered">
                            <thead>
                                <tr>
-                                    <th>Hình Ảnh</th>
-                                   <th>Tên Sách</th>
+                                    <th style="width:200px">Hình ảnh</th>
+                                   <th>Tên sách</th>
                                    <th>Giá</th>
-                                   <th>Số Lượng</th>
+                                   <th>Số lượng</th>
+                                   <th>Tổng tiền</th>
                                </tr>
                            </thead>
                            <tbody>
@@ -51,15 +52,16 @@
                                         @if ($books[$y]->Id == $order_lines[$i]->BookId)
                                     <tr>
                                         <td>
-                                            <img style="width:100px;height:100px" src="{{ asset('storage/admin/images/books/'.$books[$y]->ImgPath)}}" alt="{{ $books[$y]->ImgPath}}">
+                                            <img style="width:150px;height:200px" src="{{ asset('storage/admin/images/books/'.$books[$y]->ImgPath)}}" alt="{{ $books[$y]->ImgPath}}">
                                         </td>
                                         <td> {{$books[$y]->Name }}</td>
-                                        <td>{{ $books[$y]->Price }}</td>
+                                        <td>{{  number_format(($books[$y]->Price), 0, ',', '.')." VNĐ"}}</td>
                                         <td>{{ $order_lines[$i]->Quantity }}
                                             <div style="visibility: hidden">
                                                 {{$total+= $books[$y]->Price * $order_lines[$i]->Quantity}}
                                             </div>
                                         </td>
+                                        <td>{{ number_format(($books[$y]->Price * $order_lines[$i]->Quantity), 0, ',', '.')." VNĐ" }}</td>
                                   </tr>
                                   @endif
                                   @endfor
@@ -70,7 +72,7 @@
                    </div>
                     <div style="margin: 0 30 0 0">
                         <strong style="color:red; font-size: 30px; float: right;"> 
-                            Tổng Tiền: {{ $total }}
+                            Tổng Tiền: {{  number_format(($total), 0, ',', '.')." VNĐ" }}
                         </strong>
                     </div>
                </div>

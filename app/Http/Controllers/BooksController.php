@@ -101,8 +101,21 @@ class BooksController extends Controller
         return redirect()->route('index_books');
     }
 
+
+    // API 
+
     public function getAllBooksAPI(){
         $books = Book::all();
         return response()->json($books,200);
     }
+
+    public function getIdBooksAPI($id){
+        $books = Book::find($id);
+        if(empty($books)){
+            return ["kết quả" => "thất bại!!"];
+        }else{
+            return response()->json($books,200);
+        }
+    }
+    
 }

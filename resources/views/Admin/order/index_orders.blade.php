@@ -59,18 +59,19 @@ body {
   $(document).ready(function() {
     $('#bootstrap-data-table-export').DataTable();
 } );
-
-
 </script>
+
+<style>
+  #chuc_nang a{
+        padding: 25px;
+  }
+</style>
 
 <div class="content">
   <div class="animated fadeIn">
       <div class="row">
           <div class="col-md-12">
               <div class="card">
-                  <div class="card-header">
-                      <strong class="card-title">Bảng Thể Loại</strong>
-                  </div>
                   <div class="card-body">
                       <table id="bootstrap-data-table" class="table table-striped table-bordered">
                           <thead>
@@ -79,7 +80,7 @@ body {
                                   <th>Tên khách hàng</th>
                                   <th>Tổng tiền</th>
                                   <th>Trạng thái</th>
-                                  <th>Chức năng</th>
+                                  <th style="width:100px">Chức năng</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -91,7 +92,7 @@ body {
                                           <td>{{ $accounts[$y]->Name }}</td>
                                         @endif
                                       @endfor
-                                      <td>{{ $oders[$i]->TotalOrder }}</td>
+                                      <td>{{number_format(($oders[$i]->TotalMoney ), 0, ',', '.')." VNĐ"}}</td>
                                       @switch($oders[$i]->StatusId)
                                         @case(0)
                                           <td> Đang xử lý </td>
@@ -105,8 +106,8 @@ body {
                                         @default
                                         <td>Đã hủy </td>
                                       @endswitch
-                                      <td>
-                                          <button><a href="{{ route('orders_lines',['Id' => $oders[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i></a></button>
+                                      <td id="chuc_nang">
+                                          <a href="{{ route('orders_lines',['Id' => $oders[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i></a>
                                       </td>
                                   </tr>
                                 @endfor

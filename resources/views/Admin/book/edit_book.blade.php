@@ -1,6 +1,21 @@
 @extends("Layouts.layout")
 @section('title','Edit Books')
 @section("content")
+<style>
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+    </style>
 
 <form style="margin: 10px" method="POST" action="{{ route('update_book',['Id'=> $books->Id])}}" enctype="multipart/form-data">
     @csrf
@@ -53,34 +68,7 @@
         <input style="width: 350px; height: 50px" class="w3-input w3-border w3-round-large" type="file" id ="imagetxt" name="imagetxt">
     </p>
 
-    {{-- <label >Tên sách</label>
-    <input type="text" name="tentxt" value="{{ $books->Name }}" /><br>
-    <label >Giá</label>
-    <input type="text" name="giatxt" value="{{ $books->Price }}" /> <br>
-    <label >Số lượng</label>
-    <input type="text" name="soluongtxt" value="{{ $books->Stock }}" /><br>
-    <label >Mô tả</label>
-    <input type="text" name="motatxt" value="{{ $books->Detail }}" /><br>
-    <label >Tác giả</label>
-    <input type="text" name="tacgiatxt" value="{{ $books->Author }}" /><br>
-    <label >Nhà xuất bản</label>
-    <input type="text" name="nhaxuatbantxt" value="{{ $books->Publisher }}" /><br> --}}
-    {{-- <label >Thể Loại</label>
-    <select name="theloaitxt" id="theloaitxt">
-        @for ($i = 0 ; $i < $categories->count(); $i++)
-            @if ($categories[$i]->Status == 1)
-            <option value="{{ $categories[$i]->Id }}" @if ($categories[$i]->Id==$books->CategoryId) selected @endif>
-                {{ $categories[$i]->Name }}
-            </option>
-            @endif
-        @endfor
-    </select> --}}
-    {{-- <br>
-    <label >Hình ảnh</label>
-    <img style="width: 100px;max-height:100px;object-fit:contain" src="{{ asset('storage/admin/images/books/'.$books->ImgPath)}}"><br>
-    <input type="file" name="imagetxt" /> <br> --}}
-    {{-- <input type="submit"> --}}
-    <input style="margin: 10px 10px 35px 0" type="submit" value="Cập Nhật" >
+    <input class="button" style="margin: 10px 0 35px 50px" type="submit" value="Cập Nhật" >
 </form>
 
 @endsection

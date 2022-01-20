@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BooksController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,5 +21,23 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/book',[BooksController::class,'getAllBooksAPI']);
+
+// Route::group(['middleware' => ['auth:sanctum']],function () {
+//     Route::get('/',[BooksController::class,'getAllBooksAPI'])->name('api_all_book');
+// });
+
+
+
+Route::post('/login',[AuthController::class],'index');
+
+
+// Route::prefix('/book')->group(function () {
+//     // danh sách sản phẩm
+//     Route::get('/',[BooksController::class,'getAllBooksAPI'])->name('api_all_book');
+
+//     Route::get('/{Id}',[BooksController::class,'getIdBooksAPI'])->name('api_id_book');
+// });
+
+
+
 

@@ -1,6 +1,21 @@
 @extends("Layouts.layout")
 @section('title','Add Account')
 @section("content")
+<style>
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+    </style>
 
 <form  style="margin: 10px" method="POST" action="{{ route('update_account',['Id' =>$accounts->Id ]) }}" enctype="multipart/form-data">
     @csrf
@@ -41,24 +56,7 @@
         <br>
         <input style="width: 350px; height: 50px" class="w3-input w3-border w3-round-large" type="file" id ="imagetxt" name="imagetxt">
     </p>
-    <input style="margin: 10px 0 35px 50px" type="submit" value="Submit" >
+    <input class="button" style="margin: 10px 0 35px 50px" type="submit" value="Cập nhật" >
 
-
-    {{-- <label >Họ và Tên</label>
-    <input type="text" name="tentxt" value="{{ $accounts->Name }}" /><br>
-    <label >Email</label>
-    <input type="text" name="emailtxt" value="{{ $accounts->Email }}" /><br>
-    <label >Mật Khẩu</label>
-    <input type="password"  name="matkhautxt" value="{{ $accounts->Password }}" /><br>
-    <label >Ngày Sinh</label>
-    <input type="date" placeholder="YYYY-MM-DD" name="ngaysinhtxt" value="{{ $accounts->Birthday }}" /> <br>
-    <label >Địa Chỉ</label>
-    <input type="text" name="diachitxt" value="{{ $accounts->Address }}" /><br>
-    <label >Số Điện Thoại</label>
-    <input type="text" name="sdttxt" value="{{ $accounts->Phone }}" /><br>
-    <label >Hình ảnh</label>
-    <img style="width: 100px;max-height:100px;object-fit:contain" src="{{ asset('storage/admin/images/avatar/'.$accounts->Avatar)}}"><br>
-    <input type="file" id ="imagetxt" name="imagetxt" /> <br>
-    <input type="submit"> --}}
 </form>
 @endsection

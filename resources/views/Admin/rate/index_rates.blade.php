@@ -37,7 +37,7 @@ body {
 
 
 <div class="topnav">
-    <a class="active" href="{{ route('index_rates') }}">Danh sách</a>
+    <a class="active" href="{{ route('index_rates') }}">Danh sách bình luận</a>
     <a href="{{ route('reply_rates') }}">Danh sách đã trả lời</a>
     {{-- <a href="{{ route('no_reply_rates') }}">Đơn hàng đang giao</a> --}}
   </div>
@@ -68,9 +68,6 @@ body {
       <div class="row">
           <div class="col-md-12">
               <div class="card">
-                  <div class="card-header">
-                      <strong class="card-title">Bảng Thể Loại</strong>
-                  </div>
                   <div class="card-body">
                       <table id="bootstrap-data-table" class="table table-striped table-bordered">
                           <thead>
@@ -79,7 +76,7 @@ body {
                                   <th>Tên sách</th>
                                   <th>Số sao</th>
                                   <th>Bình luận</th>
-                                  <th>Trả lời</th>
+                                  <th style="width:100px">Trả lời</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -141,11 +138,11 @@ body {
                                    {{ $rates[$i]->Comment }} <br>
                                  </td>
                                      <td>
-                                       <button onclick="myFunction()"><i style="font-size: 25px; color:tomato" class="far fa-comment-dots"></i></button>
+                                      <a onclick="myFunction()"><i style="font-size: 25px; color:tomato" class="far fa-comment-dots"></i></a>
                                        <form method="POST" action="{{ route('post_reply_rates',['Id'=> $rates[$i]->Id]) }}" enctype="multipart/form-data" style="visibility: hidden" id="form-reply" name="form-reply" >
                                         @csrf 
                                         <textarea name="noidungtxt"> </textarea><br>
-                                          <button style="padding: 0 25px 0 20px" type="submit"><i style="color: blue" class="far fa-paper-plane"></i></button>
+                                          <button style="padding: 10px; border-style: none;" type="submit"><i style="color: blue" class="far fa-paper-plane"></i></button>
                                        </form>
                                      </td>
                               </tr>

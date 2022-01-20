@@ -1,6 +1,21 @@
 @extends("Layouts.layout")
 @section('title','Index Books')
 @section("content")
+<style>
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+    </style>
 <form style="margin: 10px" method="POST" action="{{ route('add_book') }}" enctype="multipart/form-data">
     @csrf
 
@@ -48,34 +63,6 @@
         <label>Hình ảnh</label>
         <input style="width: 350px; height: 50px" class="w3-input w3-border w3-round-large" type="file" id ="imagetxt" name="imagetxt">
     </p>
-    <input style="margin: 10px 0 35px 50px" type="submit" >
-
-
-
-    {{-- <label >Tên sách</label>
-    <input type="text" name="tentxt" /><br>
-    <label >Giá</label>
-    <input type="text" name="giatxt" /> <br>
-    <label >Số lượng</label>
-    <input type="text" name="soluongtxt" /><br>
-    <label >Mô tả</label>
-    <input type="text" name="motatxt" /><br>
-    <label >Tác giả</label>
-    <input type="text" name="tacgiatxt" /><br>
-    <label >Nhà xuất bản</label>
-    <input type="text" name="nhaxuatbantxt" /><br>
-    <label >Thể Loại</label>
-    <select name="theloaitxt" id="theloaitxt">
-        <option value="">Chọn Loại</option>
-        @for ($index = 0 ; $index < $categories->count(); $index++)
-            @if ($categories[$index]->Status == 1)
-                <option value="{{ $categories[$index]->Id }}">{{ $categories[$index]->Name }}</option>
-            @endif
-        @endfor
-    </select>
-    <br>
-    <label >Hình ảnh</label>
-    <input type="file" id ="imagetxt" name="imagetxt" /> <br> --}}
-    {{-- <input type="submit"> --}}
+    <input class="button" style="margin: 10px 0 35px 50px" type="submit" value="Tạo sách" >
 </form>
 @endsection

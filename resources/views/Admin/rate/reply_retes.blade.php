@@ -32,6 +32,9 @@ body {
   background-color: #04AA6D;
   color: white;
 }
+#chuc_nang a{
+  padding: 25px;
+}
 </style>
 
 
@@ -67,9 +70,6 @@ body {
       <div class="row">
           <div class="col-md-12">
               <div class="card">
-                  <div class="card-header">
-                      <strong class="card-title">Bảng Thể Loại</strong>
-                  </div>
                   <div class="card-body">
                       <table id="bootstrap-data-table" class="table table-striped table-bordered">
                           <thead>
@@ -79,7 +79,7 @@ body {
                                   <th>Số sao</th>
                                   <th>Bình luận</th>
                                   <th>Trả lời</th>
-                                  <th>Chức năng</th>
+                                  <th style="width:100px">Chức năng</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -143,8 +143,8 @@ body {
                                        <td>
                                          {{ $rates[$i]->Reply }}
                                        </td>
-                                   <td> 
-                                     <button> <a href="{{ route('delete_rates',['Id'=> $rates[$i]->Id]) }}"><i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i></a></button>  
+                                   <td id="chuc_nang"> 
+                                     <a href="{{ route('delete_rates',['Id'=> $rates[$i]->Id]) }}"><i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i></a>
                                    </td>
                               </tr>
                                 @endif

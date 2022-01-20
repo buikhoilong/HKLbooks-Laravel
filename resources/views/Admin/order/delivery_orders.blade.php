@@ -32,6 +32,10 @@ body {
   background-color: #04AA6D;
   color: white;
 }
+
+  #chuc_nang a{
+      padding: 10px;
+  }
 </style>
 
 
@@ -69,9 +73,7 @@ body {
        <div class="row">
            <div class="col-md-12">
                <div class="card">
-                   <div class="card-header">
-                       <strong class="card-title">Bảng Thể Loại</strong>
-                   </div>
+
                    <div class="card-body">
                        <table id="bootstrap-data-table" class="table table-striped table-bordered">
                            <thead>
@@ -79,7 +81,7 @@ body {
                                    <th>Mã đơn hàng</th>
                                    <th>Tên khách hàng</th>
                                    <th>Tổng tiền</th>
-                                   <th>Chức năng</th>
+                                   <th style="width:120px">Chức năng</th>
                                </tr>
                            </thead>
                            <tbody>
@@ -92,10 +94,10 @@ body {
                                       <td>{{ $accounts[$y]->Name }}</td>
                                     @endif
                                 @endfor
-                                <td>{{ $oders[$i]->TotalMoney }}</td>
-                                <td>
-                                  <button><a href="{{ route('orders_lines',['Id' => $oders[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i></a></button>
-                                  <button><a href="{{ route('edit_status_delivery',['Id' => $oders[$i]->Id] )}}"><i style="color:green" class="fas fa-check"></i></a></button>
+                                <td>{{number_format(($oders[$i]->TotalMoney ), 0, ',', '.')." VNĐ"}}</td>
+                                <td id="chuc_nang">
+                                  <a href="{{ route('orders_lines',['Id' => $oders[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i></a>
+                                  <a href="{{ route('edit_status_delivery',['Id' => $oders[$i]->Id] )}}"><i style="color:green" class="fas fa-check"></i></a>
                                 
                                 </td>
                               @endif
