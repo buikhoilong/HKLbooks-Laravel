@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use App\Models\Book;
+use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Promote;
 use App\Models\PromoteType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redis;
+
+use function PHPUnit\Framework\isEmpty;
 
 class APIsController extends Controller
 {
@@ -97,6 +102,43 @@ class APIsController extends Controller
         $account->save();
         return response()->json($account,201);
     }
+    public function getAccount(Request $request){
+        $account = Account::where($request->Id)->first();
+        return  response()->json($account,202);
+    }
+    public function updateAccount(Request $request){
+        $existingAccount = Account::where('Id', $request->id)->first();
+        if ($existingAccount.isEmpty()) {
+            return json_encode([
+                'success' => false,
+                'message' => 'Tài khoản không tồn tại'
+            ]);
+        } else {
+            $existingAccount = Account::where('Id', $request->id)->update([
+                // 'Id' => $id,
+                // 'Username' => $request->Username,
+                'Name' => $request->Name,
+                'Birthday' => $request->Birthday,
+                'Email' => $request->Email,
+                'Address' => $request->Address,
+                'Phone' => $request->Phone,
+                'Status' => 1,
+                'Role' => $request->Role,
+                'updated_at'=>$request->updated_at
+            ]);
+        }
+
+
+        if ($existingAccount == null) {
+            return json_encode([
+                'Message' => 'Cập nhật thất bại',
+            ],400);
+        }
+
+        return json_encode([
+            'Message' => 'Cập nhật thành công',
+        ],202);
+    }
     //End: Accounts APIs
 
     //Begin: Books APIs
@@ -106,10 +148,14 @@ class APIsController extends Controller
         return response()->json($books,200);
     }
     public function getAllBooksByPromotesId($id){
-        $books = Book::join('promotes','promotes.BookId','=','books.Id')->where('promotes.PromoteId',$id)->get('books.*');
+        $books = Book::join('promotes','promotes.BookId','=','books.Id')->join('categories', 'categories.Id','=','books.CategoryId')->where('promotes.PromoteId',$id)->select(array('books.*', 'categories.Name as CategoryName'))->get();
         return response()->json($books,200);
     }
-
+    public function getAllBooksByCategoryId($id){
+        $books = Book::join('categories', 'categories.Id','=','books.CategoryId')->where('categories.Id',$id)->select(array('books.*', 'categories.Name as CategoryName'))->get();
+        //$books = Book::join('promotes','promotes.BookId','=','books.Id')->where('promotes.PromoteId',$id)->get('books.*');
+        return response()->json($books,200);
+    }
     //End: Books APIs
 
     //Begin: Promotes APIs
@@ -117,4 +163,20 @@ class APIsController extends Controller
        return response()->json(PromoteType::all(),200);
     }
     //End: Promotes APIs
+
+    //Begin: Categories APIs
+    public function getAllCategories(){
+        return response()->json(Category::all(),200);
+     }
+     //End: Categories APIs
+
+    //Begin: Carts APIs
+    public function getAllCartByAccountId(Request $request){
+        $carts = Cart::where('AccountId', $request->Id)->get();
+        if($carts.isEmpty()){
+            return response()->json(['Error'=>'Giỏ hàng rỗng'],400);
+        }
+        return response()->json($carts,200);
+    }
+     //End: Carts APIs
 }

@@ -43,3 +43,7 @@ Route::prefix('/promote')->group(function () {
     Route::get('/allBooksByPromoteId/{Id}',[APIsController::class,'getAllBooksByPromotesId']);
 });
 
+Route::prefix('/category')->group(function () {
+    Route::get('/',[APIsController::class,'getAllCategories']);
+    Route::get('/getAllBooksByCategoryId/{Id}',[APIsController::class,'getAllBooksByCategoryId']);
+});
