@@ -1,6 +1,10 @@
 <?php
 
+//use App\Http\Controllers\API\AccountsAPIController;
+use App\Http\Controllers\AccountsAPIController;
 use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\APIsController;
+use App\Http\Controllers\BooksAPIController;
 use App\Http\Controllers\BooksController;
 use App\Models\Account;
 use Illuminate\Http\Request;
@@ -23,13 +27,24 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::prefix('/book')->group(function () {
-    Route::get('/', [BooksController::class, 'getAllBooksAPI']);
+    Route::get('/', [APIsController::class, 'getAllBooks']);
 });
 
 // Route::get('/account/{email}&{password}',[AccountsController::class,'getAccountByEmail']);
 
 Route::prefix('/account')->group(function () {
     Route::get('/{email}&{password}', [AccountsController::class, 'getAccountByEmail']);
-    Route::post('/login', [AccountsController::class, 'loginApp']);
-    Route::post('/register',[AccountsController::class,'register']);
+    Route::post('/login', [APIsController::class, 'login']);
+    Route::post('/register',[APIsController::class,'register']);
 });
+
+Route::prefix('/promote')->group(function () {
+    Route::get('/',[APIsController::class,'getAllPromoteTypes']);
+    Route::get('/allBooksByPromoteId/{Id}',[APIsController::class,'getAllBooksByPromotesId']);
+    });
+
+
+// Route::prefix('/')->group(function () {
+    
+// });
+//P@ssword123
