@@ -41,10 +41,5 @@ Route::prefix('/account')->group(function () {
 Route::prefix('/promote')->group(function () {
     Route::get('/',[APIsController::class,'getAllPromoteTypes']);
     Route::get('/allBooksByPromoteId/{Id}',[APIsController::class,'getAllBooksByPromotesId']);
-    });
+});
 
-
-// Route::prefix('/')->group(function () {
-    
-// });
-//P@ssword123

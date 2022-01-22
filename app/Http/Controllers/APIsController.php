@@ -101,7 +101,8 @@ class APIsController extends Controller
 
     //Begin: Books APIs
     public function getAllBooks(){
-        $books = Book::all();
+        //$books = Book::all();
+        $books = Book::join('categories', 'categories.Id','=','books.CategoryId')->select(array('books.*', 'categories.Name as CategoryName'))->get();
         return response()->json($books,200);
     }
     public function getAllBooksByPromotesId($id){
