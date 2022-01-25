@@ -79,7 +79,7 @@ body {
                           </thead>
                           <tbody>
                               @for ($i=0; $i < $promotes->count(); $i++)
-                                @if ($promotes[$i]->Id == 'Popular')
+                                @if ($promotes[$i]->PromoteId == 'Popular')
                                     <tr>
                                         @for ($y=0; $y < $books->count(); $y++)
                                             @if ($books[$y]->Id == $promotes[$i]->BookId)

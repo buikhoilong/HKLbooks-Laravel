@@ -89,8 +89,6 @@
        </div>
    </div><!-- .animated -->
 </div><!-- .content -->
-
-@endsection
    <!-- Scripts -->
    <script src="{{ asset('admin/assets/js/lib/data-table/datatables.min.js') }}"></script>
    <script src="{{ asset('admin/assets/js/lib/data-table/dataTables.bootstrap.min.js') }}"></script>
@@ -108,3 +106,4 @@
      $('#bootstrap-data-table-export').DataTable();
  } );
 </script>
+@endsection
