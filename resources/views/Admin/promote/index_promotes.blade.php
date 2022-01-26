@@ -2,7 +2,6 @@
 @section('title', 'Index Promotes')
 
 @section('content')
-
     <style>
         body {
             margin: 0;
@@ -42,7 +41,6 @@
         <a href="{{ route('popular_promote') }}">Sách phổ biến</a>
     </div>
 
-
     <div class="content">
         <div class="animated fadeIn">
             <div class="row">
@@ -67,12 +65,14 @@
                                                             alt="{{ $books[$y]->ImgPath }}"></td>
                                                     <td>{{ $books[$y]->Name }}</td>
                                                     <td>
-                                                        <a data-toggle="modal" data-target="#exampleModalLong{{ $books[$y]->Id }}"
-                                                            style="cursor: pointer" id="{{ $books[$y]->Id }}" ><i style="font-size: 25px; color:tomato"
+                                                        <a data-toggle="modal"
+                                                            data-target="#exampleModalLong{{ $books[$y]->Id }}"
+                                                            style="cursor: pointer" id="{{ $books[$y]->Id }}"><i
+                                                                style="font-size: 25px; color:tomato"
                                                                 class="far fa-comment-dots"></i>
                                                         </a>
-                                                        <!-- Modal -->
-                                                        <div class="modal fade" id="exampleModalLong{{ $books[$y]->Id }}" tabindex="-1"
+                                                        <div class="modal fade"
+                                                            id="exampleModalLong{{ $books[$y]->Id }}" tabindex="-1"
                                                             role="dialog" aria-labelledby="exampleModalLongTitle"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
@@ -96,65 +96,39 @@
                                                                                 <img style="width:150px;height:200px;background-size: contain"
                                                                                     src="{{ asset('storage/admin/images/books/' . $books[$y]->ImgPath) }}"
                                                                                     alt="{{ $books[$y]->ImgPath }}"><br>
-                                                                                    @for ($z=0; $z < $promotes->count(); $z++)
-                                                                                        @if ($promotes[$z]->BookId == $books[$y]->Id)
-                                                                                            <input type="checkbox" checked id="vehicle1" name="vehicle1" value="{{ $promotes[$z]->PromoteId }}">
-                                                                                            <label for="vehicle1"> {{ $promotes[$z]->PromoteId }}</label><br>
-                                                                                        @endif
-                                                                                    @endfor
-
-                                                                                    {{-- @for ($z=0; $z < $promotetype->count(); $z++)
-                                                                                        @for ($x=0; $x < $promotes->count(); $x++)
-                                                                                            @if ($promotetype[$z]->Id == $promotes[$x]->BookId)
-                                                                                                @if ($promotes[$x]->BookId != null)
-                                                                                                        <input type="checkbox" checked id="vehicle1" name="vehicle1" value="{{ $promotetype[$z]->Id }}">
-                                                                                                        <label for="vehicle1"> {{ $promotetype[$z]->Id }}</label><br>    
-                                                                                                    @else
-                                                                                                        <input type="checkbox" id="vehicle1" name="vehicle1" value="{{ $promotetype[$z]->Id }}">
-                                                                                                        <label for="vehicle1"> {{ $promotetype[$z]->Id }}</label><br> 
-                                                                                                @endif
-                                                                                            @endif
-                                                                                        @endfor --}}
-
-
-
-                                                                                        {{-- @if ($promotetype[$z]->Id==$promotes[$i]->PromoteId)
-                                                                                            @if ($promotes[$i]->BookId != null)
-                                                                                                    <input type="checkbox" checked id="vehicle1" name="vehicle1" value="{{ $promotetype[$z]->Id }}">
-                                                                                                    <label for="vehicle1"> {{ $promotetype[$z]->Id }}</label><br>    
-                                                                                                @else
-                                                                                                    <input type="checkbox" id="vehicle1" name="vehicle1" value="{{ $promotetype[$z]->Id }}">
-                                                                                                    <label for="vehicle1"> {{ $promotetype[$z]->Id }}</label><br> 
-                                                                                            @endif
-                                                                                            
-                                                                                        @endif --}}
-                                                                                    {{-- @endfor --}}
-                                                                            </div>
-                                                                            <div id="chucnang"
-                                                                                style="float: right; margin-left:20px">
-                                                                                <button style="margin: 10px;" type="submit"
-                                                                                    class="btn btn-primary">Trả lời</button>
-                                                                                <button style="margin-right: 90px"
-                                                                                    type="button" class="btn btn-secondary"
-                                                                                    data-dismiss="modal">Đóng</button>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                @endif
-                                            @endfor
-                                        </tr>
-                                    @endfor
-                                </tbody>
-                            </table>
+                                                                                @for ($z = 0; $z < $promotetype->count(); $z++)
+                                                                                    <input type="checkbox" @for ($m = 0; $m < $promotes->count(); $m++)
+                                                                                    {{                                                                                     $promotetype[$z]->Id == $promotes[$m]->PromoteId && $promotes[$m]->BookId == $books[$y]->Id ? 'checked' : '' }}
+                                                                                @endfor
+                                                                                id="vehicle1"
+                                                                                name="status_checkbox[]"
+                                                                                value="{{ $promotetype[$z]->Id }}">
+                                                                                <label for="vehicle1">
+                                                                                    {{ $promotetype[$z]->Id }}</label><br>
+                                                @endfor
                         </div>
+                        <div id="chucnang" style="float: right; margin-left:20px">
+                            <button style="margin: 10px;" type="submit" class="btn btn-primary">Trả lời</button>
+                            <button style="margin-right: 90px" type="button" class="btn btn-secondary"
+                                data-dismiss="modal">Đóng</button>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+        </td>
+        @endif
+        @endfor
+        </tr>
+        @endfor
+        </tbody>
+        </table>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </div><!-- .animated -->
     </div><!-- .content -->
 

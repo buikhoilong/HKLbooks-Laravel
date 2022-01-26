@@ -7,6 +7,9 @@
             {{ $tongtien += $orders[$i]->TotalMoney }}
         </span>
     @endfor
+    <div hidden=true>
+        {{-- {{ $tongtien2 =  number_format($tongtien, 0, ',', '.')}} --}}
+    </div>
     <div class="animated fadeIn">
 
         <div class="row">

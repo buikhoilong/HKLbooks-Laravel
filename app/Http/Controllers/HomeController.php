@@ -16,6 +16,7 @@ class HomeController extends Controller
         $books = Book::all();
         $orders = Order::all();
         $tongtien = 0;
-        return view('Admin.index',compact('user','books','orders','tongtien'));
+        $tongtien2 = 0;
+        return view('Admin.index',compact('user','books','orders','tongtien','tongtien2'));
     }
 }
