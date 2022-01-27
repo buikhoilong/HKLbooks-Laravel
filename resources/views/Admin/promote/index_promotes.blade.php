@@ -80,7 +80,7 @@
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title"
                                                                             id="exampleModalLongTitle">
-                                                                            Trả lời</h5>
+                                                                            Cập nhật quảng bá</h5>
                                                                         <button type="button" class="close"
                                                                             data-dismiss="modal" aria-label="Close">
                                                                             <span aria-hidden="true">&times;</span>
@@ -108,7 +108,7 @@
                                                 @endfor
                         </div>
                         <div id="chucnang" style="float: right; margin-left:20px">
-                            <button style="margin: 10px;" type="submit" class="btn btn-primary">Trả lời</button>
+                            <button style="margin: 10px;" type="submit" class="btn btn-primary">Lưu</button>
                             <button style="margin-right: 90px" type="button" class="btn btn-secondary"
                                 data-dismiss="modal">Đóng</button>
                         </div>
