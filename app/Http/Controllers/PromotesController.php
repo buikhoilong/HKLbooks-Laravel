@@ -14,7 +14,6 @@ class PromotesController extends Controller
         $books = Book::all();
         $promotes = Promote::all();
         $promotetype = PromoteType::all();
-
         $array = [];
         return view('Admin.promote.index_promotes', compact('promotes', 'books','promotetype','array'));
     }
@@ -36,9 +35,18 @@ class PromotesController extends Controller
 
     public function postPromote(Request $request)
     {
-        Promote::where('Id', $request->Id)->update([
-            dd($request->status_checkbox)
-        ]);
-        return view('Admin.promote.index_promotes', compact('promotes', 'books', 'array'));
+        $tam = Promote::where('BookId',$request->Id);
+        $tam->delete();
+
+        if(count($request->status_checkbox) !== 0){
+            for($o = 0; $o < count($request->status_checkbox); $o++){
+                $newpromote = new Promote;
+                $newpromote->BookId = $request->Id;
+                $newpromote->PromoteId = value($request->status_checkbox[$o]);
+                $newpromote->save();
+            }
+        }
+
+        return redirect()->route('index_promote');
     }
 }

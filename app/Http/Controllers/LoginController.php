@@ -19,7 +19,6 @@ class LoginController extends Controller
     public function postLogin(Request $request){
         if(Auth::attempt(['Email' => $request->Email, 'password' => $request->Password])){
             $user = Auth::user();
-            // dd($user);
             $request->session()->put('user_login',$user);
             return redirect()->route('home');
         }else{
@@ -30,7 +29,6 @@ class LoginController extends Controller
     public function logout(Request $request){
         Auth::logout();
         $request->session()->flush();
-        // $request->session()->forget('user_login');
         return redirect()->route('login');
     }
 }
