@@ -127,5 +127,15 @@ Route::prefix('/admin')->middleware('adminrole')->group(function () {
         Route::get('/new_promote', [PromotesController::class, 'getAllNewPromotes'])->name('new_promote');
         // danh sách popular promotes
         Route::get('/popular_promote', [PromotesController::class, 'getAllPopularPromotes'])->name('popular_promote');
+        // danh sách story promotes
+        Route::get('/story_promote', [PromotesController::class, 'getAllStoryPromotes'])->name('story_promote');
+        // thêm sách vào trong promote
+        Route::get('get_add_book_to_promote',[PromotesController::class,'getAddBookToPromote'])->name('get_add_book_to_promote');
+
+        Route::post('post_add_book_to_promote',[PromotesController::class,'postAddBookToPromote'])->name('post_add_book_to_promote');
+
+        // xóa promotes
+        Route::get('/delete_promote/{Id?}', [PromotesController::class, 'deletePromote'])->name('delete_promote');
+
     });
 });

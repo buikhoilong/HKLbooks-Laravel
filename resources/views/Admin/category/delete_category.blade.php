@@ -20,7 +20,7 @@
 </script>
 <style>
     #chuc_nang a{
-        padding: 25px;
+        padding-left: 40px;
     }
 </style>
 
@@ -40,7 +40,7 @@
                                     <th>Mã Loại</th>
                                     <th>Tên Loại</th>
                                     <th>Mô Tả</th>
-                                    <th>Chức năng</th>
+                                    <th style="width:140px">Chức năng</th>
                                 </tr>
                             </thead>
                             <tbody>

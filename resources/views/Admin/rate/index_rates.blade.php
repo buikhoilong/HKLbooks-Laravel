@@ -38,8 +38,8 @@
             float: right;
         }
 
-        .chucnang button {
-            margin: 20px;
+        #chuc_nang a {
+            padding-left: 30px;
         }
 
     </style>
@@ -64,7 +64,7 @@
                                         <th>Tên sách</th>
                                         <th>Số sao</th>
                                         <th>Bình luận</th>
-                                        <th style="width:100px">Trả lời</th>
+                                        <th style="width:140px">Chức năng</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -125,7 +125,7 @@
                                                 <td>
                                                     {{ $rates[$i]->Comment }} <br>
                                                 </td>
-                                                <td>
+                                                <td id="chuc_nang">
                                                     <!-- Button trigger modal -->
                                                     <a data-toggle="modal" data-target="#exampleModalLong"
                                                         style="cursor: pointer"><i style="font-size: 25px; color:tomato"

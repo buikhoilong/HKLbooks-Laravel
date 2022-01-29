@@ -38,9 +38,8 @@ body {
 <div class="topnav">
     <a href="{{ route('index_promote') }}">Danh sách</a>
     <a href="{{ route('new_promote') }}">Sách mới</a>
-    <a class="active" href="{{ route('popular_promote') }}">Sách phổ biến</a>
-    <a href="{{ route('story_promote') }}">Truyện</a>
-
+    <a href="{{ route('popular_promote') }}">Sách phổ biến</a>
+    <a class="active" href="{{ route('story_promote') }}">Truyện</a>
   </div>
 
   <!-- Scripts -->
@@ -81,7 +80,7 @@ body {
                           </thead>
                           <tbody>
                               @for ($i=0; $i < $promotes->count(); $i++)
-                                @if ($promotes[$i]->PromoteId == 'Popular')
+                                @if ($promotes[$i]->PromoteId == 'Story')
                                     <tr>
                                         @for ($y=0; $y < $books->count(); $y++)
                                             @if ($books[$y]->Id == $promotes[$i]->BookId)

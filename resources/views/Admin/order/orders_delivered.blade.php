@@ -48,7 +48,7 @@ body {
 
 <style>
   #chuc_nang a{
-        padding: 25px;
+        padding: 40px;
   }
 </style>
 <div class="content">
@@ -63,13 +63,14 @@ body {
                                    <th>Mã đơn hàng</th>
                                    <th>Tên khách hàng</th>
                                    <th>Tổng tiền</th>
-                                   <th style="width:100px">Chức năng</th>
+                                   <th style="width:140px">Chức năng</th>
                                </tr>
                            </thead>
                            <tbody>
                             @for ($i=0; $i < $oders->count(); $i++)
-                            <tr>
                               @if ($oders[$i]->StatusId == 2)
+                            <tr>
+
                                 <td> {{ $oders[$i]->Id }}</td>
                                 @for ($y=0; $y < $accounts->count(); $y++)
                                     @if ($accounts[$y]->Id == $oders[$i]->AccountId)
@@ -82,9 +83,10 @@ body {
                                 <td id="chuc_nang">
                                   <a href="{{ route('orders_lines',['Id' => $oders[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i></a>
                                 </td>
+                            </tr>
+
                               @endif
                                
-                            </tr>
                           @endfor
                            </tbody>
                        </table>

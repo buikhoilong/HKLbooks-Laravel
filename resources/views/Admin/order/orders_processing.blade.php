@@ -57,7 +57,7 @@
                                    <th>Mã đơn hàng</th>
                                    <th>Tên khách hàng</th>
                                    <th>Tổng tiền</th>
-                                   <th style="width:150px">Chức năng</th>
+                                   <th style="width:160px">Chức năng</th>
                                </tr>
                            </thead>
                            <tbody>

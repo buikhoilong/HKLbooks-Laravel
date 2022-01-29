@@ -22,7 +22,7 @@
 
 <style>
     #chuc_nang a{
-        padding: 0px 20px 10px 0px;
+        padding-left: 20px;
     }
 </style>
 <div class="content">
@@ -42,7 +42,7 @@
                                     <th style="width:100px">Mã Loại</th>
                                     <th>Tên Loại</th>
                                     <th>Mô Tả</th>
-                                    <th>Chức năng</th>
+                                    <th style="width:140px">Chức năng</th>
                                 </tr>
                             </thead>
                             <tbody>

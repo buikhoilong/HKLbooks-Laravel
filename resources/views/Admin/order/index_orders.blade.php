@@ -47,7 +47,7 @@ body {
 
 <style>
   #chuc_nang a{
-        padding: 25px;
+        padding: 40px;
   }
 </style>
 
@@ -64,7 +64,7 @@ body {
                                   <th>Tên khách hàng</th>
                                   <th>Tổng tiền</th>
                                   <th>Trạng thái</th>
-                                  <th style="width:100px">Chức năng</th>
+                                  <th style="width:140px">Chức năng</th>
                               </tr>
                           </thead>
                           <tbody>

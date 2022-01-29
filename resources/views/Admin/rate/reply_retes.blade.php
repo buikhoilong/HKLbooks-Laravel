@@ -33,17 +33,15 @@ body {
   color: white;
 }
 #chuc_nang a{
-  padding: 25px;
+  padding-left: 40px;
 }
 </style>
 
 
 <div class="topnav">
     <a href="{{ route('index_rates') }}">Danh sách</a>
-    <a class="active" href="{{ route('reply_rates') }}">Đơn hàng chờ xử lý</a>
-    {{-- <a href="{{ route('no_reply_rates') }}">Đơn hàng đang giao</a> --}}
+    <a class="active" href="{{ route('reply_rates') }}">Danh sách đã trả lời</a>
   </div>
-
 
 <div class="content">
   <div class="animated fadeIn">
@@ -54,12 +52,12 @@ body {
                       <table id="bootstrap-data-table" class="table table-striped table-bordered">
                           <thead>
                               <tr>
-                                  <th>Tên khách hàng</th>
+                                  <th style="width:170px">Tên khách hàng</th>
                                   <th>Tên sách</th>
                                   <th>Số sao</th>
                                   <th>Bình luận</th>
                                   <th>Trả lời</th>
-                                  <th style="width:100px">Chức năng</th>
+                                  <th style="width:140px">Chức năng</th>
                               </tr>
                           </thead>
                           <tbody>

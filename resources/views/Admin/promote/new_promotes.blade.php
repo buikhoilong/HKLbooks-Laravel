@@ -39,6 +39,8 @@ body {
     <a href="{{ route('index_promote') }}">Danh sách</a>
     <a class="active" href="{{ route('new_promote') }}">Sách mới</a>
     <a href="{{ route('popular_promote') }}">Sách phổ biến</a>
+    <a href="{{ route('story_promote') }}">Truyện</a>
+
   </div>
 
   <!-- Scripts -->
@@ -86,7 +88,7 @@ body {
                                                 <td>{{ $books[$y]->Name }}</td>
                                             @endif
                                         @endfor
-                                        <td>{{ $promotes[$i]->Id }}</td>
+                                        <td>{{ $promotes[$i]->PromoteId }}</td>
                                     </tr>
                                 @endif
                                 @endfor
