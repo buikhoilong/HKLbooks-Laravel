@@ -18,6 +18,11 @@
       $('#bootstrap-data-table-export').DataTable();
   } );
 </script>
+<style>
+    #chuc_nang a{
+        padding-left: 40px;
+    }
+</style>
 
 <div class="content">
     <div class="animated fadeIn">
@@ -25,8 +30,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong class="card-title">Bảng Thể Loại Đã Xóa</strong>
-                        <strong><a style="float: right" href=" {{ route('index_category')}}">Danh Sách Thể Loại</a></strong>
+                        <strong class="card-title">Danh sách thể loại đã xóa</strong>
+                        <strong><a style="float: right;color:black" href=" {{ route('index_category')}}">Danh sách thể loại</a></strong>
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -35,7 +40,7 @@
                                     <th>Mã Loại</th>
                                     <th>Tên Loại</th>
                                     <th>Mô Tả</th>
-                                    <th>Chức năng</th>
+                                    <th style="width:140px">Chức năng</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,8 +50,8 @@
                                         <td>{{ $category[$i]->Id }}</td>
                                         <td>{{ $category[$i]->Name }}</td>
                                         <td>{{ $category[$i]->Description }}</td>
-                                        <td>
-                                            <button><a href="{{ route('update_delete_category',['Id'=> $category[$i]->Id]) }}"><i style="color:rgb(233, 154, 8)" class="fas fa-edit"></i></a></button>
+                                        <td id="chuc_nang" style="width:100px">
+                                            <a href="{{ route('update_delete_category',['Id'=> $category[$i]->Id]) }}"><i style="color:rgb(233, 154, 8)" class="fas fa-edit"></i></a>
                                         </td>
                                     </tr>
                                     @endif

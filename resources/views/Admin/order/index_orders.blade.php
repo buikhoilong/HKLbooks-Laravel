@@ -43,6 +43,67 @@ body {
     <a href="{{ route('orders_cancel') }}">Đơn hàng đã hủy</a>
   </div>
 
+
+
+<style>
+  #chuc_nang a{
+        padding: 40px;
+  }
+</style>
+
+<div class="content">
+  <div class="animated fadeIn">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-body">
+                      <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                          <thead>
+                              <tr>
+                                  <th>Mã đơn hàng</th>
+                                  <th>Tên khách hàng</th>
+                                  <th>Tổng tiền</th>
+                                  <th>Trạng thái</th>
+                                  <th style="width:140px">Chức năng</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              @for ($i=0; $i < $oders->count(); $i++)
+                                  <tr>
+                                      <td> {{ $oders[$i]->Id }}</td>
+                                      @for ($y=0; $y < $accounts->count(); $y++)
+                                        @if ($accounts[$y]->Id == $oders[$i]->AccountId)
+                                          <td>{{ $accounts[$y]->Name }}</td>
+                                        @endif
+                                      @endfor
+                                      <td>{{number_format(($oders[$i]->TotalMoney ), 0, ',', '.')." VNĐ"}}</td>
+                                      @switch($oders[$i]->StatusId)
+                                        @case(0)
+                                          <td> Đang xử lý </td>
+                                          @break
+                                        @case(1)
+                                          <td> Đang giao</td>
+                                          @break
+                                        @case(2)
+                                          <td> Đã giao</td>
+                                          @break
+                                        @default
+                                        <td>Đã hủy </td>
+                                      @endswitch
+                                      <td id="chuc_nang">
+                                          <a href="{{ route('orders_lines',['Id' => $oders[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i></a>
+                                      </td>
+                                  </tr>
+                                @endfor
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div><!-- .animated -->
+</div><!-- .content -->
+
   <!-- Scripts -->
   <script src="{{ asset('admin/assets/js/lib/data-table/datatables.min.js') }}"></script>
   <script src="{{ asset('admin/assets/js/lib/data-table/dataTables.bootstrap.min.js') }}"></script>
@@ -59,65 +120,7 @@ body {
   $(document).ready(function() {
     $('#bootstrap-data-table-export').DataTable();
 } );
-
-
 </script>
-
-<div class="content">
-  <div class="animated fadeIn">
-      <div class="row">
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-header">
-                      <strong class="card-title">Bảng Thể Loại</strong>
-                  </div>
-                  <div class="card-body">
-                      <table id="bootstrap-data-table" class="table table-striped table-bordered">
-                          <thead>
-                              <tr>
-                                  <th>Mã đơn hàng</th>
-                                  <th>Tên khách hàng</th>
-                                  <th>Tổng tiền</th>
-                                  <th>Trạng thái</th>
-                                  <th>Chức năng</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              @for ($i=0; $i < $oders->count(); $i++)
-                                  <tr>
-                                      <td> {{ $oders[$i]->Id }}</td>
-                                      @for ($y=0; $y < $accounts->count(); $y++)
-                                        @if ($accounts[$y]->Id == $oders[$i]->AccountId)
-                                          <td>{{ $accounts[$y]->Name }}</td>
-                                        @endif
-                                      @endfor
-                                      <td>{{ $oders[$i]->TotalOrder }}</td>
-                                      @switch($oders[$i]->StatusId)
-                                        @case(0)
-                                          <td> Đang xử lý </td>
-                                          @break
-                                        @case(1)
-                                          <td> Đang giao</td>
-                                          @break
-                                        @case(2)
-                                          <td> Đã giao</td>
-                                          @break
-                                        @default
-                                        <td>Đã hủy </td>
-                                      @endswitch
-                                      <td>
-                                          <button><a href="{{ route('orders_lines',['Id' => $oders[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i></a></button>
-                                      </td>
-                                  </tr>
-                                @endfor
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div><!-- .animated -->
-</div><!-- .content -->
 
 
 @endsection
