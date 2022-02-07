@@ -1,12 +1,15 @@
 @extends('Layouts.layout')
 
-@section("title","Home")
-@section("content")
-    @for ($i=0; $i < $orders->count(); $i++)
-    <span style="visibility:hidden">
-        {{ $tongtien += $orders[$i]->TotalMoney}}
-    </span>
-    @endfor 
+@section('title', 'Home')
+@section('content')
+    @for ($i = 0; $i < $orders->count(); $i++)
+        <span style="visibility:hidden">
+            {{ $tongtien += $orders[$i]->TotalMoney }}
+        </span>
+    @endfor
+    <div hidden=true>
+        {{-- {{ $tongtien2 =  number_format($tongtien, 0, ',', '.')}} --}}
+    </div>
     <div class="animated fadeIn">
 
         <div class="row">
@@ -19,10 +22,10 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text">$<span class="count">
-                                        {{ $tongtien }}
-                                    </span></div>
-                                    <div class="stat-heading">Money</div>
+                                    <div class="stat-text"><span class="count">
+                                            {{ $tongtien }}
+                                        </span> VNĐ</div>
+                                    <div class="stat-heading">Tổng doanh thu</div>
                                 </div>
                             </div>
                         </div>
@@ -39,8 +42,9 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">{{ $orders->count() }}</span></div>
-                                    <div class="stat-heading">Order</div>
+                                    <div class="stat-text"><span class="count">{{ $orders->count() }}</span>
+                                    </div>
+                                    <div class="stat-heading">Đơn hàng</div>
                                 </div>
                             </div>
                         </div>
@@ -57,8 +61,9 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">{{ $books->count() }}</span></div>
-                                    <div class="stat-heading">Book</div>
+                                    <div class="stat-text"><span class="count">{{ $books->count() }}</span>
+                                    </div>
+                                    <div class="stat-heading">Sách </div>
                                 </div>
                             </div>
                         </div>
@@ -75,8 +80,9 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">{{ $user->count() }}</span></div>
-                                    <div class="stat-heading">Clients</div>
+                                    <div class="stat-text"><span class="count">{{ $user->count() }}</span>
+                                    </div>
+                                    <div class="stat-heading">Tài khoản</div>
                                 </div>
                             </div>
                         </div>
@@ -87,4 +93,3 @@
     </div>
 
 @endsection
-

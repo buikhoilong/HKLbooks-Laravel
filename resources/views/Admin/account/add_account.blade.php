@@ -1,6 +1,21 @@
 @extends("Layouts.layout")
 @section('title','Add Account')
 @section("content")
+<style>
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+    </style>
 <form style="margin: 10px" method="POST" action="{{ route('add_account') }}" enctype="multipart/form-data">
     @csrf
 
@@ -46,28 +61,6 @@
         <label>Hình ảnh</label>
         <input style="width: 350px; height: 50px" class="w3-input w3-border w3-round-large" type="file" id ="imagetxt" name="imagetxt">
     </p>
-
-    {{-- <label >Họ và Tên</label>
-    <input type="text" name="tentxt" /><br> --}}
-    {{-- <label >Email</label>
-    <input type="text" name="emailtxt" /><br> --}}
-    {{-- <label >Mật Khẩu</label>
-    <input type="password"  name="matkhautxt" /><br> --}}
-    {{-- <label >Ngày Sinh</label>
-    <input type="date" placeholder="YYYY-MM-DD" name="ngaysinhtxt" /> <br> --}}
-    {{-- <label >Địa Chỉ</label>
-    <input type="text" name="diachitxt" /><br> --}}
-    {{-- <label >Số Điện Thoại</label>
-    <input type="text" name="sdttxt" /><br> --}}
-    {{-- <label >Phân Quyền</label>
-    <select name="roletxt" id="roletxt">
-        <option value="">Chọn Loại</option>
-        <option value="0">Admin</option>
-        <option value="1">User</option>
-    </select>
-    <br> --}}
-    {{-- <label >Hình ảnh</label>
-    <input type="file" id ="imagetxt" name="imagetxt" /> <br> --}}
-    <input style="margin: 10px 0 35px 50px" type="submit" value="Submit" >
+    <input class="button" style="margin: 10px 0 35px 50px" type="submit" value="Tạo tài khoản" >
 </form>
 @endsection

@@ -5,6 +5,7 @@ use App\Http\Controllers\AccountsAPIController;
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\APIsController;
 use App\Http\Controllers\BooksAPIController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BooksController;
 use App\Models\Account;
 use Illuminate\Http\Request;
@@ -37,6 +38,25 @@ Route::prefix('/account')->group(function () {
     Route::post('/login', [APIsController::class, 'login']);
     Route::post('/register',[APIsController::class,'register']);
 });
+
+// Route::group(['middleware' => ['auth:sanctum']],function () {
+//     Route::get('/',[BooksController::class,'getAllBooksAPI'])->name('api_all_book');
+// });
+
+
+
+Route::post('/login',[AuthController::class],'index');
+
+
+// Route::prefix('/book')->group(function () {
+//     // danh sách sản phẩm
+//     Route::get('/',[BooksController::class,'getAllBooksAPI'])->name('api_all_book');
+
+//     Route::get('/{Id}',[BooksController::class,'getIdBooksAPI'])->name('api_id_book');
+// });
+
+
+
 
 Route::prefix('/promote')->group(function () {
     Route::get('/',[APIsController::class,'getAllPromoteTypes']);

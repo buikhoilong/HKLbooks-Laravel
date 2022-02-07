@@ -43,16 +43,16 @@
                     <form method="POST" action="{{ route('postLogin') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label>Email address</label>
+                            <label>Email</label>
                             <input name="Email" type="Email" class="form-control" placeholder="Email">
                         </div>
                         <div class="form-group">
-                            <label>Password</label>
+                            <label>Mật khẩu</label>
                             <input name="Password" type="Password" class="form-control" placeholder="Password">
                         </div>
                         <div class="checkbox">
                             <label class="pull-right">
-                                <a href="{{ route('forgotten') }}">Forgotten Password?</a>
+                                <a href="{{ route('forgotten') }}">Quên mật khẩu?</a>
                             </label>
                         </div>
                         <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Đăng Nhập</button>

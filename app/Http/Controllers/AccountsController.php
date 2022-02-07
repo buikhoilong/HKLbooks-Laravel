@@ -26,8 +26,8 @@ class AccountsController extends Controller
     public function postAddAccount(Request $request)
     {
         $accounts = new Account;
-        $datetime = Date('Ymd');
-        $count = $accounts->count() + 1;
+        $datetime = Date('Ymdhms');
+        $count = $accounts->count()+1;
         $chuoiID = $count;
         if ($count > 0) {
             $chuoiID = '00' . $count;
@@ -95,10 +95,11 @@ class AccountsController extends Controller
         return redirect()->route('index_account');
     }
 
-    public function deleteAccount($id)
-    {
-        $accounts = Account::where('Id', $id);
-        $accounts->delete();
+    public function deleteAccount($id){
+        Account::where('Id',$id)->update([
+            'Status' => 0
+        ]
+    );
         return redirect()->route('index_account');
     }
 

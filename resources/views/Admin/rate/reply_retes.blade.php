@@ -32,54 +32,32 @@ body {
   background-color: #04AA6D;
   color: white;
 }
+#chuc_nang a{
+  padding-left: 40px;
+}
 </style>
 
 
 <div class="topnav">
     <a href="{{ route('index_rates') }}">Danh sách</a>
-    <a class="active" href="{{ route('reply_rates') }}">Đơn hàng chờ xử lý</a>
-    {{-- <a href="{{ route('no_reply_rates') }}">Đơn hàng đang giao</a> --}}
+    <a class="active" href="{{ route('reply_rates') }}">Danh sách đã trả lời</a>
   </div>
-
-  <!-- Scripts -->
-  <script src="{{ asset('admin/assets/js/lib/data-table/datatables.min.js') }}"></script>
-  <script src="{{ asset('admin/assets/js/lib/data-table/dataTables.bootstrap.min.js') }}"></script>
-  <script src="{{ asset('admin/assets/js/lib/data-table/dataTables.buttons.min.js')}}"></script>
-  <script src="{{ asset('admin/assets/js/lib/data-table/buttons.bootstrap.min.js')}}"></script>
-  <script src="{{ asset('admin/assets/js/lib/data-table/jszip.min.js')}}"></script>
-  <script src="{{ asset('admin/assets/js/lib/data-table/vfs_fonts.js')}}"></script>
-  <script src="{{ asset('admin/assets/js/lib/data-table/buttons.html5.min.js')}}"></script>
-  <script src="{{ asset('admin/assets/js/lib/data-table/buttons.print.min.js')}}"></script>
-  <script src="{{ asset('admin/assets/js/lib/data-table/buttons.colVis.min.js')}}"></script>
-  <script src="{{ asset('admin/assets/js/init/datatables-init.js')}}"></script>
-  
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#bootstrap-data-table-export').DataTable();
-} );
-
-
-</script>
 
 <div class="content">
   <div class="animated fadeIn">
       <div class="row">
           <div class="col-md-12">
               <div class="card">
-                  <div class="card-header">
-                      <strong class="card-title">Bảng Thể Loại</strong>
-                  </div>
                   <div class="card-body">
                       <table id="bootstrap-data-table" class="table table-striped table-bordered">
                           <thead>
                               <tr>
-                                  <th>Tên khách hàng</th>
+                                  <th style="width:170px">Tên khách hàng</th>
                                   <th>Tên sách</th>
                                   <th>Số sao</th>
                                   <th>Bình luận</th>
                                   <th>Trả lời</th>
-                                  <th>Chức năng</th>
+                                  <th style="width:140px">Chức năng</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -143,8 +121,8 @@ body {
                                        <td>
                                          {{ $rates[$i]->Reply }}
                                        </td>
-                                   <td> 
-                                     <button> <a href="{{ route('delete_rates',['Id'=> $rates[$i]->Id]) }}"><i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i></a></button>  
+                                   <td id="chuc_nang"> 
+                                     <a href="{{ route('delete_rates',['Id'=> $rates[$i]->Id]) }}"><i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i></a>
                                    </td>
                               </tr>
                                 @endif
@@ -159,4 +137,22 @@ body {
 </div><!-- .content -->
 
 
+  <!-- Scripts -->
+  <script src="{{ asset('admin/assets/js/lib/data-table/datatables.min.js') }}"></script>
+  <script src="{{ asset('admin/assets/js/lib/data-table/dataTables.bootstrap.min.js') }}"></script>
+  <script src="{{ asset('admin/assets/js/lib/data-table/dataTables.buttons.min.js')}}"></script>
+  <script src="{{ asset('admin/assets/js/lib/data-table/buttons.bootstrap.min.js')}}"></script>
+  <script src="{{ asset('admin/assets/js/lib/data-table/jszip.min.js')}}"></script>
+  <script src="{{ asset('admin/assets/js/lib/data-table/vfs_fonts.js')}}"></script>
+  <script src="{{ asset('admin/assets/js/lib/data-table/buttons.html5.min.js')}}"></script>
+  <script src="{{ asset('admin/assets/js/lib/data-table/buttons.print.min.js')}}"></script>
+  <script src="{{ asset('admin/assets/js/lib/data-table/buttons.colVis.min.js')}}"></script>
+  <script src="{{ asset('admin/assets/js/init/datatables-init.js')}}"></script>
+  
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#bootstrap-data-table-export').DataTable();
+} );
+</script>
 @endsection

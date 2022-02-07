@@ -44,6 +44,58 @@ body {
   </div>
 
 
+
+<style>
+  #chuc_nang a{
+        padding: 40px;
+  }
+</style>
+
+<div class="content">
+   <div class="animated fadeIn">
+       <div class="row">
+           <div class="col-md-12">
+               <div class="card">
+                   <div class="card-body">
+                       <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                           <thead>
+                               <tr>
+                                   <th>Mã đơn hàng</th>
+                                   <th>Tên khách hàng</th>
+                                   <th>Tổng tiền</th>
+                                   <th style="width:140px">Chức năng</th>
+                               </tr>
+                           </thead>
+                           <tbody>
+                            @for ($i=0; $i < $oders->count(); $i++)
+                              @if ($oders[$i]->StatusId == 3)
+                            <tr>
+
+                                <td> {{ $oders[$i]->Id }}</td>
+                                @for ($y=0; $y < $accounts->count(); $y++)
+                                    @if ($accounts[$y]->Id == $oders[$i]->AccountId)
+                                      <td>{{ $accounts[$y]->Name }}</td>
+                                    @endif
+                                @endfor
+                                <td>{{ 
+                                  number_format(($oders[$i]->TotalMoney ), 0, ',', '.')." VNĐ"
+                                  }}</td>
+                                <td id="chuc_nang">
+                                  <a href="{{ route('orders_lines',['Id' => $oders[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i></a>
+                                </td>
+                            </tr>
+
+                              @endif
+                          @endfor
+                           </tbody>
+                       </table>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div><!-- .animated -->
+</div><!-- .content -->
+
    <!-- Scripts -->
    <script src="{{ asset('admin/assets/js/lib/data-table/datatables.min.js') }}"></script>
    <script src="{{ asset('admin/assets/js/lib/data-table/dataTables.bootstrap.min.js') }}"></script>
@@ -63,52 +115,6 @@ body {
 
 
 </script>
-
-<div class="content">
-   <div class="animated fadeIn">
-       <div class="row">
-           <div class="col-md-12">
-               <div class="card">
-                   <div class="card-header">
-                       <strong class="card-title">Bảng Thể Loại</strong>
-                   </div>
-                   <div class="card-body">
-                       <table id="bootstrap-data-table" class="table table-striped table-bordered">
-                           <thead>
-                               <tr>
-                                   <th>Mã đơn hàng</th>
-                                   <th>Tên khách hàng</th>
-                                   <th>Tổng tiền</th>
-                                   <th>Chức năng</th>
-                               </tr>
-                           </thead>
-                           <tbody>
-                            @for ($i=0; $i < $oders->count(); $i++)
-                            <tr>
-                              @if ($oders[$i]->StatusId == 3)
-                                <td> {{ $oders[$i]->Id }}</td>
-                                @for ($y=0; $y < $accounts->count(); $y++)
-                                    @if ($accounts[$y]->Id == $oders[$i]->AccountId)
-                                      <td>{{ $accounts[$y]->Name }}</td>
-                                    @endif
-                                @endfor
-                                <td>{{ $oders[$i]->TotalMoney }}</td>
-                                <td>
-                                  <button><a href="{{ route('orders_lines',['Id' => $oders[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i></a></button>
-                                </td>
-                              @endif
-                               
-                            </tr>
-                          @endfor
-                           </tbody>
-                       </table>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div><!-- .animated -->
-</div><!-- .content -->
-
 
 
 
