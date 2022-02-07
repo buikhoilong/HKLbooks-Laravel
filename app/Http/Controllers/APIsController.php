@@ -178,5 +178,19 @@ class APIsController extends Controller
         }
         return response()->json($carts,200);
     }
+    public function addToCart(Request $request){
+        $existedInCart = Cart::where($request->AccountId)->get();
+        for ($i=0; $i < count($existedInCart); $i++) { 
+            if($request->BookId == $existedInCart[$i]->BookId){
+                return response()->json(['Message'=>'Book\'s been already in cart!'],401);
+            }
+        }
+        $carts = new Cart();
+        
+        if($carts.isEmpty()){
+            return response()->json(['Error'=>'Giỏ hàng rỗng'],400);
+        }
+        return response()->json($carts,200);
+    }
      //End: Carts APIs
 }

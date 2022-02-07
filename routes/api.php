@@ -47,3 +47,7 @@ Route::prefix('/category')->group(function () {
     Route::get('/',[APIsController::class,'getAllCategories']);
     Route::get('/getAllBooksByCategoryId/{Id}',[APIsController::class,'getAllBooksByCategoryId']);
 });
+Route::prefix('/cart')->group(function () {
+    Route::get('/',[APIsController::class,'getAllCartByAccountId']);
+    //Route::get('/getAllBooksByCategoryId/{Id}',[APIsController::class,'getAllBooksByCategoryId']);
+});
