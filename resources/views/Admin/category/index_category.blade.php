@@ -1,27 +1,9 @@
 @extends("Layouts.layout")
 @section('title','Index Category')
 @section("content")
-    <!-- Scripts -->
-    <script src="{{ asset('admin/assets/js/lib/data-table/datatables.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/dataTables.buttons.min.js')}}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/buttons.bootstrap.min.js')}}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/jszip.min.js')}}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/vfs_fonts.js')}}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/buttons.html5.min.js')}}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/buttons.print.min.js')}}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/buttons.colVis.min.js')}}"></script>
-    <script src="{{ asset('admin/assets/js/init/datatables-init.js')}}"></script>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-      $('#bootstrap-data-table-export').DataTable();
-  } );
-
-</script>
 
 <style>
-    #chuc_nang a{
+    #chuc_nang a {
         padding-left: 20px;
     }
 </style>
@@ -32,7 +14,7 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title">Danh sách thể loại</strong>
-                        <strong ><a style="float: right" href="{{ route('add_category') }}"><i style="font-size: 35px; color:green" class="fas fa-plus-circle"></i></a></strong>
+                        <strong><a style="float: right" href="{{ route('add_category') }}"><i style="font-size: 35px; color:green" class="fas fa-plus-circle"></i></a></strong>
                         <strong><a style="color: black;padding: 20px" href="{{ route('edit_delete_category')}}">Thể loại đã xóa</a></strong>
                     </div>
                     <div class="card-body">
@@ -58,7 +40,7 @@
                                         </td>
                                     </tr>
                                     @endif
-                                @endfor
+                                    @endfor
                             </tbody>
                         </table>
                     </div>
@@ -68,5 +50,21 @@
     </div><!-- .animated -->
 </div><!-- .content -->
 
-@endsection
+<!-- Scripts -->
+<script src="{{ asset('admin/assets/js/lib/data-table/datatables.min.js') }}"></script>
+<script src="{{ asset('admin/assets/js/lib/data-table/dataTables.bootstrap.min.js') }}"></script>
+<script src="{{ asset('admin/assets/js/lib/data-table/dataTables.buttons.min.js')}}"></script>
+<script src="{{ asset('admin/assets/js/lib/data-table/buttons.bootstrap.min.js')}}"></script>
+<script src="{{ asset('admin/assets/js/lib/data-table/jszip.min.js')}}"></script>
+<script src="{{ asset('admin/assets/js/lib/data-table/vfs_fonts.js')}}"></script>
+<script src="{{ asset('admin/assets/js/lib/data-table/buttons.html5.min.js')}}"></script>
+<script src="{{ asset('admin/assets/js/lib/data-table/buttons.print.min.js')}}"></script>
+<script src="{{ asset('admin/assets/js/lib/data-table/buttons.colVis.min.js')}}"></script>
+<script src="{{ asset('admin/assets/js/init/datatables-init.js')}}"></script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#bootstrap-data-table-export').DataTable();
+    });
+</script>
+@endsection
