@@ -43,14 +43,6 @@ body {
     <a class="active" href="{{ route('orders_cancel') }}">Đơn hàng đã hủy</a>
   </div>
 
-
-
-<style>
-  #chuc_nang a{
-        padding: 40px;
-  }
-</style>
-
 <div class="content">
    <div class="animated fadeIn">
        <div class="row">
@@ -63,7 +55,7 @@ body {
                                    <th>Mã đơn hàng</th>
                                    <th>Tên khách hàng</th>
                                    <th>Tổng tiền</th>
-                                   <th style="width:140px">Chức năng</th>
+                                   <th style="width:170px">Chức năng</th>
                                </tr>
                            </thead>
                            <tbody>
@@ -81,7 +73,7 @@ body {
                                   number_format(($oders[$i]->TotalMoney ), 0, ',', '.')." VNĐ"
                                   }}</td>
                                 <td id="chuc_nang">
-                                  <a href="{{ route('orders_lines',['Id' => $oders[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i></a>
+                                  <a href="{{ route('orders_lines',['Id' => $oders[$i]->Id]) }}"><i style="color:midnightblue" class="fas fa-eye"></i> Xem chi tiết</a><br><br>
                                 </td>
                             </tr>
 

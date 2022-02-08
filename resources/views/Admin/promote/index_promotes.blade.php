@@ -31,12 +31,7 @@
             background-color: #04AA6D;
             color: white;
         }
-
-        #chuc_nang a{
-            padding-left: 15px;
-        }
     </style>
-
 
     <div class="topnav">
         <a class="active" href="{{ route('index_promote') }}">Danh sách</a>
@@ -60,7 +55,7 @@
                                     <tr>
                                         <th>Hình ảnh</th>
                                         <th>Tên sách</th>
-                                        <th>Trạng thái</th>
+                                        <th style="width:170px">Trạng thái</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -80,8 +75,8 @@
                                                                     data-target="#exampleModalLong{{ $books[$y]->Id }}"
                                                                     style="cursor: pointer" id="{{ $books[$y]->Id }}"><i
                                                                         style="color:rgb(233, 154, 8)"
-                                                                        class="fas fa-edit"></i>
-                                                                </a>
+                                                                        class="fas fa-edit"></i> Chỉnh sửa
+                                                                </a><br><br>
                                                                 <div class="modal fade"
                                                                     id="exampleModalLong{{ $books[$y]->Id }}"
                                                                     tabindex="-1" role="dialog"
@@ -132,7 +127,7 @@
                 </div>
             </div>
         </div>
-        <a href="{{ route('delete_promote',['Id'=> $books[$y]->Id]) }}"><i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i></a>
+        <a href="{{ route('delete_promote',['Id'=> $books[$y]->Id]) }}"><i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i> Xóa</a>
         </td>
         @endif
         @endfor
@@ -149,8 +144,7 @@
                     <td id="chuc_nang">
                         <a data-toggle="modal" data-target="#exampleModalLong{{ $books[$y]->Id }}"
                             style="cursor: pointer" id="{{ $books[$y]->Id }}"><i style="color:rgb(233, 154, 8)"
-                                class="fas fa-edit"></i>
-                        </a>
+                                class="fas fa-edit"></i></a>
                         <div class="modal fade" id="exampleModalLong{{ $books[$y]->Id }}" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -193,7 +187,7 @@
     </div>
     </div>
     </div>
-    <a href="{{ route('delete_promote',['Id'=> $books[$y]->Id]) }}"><i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i></a>
+    <a href="{{ route('delete_promote',['Id'=> $books[$y]->Id]) }}"><i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i> Xóa</a>
 
     </td>
     @endif

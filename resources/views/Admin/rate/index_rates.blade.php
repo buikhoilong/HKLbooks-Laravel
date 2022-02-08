@@ -32,16 +32,6 @@
             color: white;
 
         }
-
-
-        .chucnang {
-            float: right;
-        }
-
-        #chuc_nang a {
-            padding-left: 30px;
-        }
-
     </style>
 
 
@@ -60,11 +50,11 @@
                             <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Tên khách hàng</th>
+                                        <th>Tên khách hàng</th> 
                                         <th>Tên sách</th>
                                         <th>Số sao</th>
                                         <th>Bình luận</th>
-                                        <th style="width:140px">Chức năng</th>
+                                        <th style="width:170px">Chức năng</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -128,8 +118,8 @@
                                                 <td id="chuc_nang">
                                                     <!-- Button trigger modal -->
                                                     <a data-toggle="modal" data-target="#exampleModalLong"
-                                                        style="cursor: pointer"><i style="font-size: 25px; color:tomato"
-                                                            class="far fa-comment-dots"></i></a>
+                                                        style="cursor: pointer"><i style="font-size: 22px; color:tomato"
+                                                            class="far fa-comment-dots"></i>  Trả lời</a>
                                                     <!-- Modal -->
                                                     <div class="modal fade" id="exampleModalLong" tabindex="-1"
                                                         role="dialog" aria-labelledby="exampleModalLongTitle"

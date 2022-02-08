@@ -32,9 +32,7 @@ body {
   background-color: #04AA6D;
   color: white;
 }
-#chuc_nang a{
-  padding-left: 40px;
-}
+
 </style>
 
 
@@ -57,7 +55,7 @@ body {
                                   <th>Số sao</th>
                                   <th>Bình luận</th>
                                   <th>Trả lời</th>
-                                  <th style="width:140px">Chức năng</th>
+                                  <th style="width:170px">Chức năng</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -122,7 +120,7 @@ body {
                                          {{ $rates[$i]->Reply }}
                                        </td>
                                    <td id="chuc_nang"> 
-                                     <a href="{{ route('delete_rates',['Id'=> $rates[$i]->Id]) }}"><i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i></a>
+                                     <a href="{{ route('delete_rates',['Id'=> $rates[$i]->Id]) }}"><i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i> Xóa</a>
                                    </td>
                               </tr>
                                 @endif
