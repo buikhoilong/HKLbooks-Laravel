@@ -1,7 +1,13 @@
 <?php
 
+//use App\Http\Controllers\API\AccountsAPIController;
+use App\Http\Controllers\AccountsAPIController;
+use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\APIsController;
+use App\Http\Controllers\BooksAPIController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BooksController;
+use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +27,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+Route::prefix('/book')->group(function () {
+    Route::get('/', [APIsController::class, 'getAllBooks']);
+});
+
+// Route::get('/account/{email}&{password}',[AccountsController::class,'getAccountByEmail']);
+
+Route::prefix('/account')->group(function () {
+    Route::get('/{email}&{password}', [AccountsController::class, 'getAccountByEmail']);
+    Route::post('/login', [APIsController::class, 'login']);
+    Route::post('/register',[APIsController::class,'register']);
+});
 
 // Route::group(['middleware' => ['auth:sanctum']],function () {
 //     Route::get('/',[BooksController::class,'getAllBooksAPI'])->name('api_all_book');
@@ -41,3 +58,16 @@ Route::post('/login',[AuthController::class],'index');
 
 
 
+Route::prefix('/promote')->group(function () {
+    Route::get('/',[APIsController::class,'getAllPromoteTypes']);
+    Route::get('/allBooksByPromoteId/{Id}',[APIsController::class,'getAllBooksByPromotesId']);
+});
+
+Route::prefix('/category')->group(function () {
+    Route::get('/',[APIsController::class,'getAllCategories']);
+    Route::get('/getAllBooksByCategoryId/{Id}',[APIsController::class,'getAllBooksByCategoryId']);
+});
+Route::prefix('/cart')->group(function () {
+    Route::get('/',[APIsController::class,'getAllCartByAccountId']);
+    //Route::get('/getAllBooksByCategoryId/{Id}',[APIsController::class,'getAllBooksByCategoryId']);
+});

@@ -8,7 +8,7 @@
         </span>
     @endfor
     <div hidden=true>
-        {{-- {{ $tongtien2 =  number_format($tongtien, 0, ',', '.')}} --}}
+        {{ $tongtien2 =  number_format($tongtien, 0, ',', '.')}}
     </div>
     <div class="animated fadeIn">
 
@@ -22,8 +22,8 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">
-                                            {{ $tongtien }}
+                                    <div class="stat-text"><span class="count" data-to="{{ $tongtien }}" >
+                                            {{ $tongtien }} 
                                         </span> VNĐ</div>
                                     <div class="stat-heading">Tổng doanh thu</div>
                                 </div>
@@ -57,7 +57,7 @@
                     <div class="card-body">
                         <div class="stat-widget-five">
                             <div class="stat-icon dib flat-color-3">
-                                <i class="pe-7s-browser"></i>
+                                <i class="pe-7s-notebook"></i>
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">

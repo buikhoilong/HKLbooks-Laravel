@@ -41,7 +41,9 @@ jQuery(document).ready(function($) {
 			duration: 3000,
 			easing: 'swing',
 			step: function (now) {
-				$(this).text(Math.ceil(now));
+				// $(this).text(Math.ceil(now).replace(/\d(?=(\d{3})+\.)/g, '$&,')); 2162985 - 2162971 - 2163000
+				$(this).text(Math.ceil(now).toLocaleString());
+
 			}
 		});
 	});
