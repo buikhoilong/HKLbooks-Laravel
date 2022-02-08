@@ -27,7 +27,7 @@
                                         <th>Tên sách</th>
                                         <th>Giá tiền</th>
                                         <th style="width:120px">Số lượng</th>
-                                        <th>Chức năng</th>
+                                        <th style="width:170px">Chức năng</th>
                                     </tr>
                                 </thead>
 
@@ -44,11 +44,11 @@
                                             <td>{{ $books[$i]->Stock }}</td>
                                             <td id="chuc_nang" style="width: 130px">
                                                 <a href="{{ route('detail_book', ['Id' => $books[$i]->Id]) }}"><i
-                                                        style="color:midnightblue;" class="fas fa-eye"></i></a>
+                                                        style="color:midnightblue;" class="fas fa-eye"></i> Xem chi tiết</a><br><br>
                                                 <a href="{{ route('edit_book', ['Id' => $books[$i]->Id]) }}"><i
-                                                        style="color:rgb(233, 154, 8)" class="fas fa-edit"></i></a>
+                                                        style="color:rgb(233, 154, 8)" class="fas fa-edit"></i> Chỉnh sửa</a><br><br>
                                                 <a href="{{ route('delete_book', ['Id' => $books[$i]->Id]) }}"> <i
-                                                        style="color:rgb(223, 9, 9)" class="fas fa-trash"></i></a>
+                                                        style="color:rgb(223, 9, 9)" class="fas fa-trash"></i> Xóa</a><br><br>
                                             </td>
                                         </tr>
                                     @endfor

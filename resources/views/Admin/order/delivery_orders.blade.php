@@ -33,13 +33,8 @@
             color: white;
         }
 
-        #chuc_nang a {
-            padding: 10px;
-        }
 
     </style>
-
-
     <div class="topnav">
         <a href="{{ route('index_orders') }}">Danh sách</a>
         <a href="{{ route('orders_processing') }}">Đơn hàng chờ xử lý</a>
@@ -63,7 +58,7 @@
                                         <th>Mã đơn hàng</th>
                                         <th>Tên khách hàng</th>
                                         <th>Tổng tiền</th>
-                                        <th style="width:140px">Chức năng</th>
+                                        <th style="width:170px">Chức năng</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -80,10 +75,10 @@
                                                 <td>{{ number_format($oders[$i]->TotalMoney, 0, ',', '.') . ' VNĐ' }}</td>
                                                 <td id="chuc_nang">
                                                     <a href="{{ route('orders_lines', ['Id' => $oders[$i]->Id]) }}"><i
-                                                            style="color:midnightblue" class="fas fa-eye"></i></a>
+                                                            style="color:midnightblue" class="fas fa-eye"></i> Xem chi tiết</a><br><br>
                                                     <a
                                                         href="{{ route('edit_status_delivery', ['Id' => $oders[$i]->Id]) }}"><i
-                                                            style="color:green" class="fas fa-check"></i></a>
+                                                            style="color:green" class="fas fa-check"></i> Duyệt đơn</a><br><br>
 
                                                 </td>
                                             </tr>

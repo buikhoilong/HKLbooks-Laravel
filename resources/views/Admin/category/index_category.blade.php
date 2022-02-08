@@ -2,11 +2,6 @@
 @section('title','Index Category')
 @section("content")
 
-<style>
-    #chuc_nang a {
-        padding-left: 20px;
-    }
-</style>
 <div class="content">
     <div class="animated fadeIn">
         <div class="row">
@@ -24,7 +19,7 @@
                                     <th style="width:100px">Mã Loại</th>
                                     <th>Tên Loại</th>
                                     <th>Mô Tả</th>
-                                    <th style="width:140px">Chức năng</th>
+                                    <th style="width:170px">Chức năng</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,8 +30,8 @@
                                         <td>{{ $category[$i]->Name }}</td>
                                         <td>{{ $category[$i]->Description }}</td>
                                         <td id="chuc_nang" style="width:100px">
-                                            <a href="{{ route('edit_category',['Id'=> $category[$i]->Id]) }}"><i style="color:rgb(233, 154, 8)" class="fas fa-edit"></i></a>
-                                            <a href="{{ route('delete_category',['Id'=> $category[$i]->Id]) }}"><i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i></a>
+                                            <a href="{{ route('edit_category',['Id'=> $category[$i]->Id]) }}"><i style="color:rgb(233, 154, 8)" class="fas fa-edit"></i> Chỉnh sửa</a><br><br>
+                                            <a href="{{ route('delete_category',['Id'=> $category[$i]->Id]) }}"><i style="color:rgb(223, 9, 9)" class="fas fa-trash"></i> Xóa</a><br><br>
                                         </td>
                                     </tr>
                                     @endif
