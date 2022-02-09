@@ -9,14 +9,14 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title">Danh sách thể loại</strong>
-                        <strong><a style="float: right" href="{{ route('add_category') }}"><i style="font-size: 35px; color:green" class="fas fa-plus-circle"></i></a></strong>
+                        <strong><a style="color: black;font-size: 20px;float: right" href="{{ route('add_category') }}"><i style="font-size: 25px; color:green" class="fas fa-plus-circle"></i> Thêm thể loại</a></strong>
                         <strong><a style="color: black;padding: 20px" href="{{ route('edit_delete_category')}}">Thể loại đã xóa</a></strong>
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th style="width:100px">Mã Loại</th>
+                                    <th style="width:120px">Mã Loại</th>
                                     <th>Tên Loại</th>
                                     <th>Mô Tả</th>
                                     <th style="width:170px">Chức năng</th>
