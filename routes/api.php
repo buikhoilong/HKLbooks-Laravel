@@ -39,11 +39,14 @@ Route::prefix('/account')->group(function () {
     Route::post('/register',[APIsController::class,'register']);
 });
 
+Route::prefix('/favourite')->group(function () {
+    Route::get('/', [APIsController::class, 'getAllFavouritesBooksByAccountId']);
+    Route::get('/getAllBooksByBookId/{Id}',[APIsController::class,'getAllBooksByBookId']);
+});
+
 // Route::group(['middleware' => ['auth:sanctum']],function () {
 //     Route::get('/',[BooksController::class,'getAllBooksAPI'])->name('api_all_book');
 // });
-
-
 
 Route::post('/login',[AuthController::class],'index');
 
