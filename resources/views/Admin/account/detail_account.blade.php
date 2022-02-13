@@ -26,15 +26,8 @@
         <p>Ngày sinh: {{ $accounts->Birthday }}</p>
         <p>Địa chỉ: {{ $accounts->Address }}</p>
         <p>Số điện thoại: {{ $accounts->Phone }}</p>
+        <p>Ngày tạo: {{ $accounts->created_at }}</p>
+        <p>Lần cuối cập nhật: {{ $accounts->updated_at }}</p>
       </div>
     </div>
-    {{-- <div class="container">
-        <img style="width:100px;height:100px" src="{{ asset('storage/admin/images/avatar/'.$accounts->Avatar)}}" alt="{{ $accounts->Avatar}}">
-        <h2>{{ $accounts->Name }}</h2>
-        <p>{{ $accounts->Email }}</p>
-        <p>{{ $accounts->Password }}</p>
-        <p>{{ $accounts->Birthday }}</p>
-        <p>{{ $accounts->Address }}</p>
-        <p>{{ $accounts->Phone }}</p>
-    </div> --}}
 @endsection
