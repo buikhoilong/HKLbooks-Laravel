@@ -199,8 +199,8 @@ class APIsController extends Controller
         return response()->json(Favourite::all(),200);
     }
 
-    public function getAllBooksByBookId($id){
-        $books = Book::join('favourites', 'favourites.BookId','=','books.Id')->where('books.Id',$id)->select(array('books.*'))->get();
+    public function getAllBooksByFavourite(){
+        $books = Book::join('favourites', 'favourites.BookId','=','books.Id')->select(array('books.*'))->get();
         return response()->json($books,200);
     }
     // End: Favorites APIs
