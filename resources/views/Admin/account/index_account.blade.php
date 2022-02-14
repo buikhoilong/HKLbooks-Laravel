@@ -23,12 +23,12 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Họ và tên</th>
-                                    <th style="width:120px">Ngày sinh</th>
+                                    <th style="width:180px">Họ và tên</th>
+                                    <th style="width:140px">Ngày sinh</th>
                                     <th>Địa chỉ</th>
                                     <th>Số điện thoại</th>
-                                    <th>Email</th>
-                                    <th style="width:170px">Chức năng</th>
+                                    <th style="width:120px">Email</th>
+                                    <th style="width:190px">Chức năng</th>
                                 </tr>
                             </thead>
 
