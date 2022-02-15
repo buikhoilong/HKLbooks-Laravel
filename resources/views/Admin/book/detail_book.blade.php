@@ -6,18 +6,12 @@
         <strong>
             <a href="{{ route('index_books') }}">Quay lại</a> <br>
         </strong>
-        {{-- <strong>
-            <a href="">Chỉnh Sửa</a><br>
-        </strong>
-        <strong>
-            <a href="">Xóa</a><br>
-        </strong> --}}
     </div>
     <div class="container">
         <img  style="width:150px;height:200px; margin:20px" src="{{ asset('storage/admin/images/books/'.$books->ImgPath)}}" alt="{{ $books->ImgPath}}">
         <h2 >Tên sách: {{ $books->Name }}</h2>
         <br>
-        <p>Giá: {{ $books->Price }}</p>
+        <p>Giá: {{number_format(($books->Price ), 0, ',', '.')." VNĐ"}}</p>
         <p>Số lượng: {{ $books->Stock }}</p>
         <p>Tác giả: {{ $books->Author }}</p>
         <p>Nhà xuất bản: {{ $books->Publisher }}</p>

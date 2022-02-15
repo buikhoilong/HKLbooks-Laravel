@@ -22,18 +22,20 @@
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Họ và tên</th>
-                                    <th>Ngày sinh</th>
+                                    <th>Id</th>
+                                    <th style="width:180px">Họ và tên</th>
+                                    <th style="width:140px">Ngày sinh</th>
                                     <th>Địa chỉ</th>
                                     <th>Số điện thoại</th>
-                                    <th>Email</th>
-                                    <th style="width:170px">Chức năng</th>
+                                    <th style="width:120px">Email</th>
+                                    <th style="width:190px">Chức năng</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 @for ($i=0; $i < $accounts->count(); $i++)
                                     <tr>
+                                        <td>{{ $accounts[$i]->Id }}</td>
                                         <td>{{ $accounts[$i]->Name }}</td>
                                         <td>{{ $accounts[$i]->Birthday }}</td>
                                         <td>{{ $accounts[$i]->Address }}</td>

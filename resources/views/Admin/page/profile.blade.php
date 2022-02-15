@@ -30,6 +30,8 @@
     <p>Ngày sinh: {{ Session::get('user_login')->Birthday }}</p>
     <p>Địa chỉ: {{ Session::get('user_login')->Address }}</p>
     <p>Số điện thoại: {{ Session::get('user_login')->Phone }}</p>
+    <p>Ngày tạo: {{ Session::get('user_login')->created_at }}</p>
+    <p>Lần cuối cập nhật: {{ Session::get('user_login')->updated_at }}</p>
   </div>
 </div>
 
