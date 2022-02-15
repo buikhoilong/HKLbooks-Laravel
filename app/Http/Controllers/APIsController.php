@@ -6,7 +6,7 @@ use App\Models\Account;
 use App\Models\Book;
 use App\Models\Cart;
 use App\Models\Category;
-use App\Models\Promote;
+use App\Models\Favourite;
 use App\Models\PromoteType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -193,4 +193,15 @@ class APIsController extends Controller
         return response()->json($carts,200);
     }
      //End: Carts APIs
+
+    // Start:  Favorites APIs
+    public function getAllFavouritesBooksByAccountId(){
+        return response()->json(Favourite::all(),200);
+    }
+
+    public function getAllBooksByFavourite(){
+        $books = Book::join('favourites', 'favourites.BookId','=','books.Id')->select(array('books.*'))->get();
+        return response()->json($books,200);
+    }
+    // End: Favorites APIs
 }

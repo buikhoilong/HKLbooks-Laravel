@@ -40,9 +40,14 @@
         <a href="{{ route('story_promote') }}">Truyện</a>
 
     </div>
-    <strong><a style="float: right;color:black" href="{{ route('get_add_book_to_promote') }}"><i
-        style="font-size: 35px;padding:20px; margin-right:40px; color:green" class="fas fa-plus-circle"></i></a></strong>
+    <div style="float: left; margin:20px">
+        <strong><a style="color:black" href="{{ route('get_add_book_to_promote') }}"><i
+            style="font-size: 30px;padding:10px; color:green" class="fas fa-plus-circle"></i>Thêm sách</a></strong><br>
 
+            <strong><a style="color:black" href="{{ route('get_add_promote_type') }}"><i
+                style="font-size: 30px;padding:10px;  color:green" class="fas fa-plus-circle"></i>Thêm quảng bá</a></strong>
+    </div>
+    
     <div class="content">
         <div class="animated fadeIn">
             <div class="row">

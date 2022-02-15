@@ -31,7 +31,7 @@
         <label>Tên sách</label>
         <br>
         <select style="width: 350px; height: 40px" class="w3-select" name="idsach" id="tensach">
-            <option value="" disabled selected>Chọn Loại</option>
+            <option value="" disabled selected>Chọn Sách</option>
             @for ($y = 0; $y < $books->count(); $y++)
                 @for ($index = 0; $index < $tam2->count(); $index++)
                     @if ($books[$y]->Id == $tam2[$index]->Id)
