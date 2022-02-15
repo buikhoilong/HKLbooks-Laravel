@@ -78,6 +78,21 @@ class PromotesController extends Controller
         return redirect()->route('index_promote');
     }
 
+    public function getAddPromoteType(){
+        return view('Admin.promote.add_promote_type');
+    }
+
+    
+    public function postAddPromoteType(Request $request){
+        $promote_type = new PromoteType;
+        $promote_type->Id = $request->idtxt;
+        $promote_type->Name = $request->tentxt;
+        $promote_type->Description = $request->motatxt;
+        $promote_type->Status = 1;
+        $promote_type->save();
+        return redirect()->route('index_promote');
+    }
+
 
     public function deletePromote(Request $request)
     {

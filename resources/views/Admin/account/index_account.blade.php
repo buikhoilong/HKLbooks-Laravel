@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title">Danh sách tài khoản</strong>
-                        <strong ><a style="float: right;color:black" href="{{ route('add_account') }}"><i style="font-size: 35px; color:green" class="fas fa-plus-circle"></i></a></strong>
+                        <strong ><a style="font-size: 20px;float: right;color:black" href="{{ route('add_account') }}"><i style="font-size: 25px; color:green" class="fas fa-plus-circle"></i> Thêm tài khoản</a></strong>
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">

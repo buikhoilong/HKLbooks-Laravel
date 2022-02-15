@@ -40,11 +40,14 @@ Route::prefix('/account')->group(function () {
     Route::post('/update',[APIsController::class,'updateAccount']);
 });
 
+Route::prefix('/favourite')->group(function () {
+    Route::get('/', [APIsController::class, 'getAllFavouritesBooksByAccountId']);
+    Route::get('/getAllBooksByFavourite',[APIsController::class,'getAllBooksByFavourite']);
+});
+
 // Route::group(['middleware' => ['auth:sanctum']],function () {
 //     Route::get('/',[BooksController::class,'getAllBooksAPI'])->name('api_all_book');
 // });
-
-
 
 Route::post('/login',[AuthController::class],'index');
 
