@@ -109,7 +109,6 @@
                         <a href="{{ route('index_orders') }}"><i class="menu-icon fas fa-shopping-cart"></i>Đơn
                             hàng</a>
                     </li>
-
                     <li>
                         <a href="{{ route('index_rates') }}"><i class="menu-icon fas fa-comments"></i>Đánh giá</a>
                     </li>

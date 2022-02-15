@@ -3,6 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Book;
+use App\Models\Category;
+use App\Models\Favourites;
+use App\Models\Order;
+use App\Models\OrderLine;
+use App\Models\Promote;
+use App\Models\PromoteType;
+use App\Models\Rate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -221,5 +229,10 @@ class AccountsController extends Controller
         $account->updated_at = $account->deleted_at = null;
         $account->save();
         return response()->json($account,201);
+    }
+
+    public function writeSeeder() {
+        $accounts = Account::all();
+        return view('Layouts.test',compact('accounts'));
     }
 }
