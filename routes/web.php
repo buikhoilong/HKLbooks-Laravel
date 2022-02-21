@@ -137,6 +137,10 @@ Route::prefix('/admin')->middleware('adminrole')->group(function () {
         Route::post('post_add_promote_type',[PromotesController::class,'postAddPromoteType'])->name('post_add_promote_type');
         // xóa promotes
         Route::get('/delete_promote/{Id?}', [PromotesController::class, 'deletePromote'])->name('delete_promote');
-
     });
+
+    Route::get('/test', [AccountsController::class, 'writeSeeder'])->name('writeSeeder');
+
 });
+
+

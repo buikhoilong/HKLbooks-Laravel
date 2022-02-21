@@ -34,9 +34,10 @@ Route::prefix('/book')->group(function () {
 // Route::get('/account/{email}&{password}',[AccountsController::class,'getAccountByEmail']);
 
 Route::prefix('/account')->group(function () {
-    Route::get('/{email}&{password}', [AccountsController::class, 'getAccountByEmail']);
+    Route::get('/{Id}', [APIsController::class, 'getAccount']);
     Route::post('/login', [APIsController::class, 'login']);
     Route::post('/register',[APIsController::class,'register']);
+    Route::post('/update',[APIsController::class,'updateAccount']);
 });
 
 Route::prefix('/favourite')->group(function () {
@@ -45,6 +46,10 @@ Route::prefix('/favourite')->group(function () {
     Route::post('/addFav',[APIsController::class,'addFav']);
     Route::get('/check/{BookId}&{AccountId}',[APIsController::class,'checkFavourite']);
 
+});
+
+Route::prefix('/cart')->group(function () {
+    Route::get('/{Id}',[APIsController::class,'getAllCartByAccountId']);
 });
 
 // Route::group(['middleware' => ['auth:sanctum']],function () {
