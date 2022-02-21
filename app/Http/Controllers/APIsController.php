@@ -27,7 +27,7 @@ class APIsController extends Controller
         if ($account == null) {
             return response()->json(['Email' => 'Invalid Email'], 401);
         } else {
-            if($account->Status == 0){
+            if ($account->Status == 0) {
                 return response()->json(['Email' => 'Accout\'s been blocked!'], 402);
             }
             if (!Hash::check($request->Password, $account->password)) {
@@ -120,13 +120,12 @@ class APIsController extends Controller
     public function getAccount(Request $request)
     {
         $account = Account::where($request->Id)->first();
-        return  response()->json($account, 202);
+        return  response()->json($account, 200);
     }
     public function updateAccount(Request $request)
     {
         $existingAccount = Account::where('Id', $request->Id)->first();
-
-        if (!isNull($existingAccount)) {
+        if ($existingAccount == null) {
             return json_encode([
                 'Message' => 'Tài khoản không tồn tại',
                 $existingAccount
@@ -134,61 +133,51 @@ class APIsController extends Controller
         } else {
             $timeUpdatedAt = Carbon::now('Asia/Ho_Chi_Minh');
 
-            $updateValue =$existingAccount;
-
-            $updateValue->name = $request->Name
-
-            ($request->Name != null) ?
-            
-                $resultAccount = Account::where('Id', $request->Id)->update([
-                    'Name' => $request->Name,
-                    'updated_at' => $timeUpdatedAt
-
-                ]) : null;
-
-            if ($request->Phone != null) {
-
-                if (Account::where('Phone', $request->Phone)->first() != null) {
-                    return json_encode([
-                        'Message' => 'Số điện thoại đã tồn tại'
-                    ], 401);
-                } else {
-                    $resultAccount = Account::where('Id', $request->Id)->update([
-                        'Phone' => $request->Phone,
-                        'updated_at' => $timeUpdatedAt
-                    ]);
-                }
+            switch ($request->Type) {
+                case 'Name': {
+                        $resultAccount = Account::where('Id', $request->Id)->update([
+                            'Name' => $request->Name,
+                            'updated_at' => $timeUpdatedAt,
+                        ]);
+                        break;
+                    }
+                case 'Phone': {
+                        if (Account::where('Phone', $request->Phone)->first() == null) {
+                            $resultAccount = Account::where('Id', $request->Id)->update([
+                                'Phone' => $request->Phone,
+                                'updated_at' => $timeUpdatedAt,
+                            ]);
+                        } else {
+                            return json_encode([
+                                'Message' => 'Số điện thoại đã tồn tại'
+                            ], 401);    
+                        }
+                        break;
+                    }
+                case 'Birthday': {
+                        $resultAccount = Account::where('Id', $request->Id)->update([
+                            'Birthday' => $request->Birthday,
+                            'updated_at' => $timeUpdatedAt,
+                        ]);
+                        break;
+                    }
+                case 'Address': {
+                        $resultAccount = Account::where('Id', $request->Id)->update([
+                            'Address' => $request->Address,
+                            'updated_at' => $timeUpdatedAt
+                        ]);
+                        break;
+                    }
+                default: {
+                        return json_encode([
+                            'Message' => 'Cập nhật thất bại!',
+                        ], 402);
+                        break;
+                    }
             }
-
-            ($request->Birthday != null) ? $resultAccount = Account::where('Id', $request->Id)->update([
-                'Birthday' => $request->Birthday,
-                'updated_at' => $timeUpdatedAt
-            ]) : null;
-
-            ($request->Address != null) ? $resultAccount = Account::where('Id', $request->Id)->update([
-                'Address' => $request->Address,
-                'updated_at' => $timeUpdatedAt
-            ]) : null;
-
-            // $existingAccount = Account::where('Id', $request->id)->update([
-            // 'Id' => $id,
-            // 'Name' => $request->Name,
-            // 'Birthday' => $request->Birthday,
-            // 'Email' => $request->Email,
-            // 'Address' => $request->Address,
-            // 'Phone' => $request->Phone,
-            // 'updated_at' => $timeUpdatedAt
-            // ]);
-        }
-
-        if ($resultAccount == null) {
-            return json_encode([
-                'Message' => 'Cập nhật thất bại',
-                $resultAccount
-            ], 402);
         }
         $resultAccount = Account::where('Id', $request->Id)->first();
-        return json_encode([$resultAccount], 202);
+        return json_encode($resultAccount, 202);
     }
     //End: Accounts APIs
 
@@ -253,13 +242,15 @@ class APIsController extends Controller
     //End: Carts APIs
 
     // Start:  Favorites APIs
-    public function getAllFavouritesBooksByAccountId(){
-        return response()->json(Favourite::all(),200);
+    public function getAllFavouritesBooksByAccountId()
+    {
+        return response()->json(Favourite::all(), 200);
     }
 
-    public function getAllBooksByFavourite(){
-        $books = Book::join('favourites', 'favourites.BookId','=','books.Id')->select(array('books.*'))->get();
-        return response()->json($books,200);
+    public function getAllBooksByFavourite()
+    {
+        $books = Book::join('favourites', 'favourites.BookId', '=', 'books.Id')->select(array('books.*'))->get();
+        return response()->json($books, 200);
     }
     // End: Favorites APIs
 }
