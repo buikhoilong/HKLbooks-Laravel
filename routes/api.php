@@ -34,9 +34,10 @@ Route::prefix('/book')->group(function () {
 // Route::get('/account/{email}&{password}',[AccountsController::class,'getAccountByEmail']);
 
 Route::prefix('/account')->group(function () {
-    Route::get('/{email}&{password}', [AccountsController::class, 'getAccountByEmail']);
+    Route::get('/{Id}', [APIsController::class, 'getAccount']);
     Route::post('/login', [APIsController::class, 'login']);
     Route::post('/register',[APIsController::class,'register']);
+    Route::post('/update',[APIsController::class,'updateAccount']);
 });
 
 Route::prefix('/favourite')->group(function () {

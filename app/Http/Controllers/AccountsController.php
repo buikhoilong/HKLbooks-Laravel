@@ -124,8 +124,9 @@ class AccountsController extends Controller
         if ($account == null) {
             return response()->json('Invalid Email', 401);
         } else {
+            return response()->json($account, 200);
             if (Hash::check($request->password, $account->password)) {
-                return response()->json($account, 200);
+               
             } else {
                 return response()->json('Invalid Password', 402);
             }
