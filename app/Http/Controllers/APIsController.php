@@ -247,10 +247,58 @@ class APIsController extends Controller
         return response()->json(Favourite::all(), 200);
     }
 
-    public function getAllBooksByFavourite()
-    {
-        $books = Book::join('favourites', 'favourites.BookId', '=', 'books.Id')->select(array('books.*'))->get();
-        return response()->json($books, 200);
+    
+
+    
+    // truyền vào accountID 
+    public function getAllBooksByFavourite(Request $request){
+        $books = Book::join('favourites', 'favourites.BookId','=','books.Id')->join('categories', 'categories.Id','=','books.CategoryId')->where('favourites.AccountId',$request->Id)->select(array('books.*', 'categories.Name as CategoryName'))->get();
+        //dd($books == null);
+        if($books == null){
+            return response()->json(['Message'=> 'Danh sách yêu thích rỗng'],400);
+        }
+        return response()->json($books,200);
     }
+
+    // where lấy account favourites == $id truyền vào 
+    public function addFav(Request $request){
+        // $favourited = [
+        //     "AccountId" => "required:favourites",
+        //     "BookId" => "required:favourites",
+        // ];
+        // $customMessage = [
+        //     "AccountId.required" => "Bạn chưa đăng nhập!",
+        // ];
+
+        // $validator = Validator::make($request->all(), $favourited,$customMessage);
+        // if ($validator->fails()) {
+        //     return response()->json($validator->errors(), 400);
+        // }
+
+
+        $existedInFav = Favourite::where('AccountId', $request->AccountId)->where('BookId', $request->BookId)->first();
+        if($existedInFav == null){
+            $fav = new Favourite();
+            $datetime = Date('s');
+            $fav->Id = $fav->count()+1+(int)$datetime;
+            $fav->AccountId = $request->AccountId;
+            $fav->BookId = $request->BookId;
+            $fav->save();
+            return response()->json(['Message'=> 'Đã thêm vào danh sách yêu thích'],200);
+        }else{
+            return response()->json(['Message'=> 'Đã tồn tại trong danh sách yêu thích'],400);
+        }
+    }
+
+    public function checkFavourite(Request $request)
+    {
+        $existedInFav = Favourite::where('AccountId', $request->AccountId)->where('BookId', $request->BookId)->first();
+        // return ($existedInFav != null);
+        if($existedInFav != null){
+            return  response()->json($existedInFav != null,200);
+        }
+        return  response()->json($existedInFav != null,400);
+    }
+
     // End: Favorites APIs
 }

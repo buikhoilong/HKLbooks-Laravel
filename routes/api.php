@@ -42,7 +42,14 @@ Route::prefix('/account')->group(function () {
 
 Route::prefix('/favourite')->group(function () {
     Route::get('/', [APIsController::class, 'getAllFavouritesBooksByAccountId']);
-    Route::get('/getAllBooksByFavourite',[APIsController::class,'getAllBooksByFavourite']);
+    Route::get('/getAllBooksByFavourite/{Id}',[APIsController::class,'getAllBooksByFavourite']);
+    Route::post('/addFav',[APIsController::class,'addFav']);
+    Route::get('/check/{BookId}&{AccountId}',[APIsController::class,'checkFavourite']);
+
+});
+
+Route::prefix('/cart')->group(function () {
+    Route::get('/{Id}',[APIsController::class,'getAllCartByAccountId']);
 });
 
 // Route::group(['middleware' => ['auth:sanctum']],function () {
