@@ -152,7 +152,7 @@ class APIsController extends Controller
                         } else {
                             return json_encode([
                                 'Message' => 'Số điện thoại đã tồn tại'
-                            ], 401);    
+                            ], 401);
                         }
                         break;
                     }
@@ -218,28 +218,37 @@ class APIsController extends Controller
     //End: Categories APIs
 
     //Begin: Carts APIs
+    public function getBooksInCartByAccountId(Request $request)
+    {
+        $book = Book::join('carts', 'carts.BookId', '=', 'books.Id')->join('categories', 'categories.Id', '=', 'books.CategoryId')->where('carts.AccountId', $request->AccountId)->select(array('books.*', 'categories.Name as CategoryName'))->get();
+        return response()->json($book, 200);
+    }
+
+
+
     public function getAllCartByAccountId(Request $request)
     {
-        $carts = Cart::where('AccountId', $request->Id)->get();
-        if ($carts . isEmpty()) {
+        $carts = Cart::where('AccountId', $request->AccountId)->get();
+        if ($carts == null) {
             return response()->json(['Error' => 'Giỏ hàng rỗng'], 400);
         }
         return response()->json($carts, 200);
     }
     public function addToCart(Request $request)
     {
-        $existedInCart = Cart::where($request->AccountId)->get();
-        for ($i = 0; $i < count($existedInCart); $i++) {
-            if ($request->BookId == $existedInCart[$i]->BookId) {
-                return response()->json(['Message' => 'Book\'s been already in cart!'], 401);
-            }
-        }
-        $carts = new Cart();
-
-        if ($carts . isEmpty()) {
-            return response()->json(['Error' => 'Giỏ hàng rỗng'], 400);
-        }
-        return response()->json($carts, 200);
+        $cart = new Cart();
+        $existedInCart = Cart::where('AccountId',$request->AccountId)->where('BookId',$request->BookId)->first();
+        if($existedInCart == null){
+            $datetime = Date('s');
+            $cart->Id = Cart::count() + 1 + (int)$datetime;
+            $cart->AccountId = $request->AccountId;
+            $cart->BookId = $request->BookId;
+            $cart->Quantity = $request->Quantity;
+            $cart->save();
+            return response()->json(['Message' => 'Thêm thành công'], 200);
+        } else{
+            return response()->json(['Message' => 'Đã có trong giỏ hàng'], 400);
+        } 
     }
     //End: Carts APIs
 
@@ -253,21 +262,21 @@ class APIsController extends Controller
         if($books == null){
             return response()->json(['Message'=> 'Danh sách yêu thích rỗng'],400);
         }
-        return response()->json($books,200);
+        return response()->json($books, 200);
     }
 
     public function addFav(Request $request){
         $existedInFav = Favourite::where('AccountId', $request->AccountId)->where('BookId', $request->BookId)->first();
-        if($existedInFav == null){
+        if ($existedInFav == null) {
             $fav = new Favourite();
             $datetime = Date('ms');
             $fav->Id = $fav->count()+1+(int)$datetime;
             $fav->AccountId = $request->AccountId;
             $fav->BookId = $request->BookId;
             $fav->save();
-            return response()->json(['Message'=> 'Đã thêm vào danh sách yêu thích'],200);
-        }else{
-            return response()->json(['Message'=> 'Đã tồn tại trong danh sách yêu thích'],400);
+            return response()->json(['Message' => 'Đã thêm vào danh sách yêu thích'], 200);
+        } else {
+            return response()->json(['Message' => 'Đã tồn tại trong danh sách yêu thích'], 400);
         }
     }
 
@@ -277,7 +286,7 @@ class APIsController extends Controller
         if($existedInFav != null){
             return  response()->json($existedInFav != null,200);
         }
-        return  response()->json($existedInFav != null,400);
+        return  response()->json($existedInFav != null, 400);
     }
     public function deleteFav(Request $request)
     {
