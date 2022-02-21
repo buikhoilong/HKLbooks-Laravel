@@ -45,7 +45,10 @@ Route::prefix('/favourite')->group(function () {
     Route::get('/getAllBooksByFavourite/{Id}',[APIsController::class,'getAllBooksByFavourite']);
     Route::post('/addFav',[APIsController::class,'addFav']);
     Route::get('/check/{BookId}&{AccountId}',[APIsController::class,'checkFavourite']);
-
+    Route::delete('/deleteFav',[APIsController::class,'deleteFav']);
+});
+Route::prefix('/rates')->group(function () {
+    Route::get('/', [APIsController::class, 'getAllRateByBookId']);
 });
 
 Route::prefix('/cart')->group(function () {

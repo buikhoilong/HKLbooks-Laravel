@@ -8,9 +8,11 @@ use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Favourite;
 use App\Models\PromoteType;
+use App\Models\Rate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Redis;
 
@@ -255,43 +257,20 @@ class APIsController extends Controller
     {
         return response()->json(Favourite::all(), 200);
     }
-
-
-
-
-    // truyền vào accountID 
-    public function getAllBooksByFavourite(Request $request)
-    {
-        $books = Book::join('favourites', 'favourites.BookId', '=', 'books.Id')->join('categories', 'categories.Id', '=', 'books.CategoryId')->where('favourites.AccountId', $request->Id)->select(array('books.*', 'categories.Name as CategoryName'))->get();
-        //dd($books == null);
-        if ($books == null) {
-            return response()->json(['Message' => 'Danh sách yêu thích rỗng'], 400);
+    public function getAllBooksByFavourite(Request $request){
+        $books = Book::join('favourites', 'favourites.BookId','=','books.Id')->join('categories', 'categories.Id','=','books.CategoryId')->where('favourites.AccountId',$request->Id)->select(array('books.*', 'categories.Name as CategoryName'))->get();
+        if($books == null){
+            return response()->json(['Message'=> 'Danh sách yêu thích rỗng'],400);
         }
         return response()->json($books, 200);
     }
 
-    // where lấy account favourites == $id truyền vào 
-    public function addFav(Request $request)
-    {
-        // $favourited = [
-        //     "AccountId" => "required:favourites",
-        //     "BookId" => "required:favourites",
-        // ];
-        // $customMessage = [
-        //     "AccountId.required" => "Bạn chưa đăng nhập!",
-        // ];
-
-        // $validator = Validator::make($request->all(), $favourited,$customMessage);
-        // if ($validator->fails()) {
-        //     return response()->json($validator->errors(), 400);
-        // }
-
-
+    public function addFav(Request $request){
         $existedInFav = Favourite::where('AccountId', $request->AccountId)->where('BookId', $request->BookId)->first();
         if ($existedInFav == null) {
             $fav = new Favourite();
-            $datetime = Date('s');
-            $fav->Id = $fav->count() + 1 + (int)$datetime;
+            $datetime = Date('ms');
+            $fav->Id = $fav->count()+1+(int)$datetime;
             $fav->AccountId = $request->AccountId;
             $fav->BookId = $request->BookId;
             $fav->save();
@@ -304,12 +283,33 @@ class APIsController extends Controller
     public function checkFavourite(Request $request)
     {
         $existedInFav = Favourite::where('AccountId', $request->AccountId)->where('BookId', $request->BookId)->first();
-        // return ($existedInFav != null);
-        if ($existedInFav != null) {
-            return  response()->json($existedInFav != null, 200);
+        if($existedInFav != null){
+            return  response()->json($existedInFav != null,200);
         }
         return  response()->json($existedInFav != null, 400);
     }
-
+    public function deleteFav(Request $request)
+    {
+        $favourited = DB::table('favourites')->where('AccountId', $request->AccountId)->where('BookId', $request->BookId)->delete();
+        if($favourited == true){
+            return  response()->json(['Message'=> 'Đã xóa ra khỏi danh sách yêu thích!'],200);
+        }
+        return  response()->json(['Message'=> 'Xóa thất bại!'],400);
+    }
     // End: Favorites APIs
+
+    // Start:  Rates APIs
+
+    public function getAllRateByBookId(Request $request){
+        // $rates = Rate::join('books', 'books.Id','=','rates.BookId')->where('rates.BookId','books.Id')->get();
+        // $rates = Rate::join('accounts','accounts.Id','=','rates.AccountId')->get();
+        $rates = Rate::where('rates.AccountId',$request->AccountId)->get();
+        if($rates == null){
+            return response()->json(['Message'=> ''],400);
+        }
+        return response()->json($rates,200);
+    }
+
+    // End: Rates APIs
+
 }
