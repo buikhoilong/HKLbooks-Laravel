@@ -49,7 +49,10 @@ Route::prefix('/favourite')->group(function () {
 });
 
 Route::prefix('/cart')->group(function () {
-    Route::get('/{Id}',[APIsController::class,'getAllCartByAccountId']);
+    Route::get('/{AccountId}',[APIsController::class,'getAllCartByAccountId']);
+    Route::get('getBooks/{AccountId}',[APIsController::class,'getBooksInCartByAccountId']);
+    Route::post('addToCart',[APIsController::class,'addToCart']);
+    // Route::delete()
 });
 
 // Route::group(['middleware' => ['auth:sanctum']],function () {
