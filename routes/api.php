@@ -43,6 +43,7 @@ Route::prefix('/account')->group(function () {
 Route::prefix('/favourite')->group(function () {
     Route::get('/', [APIsController::class, 'getAllFavouritesBooksByAccountId']);
     Route::get('/getAllBooksByFavourite',[APIsController::class,'getAllBooksByFavourite']);
+    Route::get('check/{$BookId}&{$AccountId}',[APIsController::class,'getAllBooksByFavourite']);
 });
 
 // Route::group(['middleware' => ['auth:sanctum']],function () {

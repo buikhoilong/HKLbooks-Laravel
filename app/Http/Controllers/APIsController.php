@@ -252,5 +252,7 @@ class APIsController extends Controller
         $books = Book::join('favourites', 'favourites.BookId', '=', 'books.Id')->select(array('books.*'))->get();
         return response()->json($books, 200);
     }
+
+    
     // End: Favorites APIs
 }
