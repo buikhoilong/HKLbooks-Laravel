@@ -294,7 +294,10 @@ class APIsController extends Controller
     {
         $existedInFav = Favourite::where('AccountId', $request->AccountId)->where('BookId', $request->BookId)->first();
         // return ($existedInFav != null);
-        return  response()->json($existedInFav != null,200);
+        if($existedInFav != null){
+            return  response()->json($existedInFav != null,200);
+        }
+        return  response()->json($existedInFav != null,400);
     }
 
     // End: Favorites APIs

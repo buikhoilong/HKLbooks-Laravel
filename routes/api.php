@@ -48,6 +48,10 @@ Route::prefix('/favourite')->group(function () {
 
 });
 
+Route::prefix('/cart')->group(function () {
+    Route::get('/{Id}',[APIsController::class,'getAllCartByAccountId']);
+});
+
 // Route::group(['middleware' => ['auth:sanctum']],function () {
 //     Route::get('/',[BooksController::class,'getAllBooksAPI'])->name('api_all_book');
 // });
