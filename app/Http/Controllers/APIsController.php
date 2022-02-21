@@ -228,7 +228,7 @@ class APIsController extends Controller
         $existedInFav = Favourite::where('AccountId', $request->AccountId)->where('BookId', $request->BookId)->first();
         if($existedInFav == null){
             $fav = new Favourite();
-            $datetime = Date('s');
+            $datetime = Date('ms');
             $fav->Id = $fav->count()+1+(int)$datetime;
             $fav->AccountId = $request->AccountId;
             $fav->BookId = $request->BookId;
@@ -242,8 +242,10 @@ class APIsController extends Controller
     public function checkFavourite(Request $request)
     {
         $existedInFav = Favourite::where('AccountId', $request->AccountId)->where('BookId', $request->BookId)->first();
-        // return ($existedInFav != null);
-        return  response()->json($existedInFav != null,200);
+        if($existedInFav != null){
+            return  response()->json($existedInFav != null,200);
+        }
+        return  response()->json($existedInFav != null,400);
     }
 
     // End: Favorites APIs
