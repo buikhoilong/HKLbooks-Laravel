@@ -51,6 +51,7 @@ Route::prefix('/rates')->group(function () {
     Route::get('/', [APIsController::class, 'getAllRateByBookId']);
 });
 
+
 Route::prefix('/cart')->group(function () {
     Route::get('/{Id}',[APIsController::class,'getAllCartByAccountId']);
 });
