@@ -279,7 +279,7 @@ class APIsController extends Controller
         $existedInFav = Favourite::where('AccountId', $request->AccountId)->where('BookId', $request->BookId)->first();
         if($existedInFav == null){
             $fav = new Favourite();
-            $datetime = Date('s');
+            $datetime = Date('ms');
             $fav->Id = $fav->count()+1+(int)$datetime;
             $fav->AccountId = $request->AccountId;
             $fav->BookId = $request->BookId;
