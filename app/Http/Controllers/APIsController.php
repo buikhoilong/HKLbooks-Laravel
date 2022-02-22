@@ -325,15 +325,10 @@ class APIsController extends Controller
     // Start:  Rates APIs
 
     public function getAllRateByBookId(Request $request){
-        // $rates = Rate::join('books', 'books.Id','=','rates.BookId')->where('rates.BookId','books.Id')->get();
-        // $rates = Rate::join('accounts','accounts.Id','=','rates.AccountId')->get();
-        $rates = Rate::where('rates.AccountId',$request->AccountId)->get();
+        $rates = Rate::where('rates.BookId',$request->Id)->get();
         if($rates == null){
             return response()->json(['Message'=> ''],400);
         }
         return response()->json($rates,200);
     }
-
-    // End: Rates APIs
-
 }
