@@ -250,6 +250,30 @@ class APIsController extends Controller
             return response()->json(['Message' => 'Đã có trong giỏ hàng'], 400);
         } 
     }
+    public function updateCart(Request $request)
+    {
+        $existedInCart = Cart::where('AccountId',$request->AccountId)->where('BookId',$request->BookId)->first();
+        if($existedInCart == null){
+            return json_encode(['Message' => 'Giỏ hàng không tồn tại!'],400);
+            
+        } else{
+            $cart = Cart::where('AccountId',$request->AccountId)->where('BookId',$request->BookId)->update([
+                'Quantity' => $request->Quantity,
+            ]);
+            if($cart >0) {
+                return response()->json(['Message' => 'Cập nhật giỏ hàng thàng công'], 200);
+            }
+            return response()->json(['Message' => 'Cập nhật giỏ hàng thất bại'], 402);
+        } 
+    }
+    public function deleteCart(Request $request)
+    {
+        $favourited = DB::table('carts')->where('AccountId', $request->AccountId)->where('BookId', $request->BookId)->delete();
+        if($favourited == true){
+            return  response()->json(['Message'=> 'Đã xóa ra khỏi giỏ hàng!'],200);
+        }
+        return  response()->json(['Message'=> 'Xóa thất bại!'],400);
+    }
     //End: Carts APIs
 
     // Start:  Favorites APIs
