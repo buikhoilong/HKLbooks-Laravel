@@ -92,7 +92,7 @@ Route::prefix('/admin')->middleware('adminrole')->group(function () {
 
         Route::get('/edit_status_delivery/{Id?}', [OrdersController::class, 'editStatusDelivery'])->name('edit_status_delivery');
 
-        Route::get('/edit_status_cancel/{Id?}', [OrdersController::class, 'editStatusCancel'])->name('edit_status_cancel');
+        Route::post('/edit_status_cancel/{Id?}', [OrdersController::class, 'editStatusCancel'])->name('edit_status_cancel');
 
         Route::get('/orders_lines/{Id?}', [OrdersController::class, 'OrdersLines'])->name('orders_lines');
         // danh sách đơn hàng đang giao
@@ -104,8 +104,6 @@ Route::prefix('/admin')->middleware('adminrole')->group(function () {
         // danh sách đơn hàng đã hủy
         Route::get('/orders_cancel', [OrdersController::class, 'getAllOrdersCancel'])->name('orders_cancel');
     });
-
-
     Route::prefix('/rates')->group(function () {
         // danh sách bình luận chưa trả lời
         Route::get('/', [RatesController::class, 'getAllRates'])->name('index_rates');
