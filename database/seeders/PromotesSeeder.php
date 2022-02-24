@@ -14,7 +14,7 @@ class PromotesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('promotes')->DB::insert([
+        DB::table('promotes')->insert([
             [
             'PromoteId' => 'New',
             'BookId' => 'BOOK202112270001',

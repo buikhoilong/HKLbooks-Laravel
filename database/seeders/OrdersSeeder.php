@@ -14,7 +14,7 @@ class OrdersSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('orders')->DB::insert([
+        DB::table('orders')->insert([
             [
             'Id' => 'BILL202201091118300001',
             'AccountId' => 'USER20220208008',

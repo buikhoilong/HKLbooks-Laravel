@@ -78,7 +78,7 @@
                                         <a href="{{ route('edit_status_processing',['Id' => $oders[$i]->Id] )}}"><i style="color:green" class="fas fa-check"></i> Duyệt đơn</a><br><br>
                                         <a style="margin:-10px">
                                           <a data-toggle="modal" data-target="#exampleModalLong"
-                                          style="cursor: pointer;color:grey"><i style="color:rgb(223, 9, 9);" class="fas fa-trash"></i> Xóa</a>
+                                          style="cursor: pointer;color:grey"><i style="color:rgb(223, 9, 9);" class="fas fa-trash"></i> Hủy đơn</a>
                                       <!-- Modal -->
                                       <div class="modal fade" id="exampleModalLong" tabindex="-1"
                                           role="dialog" aria-labelledby="exampleModalLongTitle"

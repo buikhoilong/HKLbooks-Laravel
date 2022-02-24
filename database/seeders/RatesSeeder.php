@@ -14,7 +14,7 @@ class RatesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('rates')->DB::insert([
+        DB::table('rates')->insert([
             [
                 'Id' => '1',
                 'AccountId' => 'USER20220208009',

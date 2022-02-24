@@ -14,21 +14,7 @@ class CategoriesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->DB::insert([
-            [
-                'Id' => 'CLC',
-                'Name' => 'con lợn con',
-                'Description' => 'Nói về đối nhân xử thế',
-                'Status' => '1',
-            ],
-
-            [
-                'Id' => 'DN',
-                'Name' => 'đắc nè',
-                'Description' => 'toán học hay',
-                'Status' => '1',
-            ],
-
+        DB::table('categories')->insert([
             [
                 'Id' => 'KD',
                 'Name' => 'Kinh doanh',
@@ -48,13 +34,6 @@ class CategoriesSeeder extends Seeder
                 'Name' => 'Kinh tế',
                 'Description' => 'Sách kinh tế là một cuốn sách viết về kinh tế.',
                 'Status' => '1',
-            ],
-
-            [
-                'Id' => 'RR',
-                'Name' => 'rẻ rách',
-                'Description' => 'ádasdasdasd',
-                'Status' => '0',
             ],
 
             [

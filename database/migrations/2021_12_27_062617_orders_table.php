@@ -19,7 +19,7 @@ class OrdersTable extends Migration
             $table->integer('TotalOrder');
             $table->integer('Discount');
             $table->integer('TotalMoney');
-            $table->string('Note');
+            $table->string('Note')->nullable();
             $table->integer('StatusId');
             $table->index('AccountId');
             $table->index('StatusId');

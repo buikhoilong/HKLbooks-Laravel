@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 
 class BooksSeeder extends Seeder
@@ -15,7 +16,7 @@ class BooksSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('books')->DB::insert([
+        DB::table('books')->insert([
             [
                 'Id' => 'BOOK202112270001',
                 'Name' => 'Tư Duy Nhanh Và Chậm',
@@ -242,7 +243,7 @@ class BooksSeeder extends Seeder
 
             [
                 'Id' => 'BOOK202112290015',
-                'Name' => 'tat den 2',
+                'Name' => 'Tắt Đèn 2',
                 'Price' => '780000',
                 'Stock' => '30',
                 'SaleOff' => null,
@@ -252,7 +253,7 @@ class BooksSeeder extends Seeder
                 'Detail' => 'Nói về đối nhân xử thế',
                 'Author' => 'Dale Carnegie',
                 'Publisher' => 'Nhà Xuất Bản Tổng hợp TP.HCM',
-                'CategoryId' => 'RR',
+                'CategoryId' => 'TL',
                 'Status' => '1',
             ],
 

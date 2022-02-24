@@ -81,7 +81,7 @@
                                                             style="color:green" class="fas fa-check"></i> Xác nhận</a><br><br>
                                                     <a>
                                                         <a data-toggle="modal" data-target="#exampleModalLong"
-                                                        style="cursor: pointer;color:grey"><i style="color:rgb(223, 9, 9);" class="fas fa-trash"></i> Xóa</a>
+                                                        style="cursor: pointer;color:grey"><i style="color:rgb(223, 9, 9);" class="fas fa-trash"></i> Hủy đơn</a>
                                                     <!-- Modal -->
                                                     <div class="modal fade" id="exampleModalLong" tabindex="-1"
                                                         role="dialog" aria-labelledby="exampleModalLongTitle"

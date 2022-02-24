@@ -25,8 +25,8 @@ class AccountsTable extends Migration
             $table->boolean('Role');
             $table->string('Avatar');
             $table->index('Id');
-            $table->index(['Email', 'Password']);
-            $table->index(['Phone', 'Password']);
+            $table->index(['Email', 'password']);
+            $table->index(['Phone', 'password']);
             $table->timestamps();
             $table->softDeletes();
         });
