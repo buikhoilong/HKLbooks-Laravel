@@ -58,11 +58,20 @@ Route::prefix('/cart')->group(function () {
     Route::delete('/delete',[APIsController::class,'deleteCart']);
     Route::post('/addToCart',[APIsController::class,'addToCart']);
     Route::post('/update',[APIsController::class,'updateCart']);
-    // Route::delete()
+
 });
 
+Route::prefix('/order')->group(function () {
+    Route::get('/{AccountId}',[APIsController::class,'getAllOrderByAccountId']);
+    Route::get('getOrderLine/{OrderId}',[APIsController::class,'getAllOrderLinesByOrderId']);
+    // Route::delete('/delete',[APIsController::class,'deleteCart']);
+    Route::post('/addOrder',[APIsController::class,'addOrder']);
+    Route::post('/addOrderLine',[APIsController::class,'addOrderLine']);
+    Route::post('/delete',[APIsController::class,'deleteOrder']);
+
+});
 // Route::group(['middleware' => ['auth:sanctum']],function () {
-//     Route::get('/',[BooksController::class,'getAllBooksAPI'])->name('api_all_book');
+//     Route::get('/',[Books    Controller::class,'getAllBooksAPI'])->name('api_all_book');
 // });
 
 Route::post('/login',[AuthController::class],'index');
