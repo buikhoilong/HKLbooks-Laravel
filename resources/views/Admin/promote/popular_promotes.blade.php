@@ -1,5 +1,5 @@
 @extends('Layouts.layout')
-@section('title','Index Promotes')
+@section('title','Danh sách sách phổ biến')
 
 @section('content')
 

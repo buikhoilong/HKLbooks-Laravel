@@ -1,5 +1,5 @@
 @extends('Layouts.layout')
-@section('title', 'Index Promotes')
+@section('title', 'Thêm quảng bá')
 @section('content')
     <style>
         .button {

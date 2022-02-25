@@ -1,6 +1,6 @@
 @extends('Layouts.layout')
 
-@section('title', 'Home')
+@section('title', 'Trang chủ')
 @section('content')
     @for ($i = 0; $i < $orders->count(); $i++)
         <span style="visibility:hidden">

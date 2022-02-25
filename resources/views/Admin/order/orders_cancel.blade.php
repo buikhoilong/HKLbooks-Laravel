@@ -1,5 +1,5 @@
 @extends('Layouts.layout')
-@section('title','Index Orders')
+@section('title','Danh sách đơn hàng đã hủy')
 
 @section('content')
 

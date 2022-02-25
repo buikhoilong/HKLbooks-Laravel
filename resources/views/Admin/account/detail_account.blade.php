@@ -1,5 +1,5 @@
 @extends("Layouts.layout")
-@section('title','Detail Account')
+@section('title','Chi tiết tài khoản')
 @section("content")
 <style>
     .card {

@@ -1,5 +1,5 @@
 @extends("Layouts.layout")
-@section('title','Edit Books')
+@section('title','Cập nhập sách')
 @section("content")
 <style>
     .button {

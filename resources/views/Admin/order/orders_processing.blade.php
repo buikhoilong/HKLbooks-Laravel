@@ -1,5 +1,5 @@
 @extends('Layouts.layout')
-@section('title','Đơn hàng đang xử lý')
+@section('title','Danh sách đơn hàng chờ xử lý')
 
 @section('content')
 

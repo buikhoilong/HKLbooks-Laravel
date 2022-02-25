@@ -63,6 +63,8 @@ Route::prefix('/admin')->middleware('adminrole')->group(function () {
         Route::get('/delete/{Id?}', [AccountsController::class, 'deleteAccount'])->name('delete_account');
         // profile 
         Route::get('/profile', [AccountsController::class, 'profile'])->name('profile');
+        // update profile 
+        Route::post('/updatefile/{Id?}', [AccountsController::class, 'postUpdateProfile'])->name('updatefile');
     });
 
     Route::prefix('/category')->group(function () {

@@ -1,5 +1,5 @@
 @extends("Layouts.layout")
-@section('title','Add Account')
+@section('title','Thêm tài khoản')
 @section("content")
 <style>
     .button {

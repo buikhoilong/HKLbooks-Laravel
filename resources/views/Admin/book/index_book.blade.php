@@ -1,5 +1,5 @@
 @extends("Layouts.layout")
-@section('title', 'Index Books')
+@section('title', 'Danh sách sách')
 @section('content')
 
     <style>

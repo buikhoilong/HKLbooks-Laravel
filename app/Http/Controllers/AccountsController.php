@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use DateTime;
 use Faker\Provider\Uuid;
+use Illuminate\Support\Facades\Auth;
 
 class AccountsController extends Controller
 {
@@ -99,8 +100,36 @@ class AccountsController extends Controller
                 'Avatar' => $PathImg,
             ]
         );
-
         return redirect()->route('index_account');
+    }
+    public function postUpdateProfile(Request $request)
+    {
+        $accounts = Account::find($request->Id);
+        $PathImg = $accounts->Avatar;
+        if ($request->hasFile('imagetxt')) {
+            $nameImg = $request->file('imagetxt')->getClientOriginalName(); // lấy tên của ảnh từ hệ thống
+            $request->imagetxt->storeAs('admin/images/avatar', $nameImg, 'public'); // lưu hình ảnh vào trong đường dẫn,storeAs() tham số thứ 3 mặc định là public 
+            $PathImg = $nameImg;
+        }
+        Account::where('Id', $request->Id)->update(
+            [
+                'Name' => $request->tentxt,
+                'Birthday' => $request->ngaysinhtxt,
+                'Address' => $request->diachitxt,
+                'Phone' => $request->sdttxt,
+                'Email' => $request->emailtxt,
+                'Avatar' => $PathImg,
+            ]
+        );
+        // if(Auth::attempt(['Id' => $request->Email, 'password' => $request->Password])){
+        //     $user = Auth::user();
+        //     $request->session()->put('user_login',$user);
+        // };
+
+        Auth::logout();
+        $request->session()->flush();
+        return redirect()->route('login');
+        // return redirect()->route('profile');
     }
 
     public function deleteAccount($id){
@@ -135,20 +164,6 @@ class AccountsController extends Controller
 
     public function loginApp(Request $request)
     {
-        // $rule = [
-        //     "Email" => "required",
-        //     //"Password" => "required|regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/",
-        // ];
-        // $customMessage = [
-        //     "Email.required" => "Email không được bỏ trống",
-        //     //"Password.regex" => "Mật khẩu không đúng",
-        //     "Password.required" => "Mật khẩu không được bỏ trống",
-        // ];
-        // $validator = Validator::make($request->all(), $rule, $customMessage);
-        // if ($validator->fails()) {
-        //     return response()->json($validator->errors(), 400);
-        // }
-
         $account = Account::where('Email', $request->Email)->first();
 
         if ($account == null) {

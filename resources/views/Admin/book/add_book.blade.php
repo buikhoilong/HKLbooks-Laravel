@@ -1,5 +1,5 @@
 @extends("Layouts.layout")
-@section('title','Index Books')
+@section('title','Thêm sách')
 @section("content")
 <style>
     .button {
@@ -18,7 +18,6 @@
     </style>
 <form style="margin: 10px" method="POST" action="{{ route('add_book') }}" enctype="multipart/form-data">
     @csrf
-
     <div style="padding: 10px 0px 20px 0px">
         <strong>
             <a href="{{ route('index_books') }}">Quay lại</a> <br>

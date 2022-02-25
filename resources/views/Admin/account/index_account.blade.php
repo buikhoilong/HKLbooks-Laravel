@@ -1,5 +1,5 @@
 @extends('Layouts.layout')
-@section('title','Index Account')
+@section('title','Danh sách tài khoản')
 @section('content')
 <style>
     #chuc_nang{

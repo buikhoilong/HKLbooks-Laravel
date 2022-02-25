@@ -1,5 +1,5 @@
 @extends("Layouts.layout")
-@section('title','Delete Category')
+@section('title','Thể loại đã xóa')
 @section("content")
 
 <div class="content">

@@ -1,5 +1,5 @@
 @extends("Layouts.layout")
-@section('title','Detail Books')
+@section('title','Chi tiết sách')
 @section("content")
 
     <div style="padding: 20px 20px 20px 70px">
