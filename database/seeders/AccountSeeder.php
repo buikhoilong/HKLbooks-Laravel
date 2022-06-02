@@ -35,7 +35,7 @@ class AccountSeeder extends Seeder
         //    'password' => Hash::make('123456789') 
         // ]);
 
-        DB::table('accounts')->DB::insert([
+        DB::table('accounts')->insert([
             [
                 'Id' => 'ADMIN20220102007',
                 'Name' => 'Đỗ Quang Huy',

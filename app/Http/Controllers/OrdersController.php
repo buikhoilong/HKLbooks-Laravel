@@ -57,16 +57,13 @@ class OrdersController extends Controller
         return redirect()->route('index_orders');
     }
 
-    public function editStatusCancel($id){
-        Order::where('Id',$id)->update([
-            'StatusId' => 3
+    public function editStatusCancel(Request $request){
+        Order::where('Id',$request->Id)->update([
+            'StatusId' => 3,
+            'Note' => $request->noidungtxt,
         ]);
         return redirect()->route('index_orders');
     }
-
-
-
-
     public function OrdersLines($id){
         $order = Order::find($id);
         $order_lines = OrderLine::all();

@@ -14,7 +14,7 @@ class OrderStatusSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('order_lines')->DB::insert([
+        DB::table('order_status')->insert([
             [
                 'Id' => '0',
                 'Name' => 'Đang xử lý',

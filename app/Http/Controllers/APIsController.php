@@ -7,6 +7,8 @@ use App\Models\Book;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Favourite;
+use App\Models\Order;
+use App\Models\OrderLine;
 use App\Models\PromoteType;
 use App\Models\Rate;
 use Illuminate\Http\Request;
@@ -250,6 +252,30 @@ class APIsController extends Controller
             return response()->json(['Message' => 'Đã có trong giỏ hàng'], 400);
         } 
     }
+    public function updateCart(Request $request)
+    {
+        $existedInCart = Cart::where('AccountId',$request->AccountId)->where('BookId',$request->BookId)->first();
+        if($existedInCart == null){
+            return json_encode(['Message' => 'Giỏ hàng không tồn tại!'],400);
+            
+        } else{
+            $cart = Cart::where('AccountId',$request->AccountId)->where('BookId',$request->BookId)->update([
+                'Quantity' => $request->Quantity,
+            ]);
+            if($cart >0) {
+                return response()->json(['Message' => 'Cập nhật giỏ hàng thàng công'], 200);
+            }
+            return response()->json(['Message' => 'Cập nhật giỏ hàng thất bại'], 402);
+        } 
+    }
+    public function deleteCart(Request $request)
+    {
+        $favourited = DB::table('carts')->where('AccountId', $request->AccountId)->where('BookId', $request->BookId)->delete();
+        if($favourited == true){
+            return  response()->json(['Message'=> 'Đã xóa ra khỏi giỏ hàng!'],200);
+        }
+        return  response()->json(['Message'=> 'Xóa thất bại!'],400);
+    }
     //End: Carts APIs
 
     // Start:  Favorites APIs
@@ -307,4 +333,68 @@ class APIsController extends Controller
         }
         return response()->json($rates,200);
     }
+    // End:  Rates APIs
+
+    // Start:  Order APIs
+    public function deleteOrder(Request $request){
+        $timeCretedAt = Carbon::now('Asia/Ho_Chi_Minh');
+        $order = Order::find($request->Id)->update([
+            'StatusId' => 3,
+            'deleted_at'=>$timeCretedAt,
+        ]);
+        return response()->json(['Message'=>'Huy don thanh cong'],200);
+    }
+
+    public function getAllOrderByAccountId(Request $request){
+        $orders = Order::where('orders.AccountId',$request->AccountId)->get();
+        if($orders == null){
+            return response()->json(['Message'=> ''],400);
+        }
+        return response()->json($orders,200);
+    }
+    public function getAllOrderLinesByOrderId(Request $request){
+        $orderLines = OrderLine::where('OrderId', $request->OrderId)->get();
+        return response()->json($orderLines,200);
+    }
+    public function addOrder(Request $request){
+        $timeCretedAt = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+        $timestamp = Date('Ymd');
+
+        $count = Order::where('created_at',  $timeCretedAt)->count();
+        if ($count < 9) {
+            $count++;
+            $count = '00' . $count;
+        } else if ($count > 8 && $count < 99) {
+            $count++;
+            $count = '0' . $count;
+        } else {
+            $count++;
+        }
+        $order = new Order();
+        // $order->Id = 'BILL' . $timestamp . $count;
+        $order->Id = $request->Id;
+        $order->AccountId = $request->AccountId;
+        $order->TotalOrder = $request->Total;
+        $order->Disscount = 0;
+        $order->TotalMoney = $request->Total;
+        $order->StatusId = 0;
+        $order->save();
+        return response()->json($order, 201);
+    }
+
+    public function addOrderLine(Request $request){
+        $oderline = new OrderLine(); 
+        $datetime = Date('ms');
+        $oderline->Id = $oderline->count()+1+(int)$datetime;
+        $oderline->BookId = $request->BookId;
+        $stock = Book::find($request->BookId)->Stock - $request->Quantity;
+        $book = Book::find($request->BookId)->update([
+            'Stock' => $stock,
+        ]);
+        $oderline->Quantity = $request->Quantity;
+        $oderline->Status = 0;
+        return response()->json($oderline, 201);
+    }
+
+
 }

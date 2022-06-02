@@ -14,7 +14,7 @@ class PromoteTypesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('promote_types')->DB::insert([
+        DB::table('promote_types')->insert([
             [
             'Id' => 'Horror',
             'Name' => 'Kinh dị',

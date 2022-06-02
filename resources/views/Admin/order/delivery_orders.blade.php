@@ -78,11 +78,48 @@
                                                             style="color:midnightblue" class="fas fa-eye"></i> Xem chi tiết</a><br><br>
                                                     <a
                                                         href="{{ route('edit_status_delivery', ['Id' => $oders[$i]->Id]) }}"><i
-                                                            style="color:green" class="fas fa-check"></i> Duyệt đơn</a><br><br>
-
+                                                            style="color:green" class="fas fa-check"></i> Xác nhận</a><br><br>
+                                                    <a>
+                                                        <a data-toggle="modal" data-target="#exampleModalLong"
+                                                        style="cursor: pointer;color:grey"><i style="color:rgb(223, 9, 9);" class="fas fa-trash"></i> Hủy đơn</a>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModalLong" tabindex="-1"
+                                                        role="dialog" aria-labelledby="exampleModalLongTitle"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLongTitle">
+                                                                        Lý do hủy đơn</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form method="POST"
+                                                                        action="{{ route('edit_status_cancel', ['Id' => $oders[$i]->Id]) }}"
+                                                                        enctype="multipart/form-data" id="form-reply"
+                                                                        name="form-reply">
+                                                                        @csrf
+                                                                        <textarea style="padding: 20px" matInput rows="5"
+                                                                            cols="40" name="noidungtxt"> </textarea><br>
+                                                                        <div id="chucnang"
+                                                                            style="float: right; margin-left:20px">
+                                                                            <button style="margin: 10px;" type="submit"
+                                                                                class="btn btn-primary">Trả lời</button>
+                                                                            <button style="margin-right: 90px" type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-dismiss="modal">Đóng</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </a>
                                                 </td>
                                             </tr>
-
                                         @endif
 
                                     @endfor

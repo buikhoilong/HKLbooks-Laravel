@@ -21,12 +21,12 @@ class AccountsTable extends Migration
             $table->string('Phone')->unique();
             $table->integer('Status');
             $table->string('Email')->unique();
-            $table->string('Password')->index();
+            $table->string('password')->index();
             $table->boolean('Role');
             $table->string('Avatar');
             $table->index('Id');
-            $table->index(['Email', 'Password']);
-            $table->index(['Phone', 'Password']);
+            $table->index(['Email', 'password']);
+            $table->index(['Phone', 'password']);
             $table->timestamps();
             $table->softDeletes();
         });

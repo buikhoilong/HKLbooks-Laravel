@@ -8,7 +8,6 @@
         }
 
     </style>
-
     <div class="content">
         <div class="animated fadeIn">
             <div class="row">
@@ -46,7 +45,7 @@
                                                 <a href="{{ route('detail_book', ['Id' => $books[$i]->Id]) }}"><i
                                                         style="color:midnightblue;" class="fas fa-eye"></i> Xem chi tiết</a><br><br>
                                                 <a href="{{ route('edit_book', ['Id' => $books[$i]->Id]) }}"><i
-                                                        style="color:rgb(233, 154, 8)" class="fas fa-edit"></i> Chỉnh sửa</a><br><br>
+                                                        style="color:rgb(233, 154, 8)" class="fas fa-edit"></i> Cập nhật</a><br><br>
                                                 <a href="{{ route('delete_book', ['Id' => $books[$i]->Id]) }}"> <i
                                                         style="color:rgb(223, 9, 9)" class="fas fa-trash"></i> Xóa</a><br><br>
                                             </td>
